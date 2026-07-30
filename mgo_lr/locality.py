@@ -155,7 +155,7 @@ def _blocks_by_pair(blocks, cart, cell):
 
 def farfield_sensitivity(h_ref, cart_ref, h_probe, h_lr_probe, h_lr_ref,
                          cart_probe, cell, atom, bin_width, tol=0.3,
-                         s_ref=None):
+                         s_ref=None, s_probe=None):
     """How much of the DFT response to a localized displacement `H^LR` explains,
     binned by distance from the displaced atom.
 
@@ -165,14 +165,23 @@ def farfield_sensitivity(h_ref, cart_ref, h_probe, h_lr_probe, h_lr_ref,
     see a distant displacement, so the analytic term must supply it — and it is
     what `H^LR ∝ S` can actually improve, unlike the spatial tail of `H` itself.
 
-    `s_ref` (the reference overlap) fixes the energy gauge and is required for
-    a trustworthy number.  `H` from a periodic SCF carries an arbitrary energy
-    zero, so two independent runs differ by a multiple of `S`; here the two
-    Fermi levels differ by 4 meV while the far-field response is ~1.4 meV per
-    block, so that freedom SWAMPS the signal — dropping it silently reports
-    whatever gauge ABACUS happened to choose.  Both `dH_full` and `dH_LR` are
-    projected orthogonal to `S`, which is also the gauge `lr.py` builds `V` in
-    (`V(G=0) = 0`), making the result invariant to any `H -> H + c S`.
+    `s_ref` and `s_probe` fix the energy gauge and are required for a
+    trustworthy number.  `H` from a periodic SCF carries an arbitrary energy
+    zero, so the two runs are free independently:
+    `H_ref -> H_ref + c_ref S_ref` and `H_probe -> H_probe + c_probe S_probe`.
+    Here their Fermi levels differ by 4 meV while the far-field response is
+    ~1.4 meV per block, so that freedom SWAMPS the signal — dropping it
+    silently reports whatever gauge ABACUS happened to choose.
+
+    Each Hamiltonian is therefore gauge-fixed against ITS OWN overlap before
+    differencing: `H~ = H - (<H,S>/<S,S>) S`, which is exactly invariant since
+    adding `c S` shifts the coefficient by exactly `c`.  Projecting both runs
+    onto one shared overlap direction would not do it — `S_probe != S_ref`, so
+    a `c_probe S_probe` component survives.  The same fixing is applied to the
+    `H^LR` labels, which is the gauge `lr.py` already builds `V` in
+    (`V(G=0) = 0`).  A Hamiltonian block with no overlap partner means zero
+    overlap, not missing data: it contributes 0 to the projection and is still
+    counted in the response.
     """
     ref_pairs = _blocks_by_pair(h_ref, cart_ref, cell)
     probe_pairs = _blocks_by_pair(h_probe, cart_probe, cell)
@@ -190,7 +199,8 @@ def farfield_sensitivity(h_ref, cart_ref, h_probe, h_lr_probe, h_lr_ref,
         w, blk = min(candidates, key=lambda t: np.linalg.norm(t[0] - v))
         return blk if np.linalg.norm(w - v) <= tol else None
 
-    s_pairs = _blocks_by_pair(s_ref, cart_ref, cell) if s_ref else None
+    sr_pairs = _blocks_by_pair(s_ref, cart_ref, cell) if s_ref else None
+    sp_pairs = _blocks_by_pair(s_probe, cart_probe, cell) if s_probe else None
     rows, unmatched = [], 0
     for (i, j), entries in ref_pairs.items():
         for v, ref_blk in entries:
@@ -198,40 +208,43 @@ def farfield_sensitivity(h_ref, cart_ref, h_probe, h_lr_probe, h_lr_ref,
             if probe_blk is None:
                 unmatched += 1
                 continue
-            s_blk = None
-            if s_pairs is not None:
-                s_blk = nearest(s_pairs, (i, j), v)
-                if s_blk is None:      # no gauge reference for this block
-                    unmatched += 1
-                    continue
-            d_full = probe_blk - ref_blk
-            lr_p = nearest(lr_probe_pairs, (i, j), v)
-            lr_r = nearest(lr_ref_pairs, (i, j), v)
-            d_lr = np.zeros_like(d_full)
-            if lr_p is not None:
-                d_lr = d_lr + lr_p
-            if lr_r is not None:
-                d_lr = d_lr - lr_r
+            zero = np.zeros_like(ref_blk)
+
+            def matched(pairs, key=(i, j), vec=v, default=zero):
+                if pairs is None:
+                    return default
+                blk = nearest(pairs, key, vec)
+                # absent sparse block == zero overlap, not missing data
+                return default if blk is None else blk
+
             dist = min(min_image(cart_ref[i - 1] - cart_ref[atom]),
                        min_image(cart_ref[i - 1] + v - cart_ref[atom]))
-            rows.append((d_full, d_lr, s_blk, dist))
+            rows.append({"h_ref": ref_blk, "h_probe": probe_blk,
+                         "s_ref": matched(sr_pairs),
+                         "s_probe": matched(sp_pairs),
+                         "lr_ref": matched(lr_ref_pairs),
+                         "lr_probe": matched(lr_probe_pairs),
+                         "dist": dist})
 
-    # Gauge fix: remove the component along S from both responses.
-    lam_full = lam_lr = 0.0
-    if s_pairs is not None and rows:
-        ss = sum(float(np.sum(s * s)) for _, _, s, _ in rows)
-        if ss > 0.0:
-            lam_full = sum(float(np.sum(f * s))
-                           for f, _, s, _ in rows) / ss
-            lam_lr = sum(float(np.sum(l * s)) for _, l, s, _ in rows) / ss
+    # Gauge fix each snapshot against its OWN overlap, then difference.
+    def coefficient(field, overlap):
+        ss = sum(float(np.sum(r[overlap] ** 2)) for r in rows)
+        if ss <= 0.0:
+            return 0.0
+        return sum(float(np.sum(r[field] * r[overlap])) for r in rows) / ss
+
+    lam = {f: coefficient(f, s) for f, s in
+           (("h_ref", "s_ref"), ("h_probe", "s_probe"),
+            ("lr_ref", "s_ref"), ("lr_probe", "s_probe"))} if rows else {}
 
     acc = {}
-    for d_full, d_lr, s_blk, dist in rows:
-        if s_blk is not None:
-            d_full = d_full - lam_full * s_blk
-            d_lr = d_lr - lam_lr * s_blk
+    for r in rows:
+        d_full = ((r["h_probe"] - lam["h_probe"] * r["s_probe"])
+                  - (r["h_ref"] - lam["h_ref"] * r["s_ref"]))
+        d_lr = ((r["lr_probe"] - lam["lr_probe"] * r["s_probe"])
+                - (r["lr_ref"] - lam["lr_ref"] * r["s_ref"]))
         d_sr = d_full - d_lr
-        bucket = int(dist // bin_width)
+        bucket = int(r["dist"] // bin_width)
         slot = acc.setdefault(bucket, [0.0, 0.0, 0])
         slot[0] += float(np.sum(d_full ** 2))
         slot[1] += float(np.sum(d_sr ** 2))
@@ -393,7 +406,9 @@ def locality_report_stage(cfg, workspace, args):
                 h_ref, cart_ref, blocks(sid, "full"), blocks(sid, "lr"),
                 lr_ref, cart_p, cell,
                 int(metas[sid]["displaced_atom_index"]), bin_width,
-                s_ref=s_ref)
+                s_ref=s_ref,
+                s_probe=read_blocks(os.path.join(store.folder(sid),
+                                                 "overlaps.h5")))
             ok, qual = farfield_gate(bins, *gate_args)
             farfield["probes"][sid] = bins
             farfield["unmatched"][sid] = unmatched

@@ -49,10 +49,10 @@ validated` (or `rejected`, moved to `rejected/` with a machine-readable
 reason). Stages are idempotent: already-processed snapshots are skipped
 without `--force`, and raw DFT outputs are never modified.
 
-The default `pilot_expanded: false` generates the 19-snapshot initial
-approval pilot (18 patterns + the Tier-3 far-field probe). Set it to `true`
-in a separate workspace to generate the 51-snapshot follow-up, including
-matched finite-|q| trend probes.
+The default `pilot_expanded: false` generates the 20-snapshot initial
+approval pilot (18 patterns + the two Tier-3 far-field probes, one per
+species). Set it to `true` in a separate workspace to generate the
+52-snapshot follow-up, including matched finite-|q| trend probes.
 
 ## Workspace layout
 
@@ -117,9 +117,11 @@ loader's `os.walk` traversal does not follow directory symlinks. Run
 3. **Tier 3 (dataset-level, `locality-report`):** odd displacement response
    vs `H^LR`, longitudinal/transverse and |q| trends within matched
    comparison families, locality tail fractions, and the **approval
-   requirement: far-field sensitivity**. Each set carries a probe pair — an
-   equilibrium `farfield_reference` and a `farfield_probe` displacing one
-   atom — and the gate asks how much of the DFT response to that displacement
+   requirement: far-field sensitivity**. Each set carries an equilibrium
+   `farfield_reference` plus one `farfield_probe` per species (Mg and O; the
+   Born charges have opposite sign on the two sublattices, so a single cation
+   probe would approve only half the problem). Every probe must pass
+   independently. The gate asks how much of the DFT response to a displacement
    `H^LR` already explains, binned by distance from it:
    `reduction = 1 − ‖ΔH_SR‖ / ‖ΔH_full‖`. Every bin beyond
    `locality.farfield_min_radius` that carries real signal (above
@@ -134,7 +136,11 @@ loader's `os.walk` traversal does not follow directory symlinks. Run
    displacements — the thing a finite-cutoff network cannot learn — which is
    what the far-field gate measures. Blocks are matched between probe and
    reference by geometry, not by `R` label, because ABACUS assigns `R` against
-   positions it wraps into the cell.
+   positions it wraps into the cell. Each Hamiltonian is gauge-fixed against
+   its own overlap (`H~ = H - (<H,S>/<S,S>) S`) before differencing: a periodic
+   SCF fixes no absolute energy zero, the two runs are free independently, and
+   their 4 meV Fermi-level difference otherwise swamps a ~1.4 meV far-field
+   signal.
 
 ## Publication safeguards
 
@@ -159,5 +165,5 @@ loader's `os.walk` traversal does not follow directory symlinks. Run
 Synthetic fixtures only — no DFT binaries or network required.
 
 Before production use, archive at least one small real ABACUS/QE pilot output
-as a parser compatibility fixture and run the 19-snapshot pilot end to end on
+as a parser compatibility fixture and run the 20-snapshot pilot end to end on
 the target cluster software versions.

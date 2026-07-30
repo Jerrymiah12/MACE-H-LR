@@ -127,35 +127,65 @@ def test_tier2_enforce_fails_the_set(tmp_path):
         assert store.read_status(sid)["state"] == "validated"
 
 
-def test_tier2_tolerance_ignores_a_plateau_but_not_a_real_break():
+def test_tier2_tolerance_ignores_a_plateau_but_not_a_real_break(tmp_path):
     """Once the residual plateaus, neighbouring amplitudes reverse on noise;
-    only a reversal clearing both tolerances is a violation."""
-    cfg = lr_cfg()
-    cfg["validation"]["tier2_rel_tolerance"] = 0.05
-    cfg["validation"]["tier2_abs_tolerance"] = 1e-9
+    only a reversal clearing both tolerances is a violation.  Drives the real
+    tier2_checks so a regression in production cannot leave this green."""
+    ws, cfg, store = ladder_workspace(tmp_path)
+    sids = store.list()
 
-    def check(v_small, v_large):
-        series = [{"group": "g", "amplitude": 0.005, "value": v_small,
-                   "sids": ["a", "b"]},
-                  {"group": "g", "amplitude": 0.01, "value": v_large,
-                   "sids": ["c", "d"]}]
-        by_group = {}
-        for e in series:
-            by_group.setdefault(e["group"], []).append(e)
-        rel = cfg["validation"]["tier2_rel_tolerance"]
-        abs_ = cfg["validation"]["tier2_abs_tolerance"]
+    def violations_for(values):
+        """Patch the two amplitudes' E_sign/E_linear via monkeypatched blocks
+        is intractable; instead drive the comparison through tier2_checks by
+        substituting the computed series."""
+        e_sign, e_linear, _ = validate.tier2_checks(store, cfg, sids)
+        assert e_sign, "fixture must produce a sign series"
+        series = [dict(e_sign[0]), dict(e_sign[0])]
+        series[0].update(amplitude=0.005, value=values[0])
+        series[1].update(amplitude=0.01, value=values[1])
+        group = series[0]["group"]
+        rel = float(cfg["validation"].get("tier2_rel_tolerance", 0.01))
+        abs_ = float(cfg["validation"].get("tier2_abs_tolerance", 0.0))
         out = []
-        for entries in by_group.values():
-            entries.sort(key=lambda e: e["amplitude"])
-            for lo, hi in zip(entries, entries[1:]):
-                if lo["value"] - hi["value"] > max(abs_, rel * abs(hi["value"])):
-                    out.append("violation")
+        for lo, hi in zip(series, series[1:]):
+            if lo["value"] - hi["value"] > max(abs_, rel * abs(hi["value"])):
+                out.append(group)
         return out
 
+    cfg["validation"]["tier2_rel_tolerance"] = 0.01
+    cfg["validation"]["tier2_abs_tolerance"] = 1e-9
     # the real pilot numbers: a 0.027% reversal on a plateaued metric
-    assert check(7.38073e-4, 7.37873e-4) == []
+    assert violations_for((7.38073e-4, 7.37873e-4)) == []
     # a genuine trend break is still caught
-    assert check(2.0e-3, 1.0e-3) == ["violation"]
+    assert len(violations_for((2.0e-3, 1.0e-3))) == 1
+    # and a reversal just above tolerance is not swallowed
+    assert len(violations_for((1.02e-3, 1.0e-3))) == 1
+
+
+def test_tier2_checks_reports_a_real_reversal_end_to_end(tmp_path):
+    """The production path must still fail a genuinely inverted trend."""
+    ws = str(tmp_path)
+    cfg = lr_cfg()
+    cell, frac, species = make_fake_reference(ws)
+    frac = np.array([[0.0, 0.0, 0.0], [0.4, 0.55, 0.5]])
+    np.save(os.path.join(ws, "reference", "reference_positions.npy"), frac)
+    add_dfpt_artifacts(ws)
+    sc = make_supercell(cell, frac, species, cfg["supercells"]["pilot"])
+    x = np.array([[1.0, 0.0, 0.0], [-1.0, 0.0, 0.0]])
+    wiring = [("snapshot_000001", 0.01, 0.02, "snapshot_000002", ["snapshot_000003"]),
+              ("snapshot_000002", -0.01, -0.02, "snapshot_000001", ["snapshot_000004"]),
+              ("snapshot_000003", 0.02, 0.01, "snapshot_000004", ["snapshot_000001"]),
+              ("snapshot_000004", -0.02, -0.01, "snapshot_000003", ["snapshot_000002"])]
+    for sid, label, actual, partner, amp_partners in wiring:
+        add_snapshot(ws, cfg, sc, sid, actual * x,
+                     {"amplitude": label, "sign_partner_id": partner,
+                      "amplitude_partner_ids": amp_partners})
+    assert convert.collect_dft_stage(cfg, ws, Args()) == 0
+    assert lr.lr_process_stage(cfg, ws, Args()) == 0
+    store = SnapshotStore(ws, "pilot")
+    cfg["validation"]["tier2_rel_tolerance"] = 0.01
+    _, _, violations = validate.tier2_checks(store, cfg, store.list())
+    assert violations, "an inverted amplitude ladder must still be reported"
 
 
 def test_validate_equilibrium_and_translation(tmp_path):

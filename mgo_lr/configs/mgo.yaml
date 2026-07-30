@@ -48,7 +48,7 @@ supercells: {pilot: 2, main: 3, large: 4}
 
 displacements:
   seed: 20260720
-  pilot_expanded: false       # false: 18-snapshot approval pilot; true: 50
+  pilot_expanded: false       # false: 20-snapshot approval pilot; true: 52
   amplitudes: [0.005, 0.01, 0.02, 0.04, 0.06]   # Angstrom, main set
   pilot_ladder: [0.0025, 0.005, 0.01, 0.02]     # Angstrom, pilot sign pairs
   farfield_amplitude: 0.06     # Angstrom, single-atom Tier-3 gate probe
@@ -78,9 +78,10 @@ validation:
   tau_overlap_diag: 0.05        # |S_ii - 1| on R=0 diagonal
   tier2_enforce: true           # E_sign/E_linear are hard checks
   # A reversal counts only if it clears BOTH tolerances.  Established from the
-  # MgO pilot, where the residual plateaus and neighbouring amplitudes reverse
-  # by ~0.03% on noise; 5% is far above that and far below a real trend break.
-  tier2_rel_tolerance: 0.05
+  # MgO pilot, whose largest noise-driven reversal on a plateaued metric is
+  # 0.027%; 1% is ~37x that and still small enough that a physically real
+  # wrong-way trend cannot hide underneath it.
+  tier2_rel_tolerance: 0.01
   tier2_abs_tolerance: 1.0e-9
 
 locality:

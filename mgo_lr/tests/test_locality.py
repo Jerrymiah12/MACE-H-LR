@@ -174,19 +174,28 @@ def test_farfield_sensitivity_is_gauge_invariant():
     lr = {k: 0.4 * d_full[k] for k in keys}
     probe = {k: ref[k] + d_full[k] for k in keys}
 
-    def run(shift_ref, shift_probe, s_ref):
+    # the two SCFs have DIFFERENT overlaps; projecting both onto one shared
+    # direction cannot remove a c_probe * S_probe component
+    s_probe = {k: v * 1.15 + 0.03 for k, v in s.items()}
+
+    def run(shift_ref, shift_probe, s_ref, sp=None):
         bins = locality.farfield_sensitivity(
             {k: ref[k] - shift_ref * s[k] for k in keys}, cart,
-            {k: probe[k] - shift_probe * s[k] for k in keys}, lr, {}, cart,
-            cell, atom=0, bin_width=1.0, s_ref=s_ref)[0]
+            {k: probe[k] - shift_probe * s_probe[k] for k in keys}, lr, {},
+            cart, cell, atom=0, bin_width=1.0, s_ref=s_ref, s_probe=sp)[0]
         return bins[0]["reduction"]
 
-    base = run(0.0, 0.0, s)
+    base = run(0.0, 0.0, s, s_probe)
     # differing Fermi levels between the two runs are the realistic case
-    assert abs(run(10.077, 10.073, s) - base) < 1e-9
-    assert abs(run(-25.0, 5.0, s) - base) < 1e-9
-    # and without the gauge reference the number is not trustworthy
-    assert abs(run(10.077, 10.073, None) - run(0.0, 0.0, None)) > 1e-3
+    assert abs(run(10.077, 10.073, s, s_probe) - base) < 1e-9
+    # each run is free independently, and by a lot
+    assert abs(run(-25.0, 5.0, s, s_probe) - base) < 1e-9
+    assert abs(run(0.0, 300.0, s, s_probe) - base) < 1e-9
+    # supplying only the reference overlap is NOT enough once S_probe differs
+    single = run(0.0, 300.0, s, None)
+    assert abs(single - base) > 1e-3
+    # and with no gauge reference at all the number follows the gauge
+    assert abs(run(10.077, 10.073, None, None) - run(0.0, 0.0, None, None)) > 1e-3
 
 
 def test_locality_report_empty_set(tmp_path, capsys):
