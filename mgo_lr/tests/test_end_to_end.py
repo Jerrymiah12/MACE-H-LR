@@ -39,7 +39,7 @@ def test_full_pipeline(tmp_path):
     assert dp.gen_structures_stage(cfg, ws, a) == 0
     store = SnapshotStore(ws, "pilot")
     sids = store.list()
-    assert len(sids) == 19          # 18 + far-field probe
+    assert len(sids) == 20          # 18 + far-field probes
 
     # fabricate DFT for the first 10 snapshots (equilibrium + ladder pairs);
     # one common seed so every snapshot shares the same synthetic H/S

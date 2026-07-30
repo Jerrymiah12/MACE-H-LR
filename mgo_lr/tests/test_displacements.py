@@ -76,10 +76,17 @@ def test_build_pilot_contents():
     # Initial approval pilot: 1 equilibrium + optical ladder (8) + Mg sign
     # pair (2) + matched L/T (2) + 2 mixed + 2 random + 1 translation,
     # plus the Tier-3 far-field probe (snapshot_000001 is its reference).
-    assert len(plans) == 19
+    assert len(plans) == 20
     assert plans[0]["metadata"]["pattern_class"] == "equilibrium"
-    assert plans[-1]["metadata"]["pattern_class"] == "farfield_probe"
-    assert plans[-1]["metadata"]["displaced_atom_index"] == 0
+    # one probe per species: Mg is atom 0, O is the first of the second block
+    n = CFG["supercells"]["pilot"]
+    assert [p["metadata"]["pattern_class"] for p in plans[-2:]] \
+        == ["farfield_probe", "farfield_probe"]
+    assert [p["metadata"]["displaced_atom_index"] for p in plans[-2:]] \
+        == [0, n ** 3]
+    assert all(abs(p["metadata"]["amplitude"]
+                   - CFG["displacements"]["farfield_amplitude"]) < 1e-12
+               for p in plans[-2:])          # provenance records the real one
     classes = [p["metadata"]["pattern_class"] for p in plans]
     assert classes.count("optical_x") == 8
     assert classes.count("mg_only_x") == 2
@@ -98,7 +105,7 @@ def test_build_expanded_pilot_contents():
     cfg = copy.deepcopy(CFG)
     cfg["displacements"]["pilot_expanded"] = True
     plans = dp.build_pilot(cfg, PRIM_CELL)
-    assert len(plans) == 51                    # 50 + far-field probe
+    assert len(plans) == 52                    # 50 + far-field probes
     classes = [p["metadata"]["pattern_class"] for p in plans]
     for name in ("mg_only_x", "o_only_x", "optical_x", "longitudinal_q",
                  "transverse_q"):
@@ -154,12 +161,12 @@ def test_metadata_schema():
 
 def test_build_main_composition_and_seeding():
     plans = dp.build_main(CFG, PRIM_CELL)
-    assert len(plans) == 402                   # 400 + far-field reference/probe
+    assert len(plans) == 403                   # 400 + far-field reference + 2 probes
     # probes carry no q, so they cannot disturb the q-shell split, and are
     # pinned to train so they never leak into validation or test
     probes = [p for p in plans
               if p["metadata"].get("farfield_role") is not None]
-    assert len(probes) == 2
+    assert len(probes) == 3
     assert all(p["metadata"]["split_hint"] == "train" for p in probes)
     assert all(p["metadata"]["q_magnitude"] == 0.0 for p in probes)
     classes = [p["metadata"]["pattern_class"] for p in plans]
@@ -227,7 +234,7 @@ def test_longitudinal_polarization_parallel_to_folded_q():
 
 def test_build_large():
     plans = dp.build_large(CFG, PRIM_CELL)
-    assert len(plans) == CFG["displacements"]["large_count"] + 2
+    assert len(plans) == CFG["displacements"]["large_count"] + 3
     body = [p for p in plans
             if p["metadata"].get("farfield_role") is None]
     assert len(body) == CFG["displacements"]["large_count"]

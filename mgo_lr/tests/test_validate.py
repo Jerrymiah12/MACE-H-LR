@@ -127,6 +127,37 @@ def test_tier2_enforce_fails_the_set(tmp_path):
         assert store.read_status(sid)["state"] == "validated"
 
 
+def test_tier2_tolerance_ignores_a_plateau_but_not_a_real_break():
+    """Once the residual plateaus, neighbouring amplitudes reverse on noise;
+    only a reversal clearing both tolerances is a violation."""
+    cfg = lr_cfg()
+    cfg["validation"]["tier2_rel_tolerance"] = 0.05
+    cfg["validation"]["tier2_abs_tolerance"] = 1e-9
+
+    def check(v_small, v_large):
+        series = [{"group": "g", "amplitude": 0.005, "value": v_small,
+                   "sids": ["a", "b"]},
+                  {"group": "g", "amplitude": 0.01, "value": v_large,
+                   "sids": ["c", "d"]}]
+        by_group = {}
+        for e in series:
+            by_group.setdefault(e["group"], []).append(e)
+        rel = cfg["validation"]["tier2_rel_tolerance"]
+        abs_ = cfg["validation"]["tier2_abs_tolerance"]
+        out = []
+        for entries in by_group.values():
+            entries.sort(key=lambda e: e["amplitude"])
+            for lo, hi in zip(entries, entries[1:]):
+                if lo["value"] - hi["value"] > max(abs_, rel * abs(hi["value"])):
+                    out.append("violation")
+        return out
+
+    # the real pilot numbers: a 0.027% reversal on a plateaued metric
+    assert check(7.38073e-4, 7.37873e-4) == []
+    # a genuine trend break is still caught
+    assert check(2.0e-3, 1.0e-3) == ["violation"]
+
+
 def test_validate_equilibrium_and_translation(tmp_path):
     ws = str(tmp_path)
     cfg = lr_cfg()

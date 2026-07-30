@@ -154,7 +154,8 @@ def _blocks_by_pair(blocks, cart, cell):
 
 
 def farfield_sensitivity(h_ref, cart_ref, h_probe, h_lr_probe, h_lr_ref,
-                         cart_probe, cell, atom, bin_width, tol=0.3):
+                         cart_probe, cell, atom, bin_width, tol=0.3,
+                         s_ref=None):
     """How much of the DFT response to a localized displacement `H^LR` explains,
     binned by distance from the displaced atom.
 
@@ -163,6 +164,15 @@ def farfield_sensitivity(h_ref, cart_ref, h_probe, h_lr_probe, h_lr_ref,
     property the LR split exists to deliver — a finite-cutoff network cannot
     see a distant displacement, so the analytic term must supply it — and it is
     what `H^LR ∝ S` can actually improve, unlike the spatial tail of `H` itself.
+
+    `s_ref` (the reference overlap) fixes the energy gauge and is required for
+    a trustworthy number.  `H` from a periodic SCF carries an arbitrary energy
+    zero, so two independent runs differ by a multiple of `S`; here the two
+    Fermi levels differ by 4 meV while the far-field response is ~1.4 meV per
+    block, so that freedom SWAMPS the signal — dropping it silently reports
+    whatever gauge ABACUS happened to choose.  Both `dH_full` and `dH_LR` are
+    projected orthogonal to `S`, which is also the gauge `lr.py` builds `V` in
+    (`V(G=0) = 0`), making the result invariant to any `H -> H + c S`.
     """
     ref_pairs = _blocks_by_pair(h_ref, cart_ref, cell)
     probe_pairs = _blocks_by_pair(h_probe, cart_probe, cell)
@@ -180,13 +190,20 @@ def farfield_sensitivity(h_ref, cart_ref, h_probe, h_lr_probe, h_lr_ref,
         w, blk = min(candidates, key=lambda t: np.linalg.norm(t[0] - v))
         return blk if np.linalg.norm(w - v) <= tol else None
 
-    acc, unmatched = {}, 0
+    s_pairs = _blocks_by_pair(s_ref, cart_ref, cell) if s_ref else None
+    rows, unmatched = [], 0
     for (i, j), entries in ref_pairs.items():
         for v, ref_blk in entries:
             probe_blk = nearest(probe_pairs, (i, j), v)
             if probe_blk is None:
                 unmatched += 1
                 continue
+            s_blk = None
+            if s_pairs is not None:
+                s_blk = nearest(s_pairs, (i, j), v)
+                if s_blk is None:      # no gauge reference for this block
+                    unmatched += 1
+                    continue
             d_full = probe_blk - ref_blk
             lr_p = nearest(lr_probe_pairs, (i, j), v)
             lr_r = nearest(lr_ref_pairs, (i, j), v)
@@ -195,14 +212,30 @@ def farfield_sensitivity(h_ref, cart_ref, h_probe, h_lr_probe, h_lr_ref,
                 d_lr = d_lr + lr_p
             if lr_r is not None:
                 d_lr = d_lr - lr_r
-            d_sr = d_full - d_lr
             dist = min(min_image(cart_ref[i - 1] - cart_ref[atom]),
                        min_image(cart_ref[i - 1] + v - cart_ref[atom]))
-            bucket = int(dist // bin_width)
-            slot = acc.setdefault(bucket, [0.0, 0.0, 0])
-            slot[0] += float(np.sum(d_full ** 2))
-            slot[1] += float(np.sum(d_sr ** 2))
-            slot[2] += 1
+            rows.append((d_full, d_lr, s_blk, dist))
+
+    # Gauge fix: remove the component along S from both responses.
+    lam_full = lam_lr = 0.0
+    if s_pairs is not None and rows:
+        ss = sum(float(np.sum(s * s)) for _, _, s, _ in rows)
+        if ss > 0.0:
+            lam_full = sum(float(np.sum(f * s))
+                           for f, _, s, _ in rows) / ss
+            lam_lr = sum(float(np.sum(l * s)) for _, l, s, _ in rows) / ss
+
+    acc = {}
+    for d_full, d_lr, s_blk, dist in rows:
+        if s_blk is not None:
+            d_full = d_full - lam_full * s_blk
+            d_lr = d_lr - lam_lr * s_blk
+        d_sr = d_full - d_lr
+        bucket = int(dist // bin_width)
+        slot = acc.setdefault(bucket, [0.0, 0.0, 0])
+        slot[0] += float(np.sum(d_full ** 2))
+        slot[1] += float(np.sum(d_sr ** 2))
+        slot[2] += 1
     bins = []
     for bucket in sorted(acc):
         full, sr, count = acc[bucket]
@@ -351,19 +384,22 @@ def locality_report_stage(cfg, workspace, args):
         cart_ref = np.loadtxt(os.path.join(store.folder(ref_sid),
                                            "site_positions.dat")).T
         h_ref, lr_ref = blocks(ref_sid, "full"), blocks(ref_sid, "lr")
+        s_ref = read_blocks(os.path.join(store.folder(ref_sid),
+                                         "overlaps.h5"))
         for sid in probes:
             cart_p = np.loadtxt(os.path.join(store.folder(sid),
                                              "site_positions.dat")).T
             bins, unmatched = farfield_sensitivity(
                 h_ref, cart_ref, blocks(sid, "full"), blocks(sid, "lr"),
                 lr_ref, cart_p, cell,
-                int(metas[sid]["displaced_atom_index"]), bin_width)
+                int(metas[sid]["displaced_atom_index"]), bin_width,
+                s_ref=s_ref)
             ok, qual = farfield_gate(bins, *gate_args)
             farfield["probes"][sid] = bins
             farfield["unmatched"][sid] = unmatched
             farfield["per_probe_pass"][sid] = ok
             qualifying.extend(qual)
-        del h_ref, lr_ref
+        del h_ref, lr_ref, s_ref
     # every probe must pass; an empty probe list is not a pass
     ff_ok = bool(farfield["per_probe_pass"]) \
         and all(farfield["per_probe_pass"].values())

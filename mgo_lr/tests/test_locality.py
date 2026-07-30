@@ -157,6 +157,38 @@ def test_farfield_sensitivity_scores_a_perfect_lr_term(tmp_path):
     assert bins0[0]["reduction"] == 0.0
 
 
+def test_farfield_sensitivity_is_gauge_invariant():
+    """H from a periodic SCF has an arbitrary energy zero, so two independent
+    runs differ by a multiple of S.  With the reference overlap supplied the
+    reduction must not move; without it the answer follows the gauge."""
+    rng = np.random.default_rng(0)
+    cell = np.eye(3) * 60.0
+    # several blocks in one bin so the S-projection removes only the shared
+    # component; with a single block it would annihilate the response entirely
+    cart = np.array([[0.0, 0.0, 0.0]] + [[5.0 + 0.05 * i, 0.0, 0.0]
+                                         for i in range(6)])
+    keys = [f"[0, 0, 0, {i}, {i + 1}]" for i in range(2, 7)]
+    s = {k: np.array([[0.4 + 0.1 * n]]) for n, k in enumerate(keys)}
+    ref = {k: np.array([[rng.normal()]]) for k in keys}
+    d_full = {k: np.array([[0.3 + 0.05 * n]]) for n, k in enumerate(keys)}
+    lr = {k: 0.4 * d_full[k] for k in keys}
+    probe = {k: ref[k] + d_full[k] for k in keys}
+
+    def run(shift_ref, shift_probe, s_ref):
+        bins = locality.farfield_sensitivity(
+            {k: ref[k] - shift_ref * s[k] for k in keys}, cart,
+            {k: probe[k] - shift_probe * s[k] for k in keys}, lr, {}, cart,
+            cell, atom=0, bin_width=1.0, s_ref=s_ref)[0]
+        return bins[0]["reduction"]
+
+    base = run(0.0, 0.0, s)
+    # differing Fermi levels between the two runs are the realistic case
+    assert abs(run(10.077, 10.073, s) - base) < 1e-9
+    assert abs(run(-25.0, 5.0, s) - base) < 1e-9
+    # and without the gauge reference the number is not trustworthy
+    assert abs(run(10.077, 10.073, None) - run(0.0, 0.0, None)) > 1e-3
+
+
 def test_locality_report_empty_set(tmp_path, capsys):
     ws, cfg, store = ladder_workspace(tmp_path)
     # nothing validated yet -> report nothing, still exit 0

@@ -115,6 +115,11 @@ def _metadata(n, prim_cell, pattern, group_id, seed_index):
         q_mag, amp, phase, pol_class = 0.0, pattern["random"]["amplitude"], 0.0, "none"
         q_magnitudes = []
         weights = {"Mg": 1.0, "O": 1.0}
+    elif pattern.get("single_atom") is not None:
+        q_mag, phase, pol_class = 0.0, 0.0, "none"
+        q_magnitudes = []
+        weights = {"Mg": 0.0, "O": 0.0}
+        amp = float(np.linalg.norm(pattern["single_atom"]["displacement"]))
     else:
         q_mag, phase, pol_class = 0.0, 0.0, "none"
         q_magnitudes = []
@@ -173,10 +178,16 @@ def farfield_probe_plans(cfg, prim_cell, n, set_name, start_k,
         specs.append(("farfield_reference",
                       {"pattern_class": "farfield_reference", "modes": []},
                       None))
-    specs.append(("farfield_probe",
-                  {"pattern_class": "farfield_probe", "modes": [],
-                   "single_atom": {"index": 0,
-                                   "displacement": [amp, 0.0, 0.0]}}, 0))
+    # One probe per species: Mg is atom 0 and O is the first of the second
+    # species block (ordering is species-major, n**3 of each).  A single
+    # cation probe would approve the LR term on one sublattice only, and the
+    # Born charges have opposite sign on the two.
+    for atom in (0, n ** 3):
+        specs.append(("farfield_probe",
+                      {"pattern_class": "farfield_probe", "modes": [],
+                       "single_atom": {"index": atom,
+                                       "displacement": [amp, 0.0, 0.0]}},
+                      atom))
     plans = []
     for offset, (cls, pat, atom) in enumerate(specs):
         k = start_k + offset

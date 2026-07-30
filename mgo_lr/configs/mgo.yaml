@@ -77,6 +77,11 @@ validation:
   tau_G: 1.0e-6                 # relative Frobenius
   tau_overlap_diag: 0.05        # |S_ii - 1| on R=0 diagonal
   tier2_enforce: true           # E_sign/E_linear are hard checks
+  # A reversal counts only if it clears BOTH tolerances.  Established from the
+  # MgO pilot, where the residual plateaus and neighbouring amplitudes reverse
+  # by ~0.03% on noise; 5% is far above that and far below a real trend break.
+  tier2_rel_tolerance: 0.05
+  tier2_abs_tolerance: 1.0e-9
 
 locality:
   bin_width: 1.0            # Angstrom, distance bin for block-norm statistics
