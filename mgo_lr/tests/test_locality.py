@@ -103,6 +103,60 @@ def test_locality_report_stage(tmp_path):
     assert "mean_lr_norm_by_class" in fam
 
 
+def _bin(r_lo, reduction, count=100, dh_full=1.0):
+    return {"r_lo": r_lo, "r_hi": r_lo + 1.0, "count": count,
+            "dh_full": dh_full, "dh_sr": dh_full * (1.0 - reduction),
+            "reduction": reduction}
+
+
+def test_farfield_gate_requires_every_far_bin_to_improve():
+    bins = [_bin(0.0, 0.0), _bin(4.0, 0.06), _bin(5.0, 0.09)]
+    ok, qualifying = locality.farfield_gate(bins, 4.0, 1e-6, 20, 0.05)
+    assert ok and len(qualifying) == 2        # near bins are not judged
+    # one far bin below threshold fails the whole gate
+    ok, _ = locality.farfield_gate(bins + [_bin(6.0, 0.01)], 4.0, 1e-6, 20, 0.05)
+    assert not ok
+
+
+def test_farfield_gate_ignores_noise_and_thin_bins():
+    # a bin at the SCF noise floor would otherwise contribute a meaningless
+    # (often negative) reduction; a near-empty bin is not evidence either
+    bins = [_bin(4.0, 0.09),
+            _bin(5.0, -1.4, dh_full=1e-9),     # noise
+            _bin(6.0, -1.4, count=3)]          # too few blocks
+    ok, qualifying = locality.farfield_gate(bins, 4.0, 1e-6, 20, 0.05)
+    assert ok and [b["r_lo"] for b in qualifying] == [4.0]
+
+
+def test_farfield_gate_without_evidence_is_not_a_pass():
+    assert locality.farfield_gate([], 4.0, 1e-6, 20, 0.05)[0] is False
+    # every candidate bin excluded -> still no pass
+    assert locality.farfield_gate([_bin(1.0, 0.9)], 4.0, 1e-6, 20, 0.05)[0] is False
+
+
+def test_farfield_sensitivity_scores_a_perfect_lr_term(tmp_path):
+    """If H^LR reproduces the whole response, the residual vanishes and the
+    reduction is 1; blocks are matched by geometry, not by R label."""
+    cell = np.eye(3) * 40.0
+    # atom 0 is the displaced one; the measured block joins atoms 2 and 3,
+    # both ~5 A away from it, so the bin reports far-field response
+    cart = np.array([[0.0, 0.0, 0.0], [5.0, 0.0, 0.0], [6.0, 0.0, 0.0]])
+    key = "[0, 0, 0, 2, 3]"
+    ref = {key: np.zeros((1, 1))}
+    resp = np.array([[0.25]])
+    probe = {key: resp}
+    bins, unmatched = locality.farfield_sensitivity(
+        ref, cart, probe, {key: resp}, {}, cart, cell,
+        atom=0, bin_width=1.0)
+    assert unmatched == 0
+    assert len(bins) == 1 and bins[0]["r_lo"] == 5.0
+    assert bins[0]["reduction"] == 1.0
+    # with no LR term at all the response is untouched
+    bins0, _ = locality.farfield_sensitivity(
+        ref, cart, probe, {}, {}, cart, cell, atom=0, bin_width=1.0)
+    assert bins0[0]["reduction"] == 0.0
+
+
 def test_locality_report_empty_set(tmp_path, capsys):
     ws, cfg, store = ladder_workspace(tmp_path)
     # nothing validated yet -> report nothing, still exit 0

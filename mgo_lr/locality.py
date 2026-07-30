@@ -7,6 +7,7 @@ Physics comparisons are made only within matched comparison_family_id
 groups.
 """
 import json
+import math
 import os
 
 import h5py
@@ -137,6 +138,98 @@ def long_range_localizes(f_full, f_sr, floor, min_improvement):
                                for s, f in pairs)
 
 
+def _blocks_by_pair(blocks, cart, cell):
+    """(i, j) -> [(interatomic vector, block)].
+
+    Blocks must be matched between two snapshots by GEOMETRY, not by key:
+    ABACUS assigns R against positions it wraps into the cell, so the same
+    physical neighbour can carry different R labels in two geometries.
+    """
+    out = {}
+    for key, value in blocks.items():
+        rx, ry, rz, i, j = json.loads(key)
+        v = cart[j - 1] + np.asarray([rx, ry, rz], float) @ cell - cart[i - 1]
+        out.setdefault((i, j), []).append((v, value))
+    return out
+
+
+def farfield_sensitivity(h_ref, cart_ref, h_probe, h_lr_probe, h_lr_ref,
+                         cart_probe, cell, atom, bin_width, tol=0.3):
+    """How much of the DFT response to a localized displacement `H^LR` explains,
+    binned by distance from the displaced atom.
+
+    `reduction = 1 - ||dH_SR|| / ||dH_full||` per bin, where `dH_SR` is the
+    response left after the analytic long-range term is removed.  This is the
+    property the LR split exists to deliver — a finite-cutoff network cannot
+    see a distant displacement, so the analytic term must supply it — and it is
+    what `H^LR ∝ S` can actually improve, unlike the spatial tail of `H` itself.
+    """
+    ref_pairs = _blocks_by_pair(h_ref, cart_ref, cell)
+    probe_pairs = _blocks_by_pair(h_probe, cart_probe, cell)
+    lr_probe_pairs = _blocks_by_pair(h_lr_probe, cart_probe, cell)
+    lr_ref_pairs = _blocks_by_pair(h_lr_ref, cart_ref, cell)
+    shifts = (np.array(list(np.ndindex(3, 3, 3)), float) - 1.0) @ cell
+
+    def min_image(v):
+        return float(np.min(np.linalg.norm(v + shifts, axis=1)))
+
+    def nearest(pairs, key, v):
+        candidates = pairs.get(key)
+        if not candidates:
+            return None
+        w, blk = min(candidates, key=lambda t: np.linalg.norm(t[0] - v))
+        return blk if np.linalg.norm(w - v) <= tol else None
+
+    acc, unmatched = {}, 0
+    for (i, j), entries in ref_pairs.items():
+        for v, ref_blk in entries:
+            probe_blk = nearest(probe_pairs, (i, j), v)
+            if probe_blk is None:
+                unmatched += 1
+                continue
+            d_full = probe_blk - ref_blk
+            lr_p = nearest(lr_probe_pairs, (i, j), v)
+            lr_r = nearest(lr_ref_pairs, (i, j), v)
+            d_lr = np.zeros_like(d_full)
+            if lr_p is not None:
+                d_lr = d_lr + lr_p
+            if lr_r is not None:
+                d_lr = d_lr - lr_r
+            d_sr = d_full - d_lr
+            dist = min(min_image(cart_ref[i - 1] - cart_ref[atom]),
+                       min_image(cart_ref[i - 1] + v - cart_ref[atom]))
+            bucket = int(dist // bin_width)
+            slot = acc.setdefault(bucket, [0.0, 0.0, 0])
+            slot[0] += float(np.sum(d_full ** 2))
+            slot[1] += float(np.sum(d_sr ** 2))
+            slot[2] += 1
+    bins = []
+    for bucket in sorted(acc):
+        full, sr, count = acc[bucket]
+        full, sr = math.sqrt(full), math.sqrt(sr)
+        bins.append({"r_lo": bucket * bin_width,
+                     "r_hi": (bucket + 1) * bin_width,
+                     "count": count, "dh_full": full, "dh_sr": sr,
+                     "reduction": (1.0 - sr / full) if full > 0.0 else 0.0})
+    return bins, unmatched
+
+
+def farfield_gate(bins, min_radius, noise_floor, min_blocks, min_improvement):
+    """Every bin beyond `min_radius` carrying real signal must improve.
+
+    Bins below `noise_floor` are SCF noise, not response — including them
+    produces meaningless reductions — and thin bins are excluded outright.
+    Requires at least one qualifying bin: no evidence is not a pass.
+    """
+    qualifying = [b for b in bins
+                  if b["r_lo"] >= min_radius
+                  and b["count"] >= min_blocks
+                  and b["dh_full"] >= noise_floor]
+    return (bool(qualifying)
+            and all(b["reduction"] >= min_improvement for b in qualifying),
+            qualifying)
+
+
 def locality_report_stage(cfg, workspace, args):
     if getattr(args, "set_name", None) is None:
         raise SystemExit("locality-report requires --set pilot|main|large")
@@ -235,9 +328,55 @@ def locality_report_stage(cfg, workspace, args):
     # deliberately excluding q magnitude.
     q_comparisons = controlled_q_comparisons(metas, lr_norms)
 
+    # Tier-3 gate: far-field sensitivity of H^SR to a localized displacement.
+    loc = cfg["locality"]
+    ref_sid = next((s for s in sids
+                    if metas[s].get("farfield_role") == "reference"), None)
+    if ref_sid is None:      # any exact-equilibrium snapshot serves as one
+        ref_sid = next(
+            (s for s in sids
+             if float(np.abs(np.load(os.path.join(
+                 store.folder(s), "displacements.npy"))).max()) == 0.0), None)
+    probes = [s for s in sids
+              if s != ref_sid
+              and metas[s].get("displaced_atom_index") is not None]
+    farfield = {"reference": ref_sid, "probes": {}, "unmatched": {},
+                "per_probe_pass": {}}
+    gate_args = (float(loc.get("farfield_min_radius", 4.0)),
+                 float(loc.get("farfield_noise_floor", 1e-6)),
+                 int(loc.get("farfield_min_blocks", 20)),
+                 float(loc.get("min_farfield_improvement", 0.05)))
+    qualifying = []
+    if ref_sid is not None and probes:
+        cart_ref = np.loadtxt(os.path.join(store.folder(ref_sid),
+                                           "site_positions.dat")).T
+        h_ref, lr_ref = blocks(ref_sid, "full"), blocks(ref_sid, "lr")
+        for sid in probes:
+            cart_p = np.loadtxt(os.path.join(store.folder(sid),
+                                             "site_positions.dat")).T
+            bins, unmatched = farfield_sensitivity(
+                h_ref, cart_ref, blocks(sid, "full"), blocks(sid, "lr"),
+                lr_ref, cart_p, cell,
+                int(metas[sid]["displaced_atom_index"]), bin_width)
+            ok, qual = farfield_gate(bins, *gate_args)
+            farfield["probes"][sid] = bins
+            farfield["unmatched"][sid] = unmatched
+            farfield["per_probe_pass"][sid] = ok
+            qualifying.extend(qual)
+        del h_ref, lr_ref
+    # every probe must pass; an empty probe list is not a pass
+    ff_ok = bool(farfield["per_probe_pass"]) \
+        and all(farfield["per_probe_pass"].values())
+    farfield["qualifying_bins"] = qualifying
+    farfield["lr_explains_far_field"] = ff_ok
+
     report = {"set": args.set_name, "n_snapshots": len(sids),
+              "farfield": farfield,
               "tail": {"radii": radii, "F_full": f_mean["full"],
                        "F_lr": f_mean["lr"], "F_sr": f_mean["sr"],
+                       # retained as a diagnostic only: H^LR = (V_i+V_j)/2 S_ij
+                       # inherits H_full's radial shape, so this can never move
+                       # much regardless of how good the LR term is.
                        "f_sr_below_f_full": f_sr_ok},
               "binned": binned,
               "odd_response": odd, "families": families,
@@ -247,7 +386,15 @@ def locality_report_stage(cfg, workspace, args):
     atomic_write_text(os.path.join(out_dir,
                                    f"locality_{args.set_name}.json"),
                       json.dumps(report, indent=1))
-    verdict = "PASS" if f_sr_ok else "NOT YET"
+    if ref_sid is None or not probes:
+        verdict = ("NOT EVALUATED (no far-field probe pair; regenerate the "
+                   "set to add farfield_reference/farfield_probe)")
+    else:
+        best = max((b["reduction"] for b in qualifying), default=0.0)
+        verdict = (f"{'PASS' if ff_ok else 'NOT YET'} "
+                   f"({len(qualifying)} bins beyond "
+                   f"{loc.get('farfield_min_radius', 4.0)} Å, "
+                   f"best reduction {100 * best:.1f}%)")
     print(f"{args.set_name}: locality report for {len(sids)} snapshots; "
-          f"F_SR < F_full over long distances: {verdict}")
+          f"H_SR less sensitive to distant displacement: {verdict}")
     return 0

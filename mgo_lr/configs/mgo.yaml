@@ -51,6 +51,7 @@ displacements:
   pilot_expanded: false       # false: 18-snapshot approval pilot; true: 50
   amplitudes: [0.005, 0.01, 0.02, 0.04, 0.06]   # Angstrom, main set
   pilot_ladder: [0.0025, 0.005, 0.01, 0.02]     # Angstrom, pilot sign pairs
+  farfield_amplitude: 0.06     # Angstrom, single-atom Tier-3 gate probe
   min_distance: 1.8                             # Angstrom, hard reject below
   main_composition:
     single_q_optical: 150
@@ -79,8 +80,17 @@ validation:
 
 locality:
   bin_width: 1.0            # Angstrom, distance bin for block-norm statistics
+  # Tier-3 gate: H_SR must be measurably less sensitive than H_full to a
+  # displacement far away from the block being measured.
+  farfield_min_radius: 4.0      # Angstrom, bins beyond this must improve
+  farfield_noise_floor: 1.0e-6  # eV, below this |dH_full| is SCF noise
+  farfield_min_blocks: 20       # ignore bins with too few blocks
+  min_farfield_improvement: 0.05  # >=5% reduction in every qualifying bin
+  # Tail statistics are reported as a diagnostic but no longer gate: H^LR is
+  # proportional to the overlap matrix, so it inherits H_full's radial profile
+  # and cannot shift the tail fraction however good the LR term is.
   tail_floor: 1.0e-6        # ignore long-distance radii where F_full is ~0
-  min_tail_improvement: 0.05  # H_SR tail must be >=5% below H_full to PASS
+  min_tail_improvement: 0.05  # diagnostic only
 
 splits:
   validation_fraction: 0.10

@@ -39,7 +39,7 @@ Stages, in the order of one full round-trip:
 | `collect-dft --set …` | parse SCF logs + CSR matrices → `hamiltonians_full.h5`, `overlaps.h5`, DeepH-E3 structure files | snapshot ABACUS runs |
 | `lr-process --set …` | screened-dipole `V^LR` → `hamiltonians_lr.h5`, `hamiltonians_sr.h5` | collect-dft, collect-dfpt |
 | `validate --set …` | Tier-1 hard checks (reject) + Tier-2 response checks | lr-process |
-| `locality-report --set …` | Tier-3 diagnostics: tail fractions, odd response, family comparisons | validate |
+| `locality-report --set …` | Tier-3 gate: far-field sensitivity, plus tail/odd-response/family diagnostics | validate |
 | `export-target --target …` | materialize `hamiltonians.h5` for the maceh loader | lr-process |
 | `organize` | grouped splits, candidate dirs, `loader_splits/` views, `metadata.yaml` provenance | validate, export-target |
 | `status` | per-set state counts | any time |
@@ -49,9 +49,10 @@ validated` (or `rejected`, moved to `rejected/` with a machine-readable
 reason). Stages are idempotent: already-processed snapshots are skipped
 without `--force`, and raw DFT outputs are never modified.
 
-The default `pilot_expanded: false` generates the 18-snapshot initial
-approval pilot. Set it to `true` in a separate workspace to generate the
-50-snapshot follow-up, including matched finite-|q| trend probes.
+The default `pilot_expanded: false` generates the 19-snapshot initial
+approval pilot (18 patterns + the Tier-3 far-field probe). Set it to `true`
+in a separate workspace to generate the 51-snapshot follow-up, including
+matched finite-|q| trend probes.
 
 ## Workspace layout
 
@@ -115,8 +116,25 @@ loader's `os.walk` traversal does not follow directory symlinks. Run
    snapshots are kept).
 3. **Tier 3 (dataset-level, `locality-report`):** odd displacement response
    vs `H^LR`, longitudinal/transverse and |q| trends within matched
-   comparison families, locality tail fractions — `F_SR(r) < F_full(r)`
-   over long distances is the dataset-level approval requirement.
+   comparison families, locality tail fractions, and the **approval
+   requirement: far-field sensitivity**. Each set carries a probe pair — an
+   equilibrium `farfield_reference` and a `farfield_probe` displacing one
+   atom — and the gate asks how much of the DFT response to that displacement
+   `H^LR` already explains, binned by distance from it:
+   `reduction = 1 − ‖ΔH_SR‖ / ‖ΔH_full‖`. Every bin beyond
+   `locality.farfield_min_radius` that carries real signal (above
+   `farfield_noise_floor`, with at least `farfield_min_blocks` blocks) must
+   reach `min_farfield_improvement`; no qualifying bin is not a pass.
+
+   This replaces the old `F_SR(r) < F_full(r)` tail criterion, which is still
+   reported but no longer gates. That criterion could never pass: `H^LR_ij(R) =
+   (V_i+V_j)/2 · S_ij(R)` is proportional to the overlap matrix, so it inherits
+   `H_full`'s radial profile and rescales the Hamiltonian rather than
+   localizing it. What the LR split actually buys is insensitivity to *distant*
+   displacements — the thing a finite-cutoff network cannot learn — which is
+   what the far-field gate measures. Blocks are matched between probe and
+   reference by geometry, not by `R` label, because ABACUS assigns `R` against
+   positions it wraps into the cell.
 
 ## Publication safeguards
 
@@ -141,5 +159,5 @@ loader's `os.walk` traversal does not follow directory symlinks. Run
 Synthetic fixtures only — no DFT binaries or network required.
 
 Before production use, archive at least one small real ABACUS/QE pilot output
-as a parser compatibility fixture and run the 18-snapshot pilot end to end on
+as a parser compatibility fixture and run the 19-snapshot pilot end to end on
 the target cluster software versions.

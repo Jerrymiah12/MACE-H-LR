@@ -57,6 +57,11 @@ def apply_pattern(sc, prim_cell, pattern, global_seed):
     n_at = len(sc.species)
     if pattern.get("translation") is not None:
         return np.tile(np.asarray(pattern["translation"], float), (n_at, 1))
+    if pattern.get("single_atom") is not None:
+        sa = pattern["single_atom"]
+        u = np.zeros((n_at, 3))
+        u[int(sa["index"])] = np.asarray(sa["displacement"], float)
+        return remove_uniform_translation(u)
     if pattern.get("random") is not None:
         r = pattern["random"]
         rng = np.random.default_rng([global_seed, r["index"]])
@@ -149,6 +154,40 @@ def _metadata(n, prim_cell, pattern, group_id, seed_index):
         "rigid_translation": bool(pattern.get("translation") is not None),
         "seed": seed_index,
     }
+
+
+def farfield_probe_plans(cfg, prim_cell, n, set_name, start_k,
+                         with_reference, split_hint=None):
+    """Equilibrium reference + one single-atom displacement.
+
+    The Tier-3 far-field gate compares how much of the DFT response to a
+    perturbation `H^LR` already explains, binned by distance FROM that
+    perturbation.  Every other pattern in the dataset displaces all atoms at
+    once, which leaves "distance from the perturbation" undefined — so the
+    gate needs its own localized probe.  `with_reference` is False for sets
+    that already contain an exact-equilibrium snapshot to difference against.
+    """
+    amp = float(cfg["displacements"].get("farfield_amplitude", 0.06))
+    specs = []
+    if with_reference:
+        specs.append(("farfield_reference",
+                      {"pattern_class": "farfield_reference", "modes": []},
+                      None))
+    specs.append(("farfield_probe",
+                  {"pattern_class": "farfield_probe", "modes": [],
+                   "single_atom": {"index": 0,
+                                   "displacement": [amp, 0.0, 0.0]}}, 0))
+    plans = []
+    for offset, (cls, pat, atom) in enumerate(specs):
+        k = start_k + offset
+        meta = _metadata(n, prim_cell, pat,
+                         _hash_id("grp", set_name, n, cls), k)
+        meta["displaced_atom_index"] = atom
+        meta["farfield_role"] = "probe" if atom is not None else "reference"
+        if split_hint is not None:
+            meta["split_hint"] = split_hint
+        plans.append({"sid": _sid(k), "pattern": pat, "metadata": meta})
+    return plans
 
 
 def build_pilot(cfg, prim_cell):
@@ -256,6 +295,10 @@ def build_pilot(cfg, prim_cell):
     add({"pattern_class": "rigid_translation", "modes": [],
          "translation": ((0.02 / np.sqrt(3.0)) * np.ones(3)).tolist()},
         _hash_id("grp", "pilot", n, "rigid_translation"))
+    # snapshot_000001 is already an exact equilibrium, so the probe alone is
+    # enough here.  Appended last so existing snapshot ids never shift.
+    plans.extend(farfield_probe_plans(cfg, prim_cell, n, "pilot", k,
+                                      with_reference=False))
     return plans
 
 
@@ -431,6 +474,11 @@ def build_main(cfg, prim_cell):
         add({"pattern_class": "near_equilibrium", "modes": [],
              "random": {"index": k, "amplitude": 0.5 * min(amps)}},
             _hash_id("grp", "main", n, "near_equilibrium", k), hint)
+    # Far-field gate probes: no q, so they cannot disturb the q-shell split;
+    # pinned to train so they never leak into validation or test.
+    plans.extend(farfield_probe_plans(cfg, prim_cell, n, "main", k,
+                                      with_reference=True,
+                                      split_hint="train"))
     return plans
 
 
@@ -460,6 +508,8 @@ def build_large(cfg, prim_cell):
                       "metadata": _metadata(n, prim_cell, pat,
                                             _hash_id("grp", "large", n, k),
                                             900000 + k)})
+    plans.extend(farfield_probe_plans(cfg, prim_cell, n, "large", count + 1,
+                                      with_reference=True))
     return plans
 
 
