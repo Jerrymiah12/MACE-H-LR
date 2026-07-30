@@ -82,6 +82,51 @@ def test_validate_passes_clean_set(tmp_path):
     assert summary["tier2"]["violations"] == []
 
 
+def test_tier2_enforce_fails_the_set(tmp_path):
+    """With tier2_enforce, a violated response trend fails the set as a whole
+    while every individually clean snapshot stays validated."""
+    ws = str(tmp_path)
+    cfg = lr_cfg()
+    cell, frac, species = make_fake_reference(ws)
+    frac = np.array([[0.0, 0.0, 0.0], [0.4, 0.55, 0.5]])
+    np.save(os.path.join(ws, "reference", "reference_positions.npy"), frac)
+    add_dfpt_artifacts(ws)
+    sc = make_supercell(cell, frac, species, cfg["supercells"]["pilot"])
+    x = np.array([[1.0, 0.0, 0.0], [-1.0, 0.0, 0.0]])
+    # Labelled amplitude and actual displacement are inverted, so the LR
+    # response grows as the recorded amplitude shrinks -> E_sign/E_linear
+    # increase with A instead of decreasing.
+    wiring = [("snapshot_000001", 0.01, 0.02, "snapshot_000002",
+               ["snapshot_000003"]),
+              ("snapshot_000002", -0.01, -0.02, "snapshot_000001",
+               ["snapshot_000004"]),
+              ("snapshot_000003", 0.02, 0.01, "snapshot_000004",
+               ["snapshot_000001"]),
+              ("snapshot_000004", -0.02, -0.01, "snapshot_000003",
+               ["snapshot_000002"])]
+    for sid, label, actual, partner, amp_partners in wiring:
+        add_snapshot(ws, cfg, sc, sid, actual * x,
+                     {"amplitude": label, "sign_partner_id": partner,
+                      "amplitude_partner_ids": amp_partners})
+    assert convert.collect_dft_stage(cfg, ws, Args()) == 0
+    assert lr.lr_process_stage(cfg, ws, Args()) == 0
+
+    relaxed = copy.deepcopy(cfg)
+    relaxed["validation"]["tier2_enforce"] = False
+    assert validate.validate_stage(relaxed, ws, Args()) == 0
+
+    enforced = copy.deepcopy(cfg)
+    enforced["validation"]["tier2_enforce"] = True
+    assert validate.validate_stage(enforced, ws, Args()) == 1
+    summary = json.load(open(os.path.join(ws, "generation_logs",
+                                          "validation_pilot.json")))
+    assert summary["tier2"]["violations"]
+    store = SnapshotStore(ws, "pilot")
+    assert len(store.list()) == 4
+    for sid in store.list():
+        assert store.read_status(sid)["state"] == "validated"
+
+
 def test_validate_equilibrium_and_translation(tmp_path):
     ws = str(tmp_path)
     cfg = lr_cfg()

@@ -30,6 +30,10 @@ def small_cfg():
     """Pilot on the 2-atom primitive cell (n=1) keeps matrices tiny."""
     cfg = copy.deepcopy(CFG)
     cfg["supercells"]["pilot"] = 1
+    # Fabricated Hamiltonians carry no real physics, so the Tier-2 response
+    # trends (E_sign/E_linear vs amplitude) cannot hold.  Enforcement is
+    # covered directly by test_validate.test_tier2_enforce_fails_the_set.
+    cfg["validation"]["tier2_enforce"] = False
     return cfg
 
 
@@ -90,7 +94,7 @@ def test_matrices_to_blocks_units_and_transform(tmp_path):
     cell, frac, species = rocksalt_primitive(4.2)
     sc = make_supercell(cell, frac, species, 1)
     types, norb, offsets = convert.species_orbital_info(cfg, sc.species)
-    assert norb == [15, 14]                        # Mg 4s2p1d, O 3s3p2d
+    assert norb == [15, 13]                        # Mg 4s2p1d, O 2s2p1d
     dim = int(offsets[-1])
     dense = np.zeros((dim, dim))
     dense[0, 0] = 2.0                              # Mg s <-> Mg s

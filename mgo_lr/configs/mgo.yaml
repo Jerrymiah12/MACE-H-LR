@@ -10,9 +10,9 @@ abacus:
   pseudo_dir: /path/on/cluster/abacus_pseudo
   orbital_dir: /path/on/cluster/abacus_orb
   pseudopotentials: {Mg: Mg_ONCV_PBE-1.0.upf, O: O_ONCV_PBE-1.0.upf}
-  orbitals: {Mg: Mg_gga_8au_100Ry_4s2p1d.orb, O: O_gga_8au_100Ry_3s3p2d.orb}
+  orbitals: {Mg: Mg_gga_8au_100Ry_4s2p1d.orb, O: O_gga_8au_100Ry_2s2p1d.orb}
   # l of every orbital per species, in ABACUS shell order (4s2p1d etc.)
-  orbital_types: {Mg: [0, 0, 0, 0, 1, 1, 2], O: [0, 0, 0, 1, 1, 2]}
+  orbital_types: {Mg: [0, 0, 0, 0, 1, 1, 2], O: [0, 0, 1, 1, 2]}
   ecutwfc: 100
   scf_thr: 1.0e-8
   scf_nmax: 100
@@ -75,7 +75,7 @@ validation:
   tau_hermiticity: 1.0e-8       # eV, max abs
   tau_G: 1.0e-6                 # relative Frobenius
   tau_overlap_diag: 0.05        # |S_ii - 1| on R=0 diagonal
-  tier2_enforce: false          # promote E_sign/E_linear to hard checks later
+  tier2_enforce: true           # E_sign/E_linear are hard checks
 
 locality:
   bin_width: 1.0            # Angstrom, distance bin for block-norm statistics
