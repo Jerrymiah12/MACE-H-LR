@@ -112,8 +112,24 @@ def write_structure_files(folder, cell, cart, species, cfg, fermi_ev):
     np.savetxt(os.path.join(folder, "lat.dat"), cell.T)
     np.savetxt(os.path.join(folder, "rlat.dat"),
                np.linalg.inv(cell) * 2.0 * np.pi)
+    # ABACUS wraps atoms into [0,1) internally, so the R labels in its
+    # out_mat_hs2 CSR files are relative to WRAPPED positions.  A displacement
+    # that pushes an atom at frac 0 slightly negative therefore shifts that
+    # atom's R labels by one lattice vector relative to the input STRU.  Write
+    # wrapped positions so (R, i, j) + site_positions.dat reproduces the true
+    # interatomic vector; without this every distance-based consumer (locality
+    # tails, MACE-H edge features) is wrong by a lattice vector for those atoms.
+    # Callers that need u still use minimum-image differences, so wrapping here
+    # is invisible to them.
+    # Snap first: an undisplaced atom at fractional 0 lands on ~-1e-17, which
+    # ABACUS treats as 0 but a bare modulo would push a whole lattice vector
+    # the wrong way.  Real displacements are ~1e-3, so 1e-9 separates them
+    # cleanly.
+    frac = np.asarray(cart, float) @ np.linalg.inv(cell)
+    near = np.abs(frac - np.round(frac)) < 1e-9
+    frac = np.where(near, np.round(frac), frac)
     np.savetxt(os.path.join(folder, "site_positions.dat"),
-               np.asarray(cart, float).T)
+               ((frac % 1.0) @ cell).T)
     atomic_write_text(os.path.join(folder, "element.dat"),
                       "\n".join(str(ATOMIC_NUMBERS[s]) for s in species) + "\n")
     atomic_write_text(os.path.join(folder, "orbital_types.dat"),

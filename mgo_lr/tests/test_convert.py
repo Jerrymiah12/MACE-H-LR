@@ -7,7 +7,7 @@ import numpy as np
 import pytest
 import yaml
 
-from mgo_lr import abacus_io, convert
+from mgo_lr import abacus_io, convert, lr
 from mgo_lr.config import load_config, sha256_file
 from mgo_lr.constants import RY_TO_EV
 from mgo_lr.snapshot import SnapshotStore
@@ -143,6 +143,49 @@ def test_collect_dft_stage(tmp_path):
     assert info["isspinful"] is False and info["norbits"] == fab["dim"]
     elements = np.loadtxt(os.path.join(folder, "element.dat"))
     assert list(elements) == [12.0, 8.0]
+
+
+def test_site_positions_are_wrapped_into_the_cell(tmp_path):
+    """ABACUS wraps atoms into [0,1) and labels H(R) against the wrapped
+    positions, so site_positions.dat must be wrapped too — otherwise every
+    distance derived from (R, i, j) is off by a lattice vector for any atom a
+    displacement pushed outside the cell.  u must still round-trip."""
+    ws = str(tmp_path)
+    cfg = small_cfg()
+    # push atom 0 (at fractional origin) to a slightly NEGATIVE coordinate
+    u = np.zeros((2, 3))
+    u[0, 0] = -0.05
+    store, sid, sc = prepared_snapshot(ws, cfg, u=u)
+    frac_in = (sc.cart + u) @ np.linalg.inv(sc.cell)
+    assert frac_in.min() < 0.0                       # precondition
+    fabricate_dft(store.folder(sid), cfg, sc)
+    assert convert.collect_dft_stage(cfg, ws, Args()) == 0
+    pos = np.loadtxt(os.path.join(store.folder(sid),
+                                  "site_positions.dat")).T
+    frac_out = pos @ np.linalg.inv(sc.cell)
+    assert frac_out.min() >= -1e-12 and frac_out.max() < 1.0
+    # the recorded displacement is still recoverable via minimum image
+    assert np.abs(lr.minimum_image_displacements(sc.cell, pos, sc.cart)
+                  - u).max() < 1e-10
+
+
+def test_undisplaced_positions_are_not_wrapped(tmp_path):
+    """An atom at fractional 0 lands on ~-1e-17, which ABACUS does NOT wrap.
+    A bare modulo would send it to ~1.0 — a full lattice vector the wrong way,
+    corrupting exactly the equilibrium snapshots the wrap was meant to spare."""
+    cfg = small_cfg()
+    # A real fcc cell makes an origin atom land a few 1e-17 below zero purely
+    # from the cart @ inv(cell) round-trip.  Drive write_structure_files
+    # directly so the STRU's 12-decimal format cannot round the effect away.
+    cell, _, species = rocksalt_primitive(4.2)
+    cart = np.array([[-1e-17, 0.0, 0.0], (0.5 * cell.sum(axis=0)).tolist()])
+    frac_in = cart @ np.linalg.inv(cell)
+    assert frac_in.min() < 0.0 and frac_in.min() > -1e-9   # noise, not a shift
+    folder = str(tmp_path)
+    convert.write_structure_files(folder, cell, cart, species, cfg, 0.0)
+    pos = np.loadtxt(os.path.join(folder, "site_positions.dat")).T
+    # positions must stay put, not jump by a lattice vector
+    assert np.abs(pos - cart).max() < 1e-9
 
 
 def test_collect_dft_skips_and_protects(tmp_path):
