@@ -276,6 +276,44 @@ def farfield_gate(bins, min_radius, noise_floor, min_blocks, min_improvement):
             qualifying)
 
 
+def summarize_farfield_bins(per_combination, min_radius, min_blocks):
+    """Per-bin MINIMUM reduction across every reference x probe combination.
+
+    The gate is only as strong as its worst combination, so report that rather
+    than a best case that no single pairing achieves.
+    """
+    worst = {}
+    for bins in per_combination.values():
+        for b in bins:
+            if b["r_lo"] < min_radius or b["count"] < min_blocks:
+                continue
+            cur = worst.get(b["r_lo"])
+            if cur is None or b["reduction"] < cur["reduction"]:
+                worst[b["r_lo"]] = {"r_lo": b["r_lo"], "r_hi": b["r_hi"],
+                                    "reduction": b["reduction"]}
+    return [worst[k] for k in sorted(worst)]
+
+
+def farfield_reference_spread(per_combination):
+    """Max minus min reduction per bin over the references, per probe.
+
+    The references differ only by being separate SCF runs, so this is the
+    run-to-run scatter the margin over the threshold must exceed.
+    """
+    by_probe = {}
+    for combo, bins in per_combination.items():
+        probe = combo.split("|", 1)[-1]
+        for b in bins:
+            by_probe.setdefault(probe, {}).setdefault(
+                b["r_lo"], []).append(b["reduction"])
+    out = {}
+    for probe, per_bin in sorted(by_probe.items()):
+        out[probe] = [{"r_lo": r, "spread": max(v) - min(v),
+                       "n_references": len(v)}
+                      for r, v in sorted(per_bin.items()) if len(v) > 1]
+    return out
+
+
 def locality_report_stage(cfg, workspace, args):
     if getattr(args, "set_name", None) is None:
         raise SystemExit("locality-report requires --set pilot|main|large")
@@ -376,24 +414,28 @@ def locality_report_stage(cfg, workspace, args):
 
     # Tier-3 gate: far-field sensitivity of H^SR to a localized displacement.
     loc = cfg["locality"]
-    ref_sid = next((s for s in sids
-                    if metas[s].get("farfield_role") == "reference"), None)
-    if ref_sid is None:      # any exact-equilibrium snapshot serves as one
-        ref_sid = next(
-            (s for s in sids
-             if float(np.abs(np.load(os.path.join(
-                 store.folder(s), "displacements.npy"))).max()) == 0.0), None)
+    references = [s for s in sids
+                  if metas[s].get("farfield_role") == "reference"]
+    if not references:       # any exact-equilibrium snapshot serves as one
+        references = [
+            s for s in sids
+            if metas[s].get("displaced_atom_index") is None
+            and float(np.abs(np.load(os.path.join(
+                store.folder(s), "displacements.npy"))).max()) == 0.0][:1]
     probes = [s for s in sids
-              if s != ref_sid
+              if s not in references
               and metas[s].get("displaced_atom_index") is not None]
-    farfield = {"reference": ref_sid, "probes": {}, "unmatched": {},
-                "per_probe_pass": {}}
+    farfield = {"references": references, "probes": {}, "unmatched": {},
+                "per_combination_pass": {}}
     gate_args = (float(loc.get("farfield_min_radius", 4.0)),
                  float(loc.get("farfield_noise_floor", 1e-6)),
                  int(loc.get("farfield_min_blocks", 20)),
                  float(loc.get("min_farfield_improvement", 0.05)))
     qualifying = []
-    if ref_sid is not None and probes:
+    # Every probe is compared against EVERY reference.  The references share a
+    # geometry but are independent SCF runs, so the spread between them is
+    # run-to-run scatter, which the margin over the threshold has to survive.
+    for ref_sid in references:
         cart_ref = np.loadtxt(os.path.join(store.folder(ref_sid),
                                            "site_positions.dat")).T
         h_ref, lr_ref = blocks(ref_sid, "full"), blocks(ref_sid, "lr")
@@ -410,14 +452,20 @@ def locality_report_stage(cfg, workspace, args):
                 s_probe=read_blocks(os.path.join(store.folder(sid),
                                                  "overlaps.h5")))
             ok, qual = farfield_gate(bins, *gate_args)
-            farfield["probes"][sid] = bins
-            farfield["unmatched"][sid] = unmatched
-            farfield["per_probe_pass"][sid] = ok
+            combo = f"{ref_sid}|{sid}"
+            farfield["probes"][combo] = bins
+            farfield["unmatched"][combo] = unmatched
+            farfield["per_combination_pass"][combo] = ok
             qualifying.extend(qual)
         del h_ref, lr_ref, s_ref
-    # every probe must pass; an empty probe list is not a pass
-    ff_ok = bool(farfield["per_probe_pass"]) \
-        and all(farfield["per_probe_pass"].values())
+    # every reference x probe combination must pass; no evidence is not a pass
+    ff_ok = bool(farfield["per_combination_pass"]) \
+        and all(farfield["per_combination_pass"].values())
+    farfield["worst_bin_reduction"] = summarize_farfield_bins(
+        farfield["probes"], float(loc.get("farfield_min_radius", 4.0)),
+        int(loc.get("farfield_min_blocks", 20)))
+    farfield["reference_spread"] = farfield_reference_spread(
+        farfield["probes"])
     farfield["qualifying_bins"] = qualifying
     farfield["lr_explains_far_field"] = ff_ok
 
@@ -437,15 +485,19 @@ def locality_report_stage(cfg, workspace, args):
     atomic_write_text(os.path.join(out_dir,
                                    f"locality_{args.set_name}.json"),
                       json.dumps(report, indent=1))
-    if ref_sid is None or not probes:
+    if not references or not probes:
         verdict = ("NOT EVALUATED (no far-field probe pair; regenerate the "
                    "set to add farfield_reference/farfield_probe)")
     else:
-        best = max((b["reduction"] for b in qualifying), default=0.0)
+        worst = min((b["reduction"]
+                     for b in farfield["worst_bin_reduction"]), default=0.0)
+        spread = max((e["spread"] for v in farfield["reference_spread"].values()
+                      for e in v), default=0.0)
         verdict = (f"{'PASS' if ff_ok else 'NOT YET'} "
-                   f"({len(qualifying)} bins beyond "
-                   f"{loc.get('farfield_min_radius', 4.0)} Å, "
-                   f"best reduction {100 * best:.1f}%)")
+                   f"({len(references)} reference(s) x {len(probes)} probe(s), "
+                   f"worst bin {100 * worst:.1f}% vs "
+                   f"{100 * float(loc.get('min_farfield_improvement', 0.05)):.0f}% "
+                   f"threshold, reference spread {100 * spread:.2f} pp)")
     print(f"{args.set_name}: locality report for {len(sids)} snapshots; "
           f"H_SR less sensitive to distant displacement: {verdict}")
     return 0

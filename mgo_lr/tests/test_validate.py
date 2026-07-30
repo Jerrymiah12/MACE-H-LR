@@ -131,29 +131,15 @@ def test_tier2_tolerance_ignores_a_plateau_but_not_a_real_break(tmp_path):
     """Once the residual plateaus, neighbouring amplitudes reverse on noise;
     only a reversal clearing both tolerances is a violation.  Drives the real
     tier2_checks so a regression in production cannot leave this green."""
-    ws, cfg, store = ladder_workspace(tmp_path)
-    sids = store.list()
-
-    def violations_for(values):
-        """Patch the two amplitudes' E_sign/E_linear via monkeypatched blocks
-        is intractable; instead drive the comparison through tier2_checks by
-        substituting the computed series."""
-        e_sign, e_linear, _ = validate.tier2_checks(store, cfg, sids)
-        assert e_sign, "fixture must produce a sign series"
-        series = [dict(e_sign[0]), dict(e_sign[0])]
-        series[0].update(amplitude=0.005, value=values[0])
-        series[1].update(amplitude=0.01, value=values[1])
-        group = series[0]["group"]
-        rel = float(cfg["validation"].get("tier2_rel_tolerance", 0.01))
-        abs_ = float(cfg["validation"].get("tier2_abs_tolerance", 0.0))
-        out = []
-        for lo, hi in zip(series, series[1:]):
-            if lo["value"] - hi["value"] > max(abs_, rel * abs(hi["value"])):
-                out.append(group)
-        return out
-
+    cfg = lr_cfg()
     cfg["validation"]["tier2_rel_tolerance"] = 0.01
     cfg["validation"]["tier2_abs_tolerance"] = 1e-9
+
+    def violations_for(values):
+        """Drives the production comparison, not a copy of it."""
+        series = [{"group": "g", "amplitude": 0.005, "value": values[0]},
+                  {"group": "g", "amplitude": 0.01, "value": values[1]}]
+        return validate.trend_violations(series, [], cfg)
     # the real pilot numbers: a 0.027% reversal on a plateaued metric
     assert violations_for((7.38073e-4, 7.37873e-4)) == []
     # a genuine trend break is still caught

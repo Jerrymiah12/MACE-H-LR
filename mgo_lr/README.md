@@ -118,10 +118,13 @@ loader's `os.walk` traversal does not follow directory symlinks. Run
    vs `H^LR`, longitudinal/transverse and |q| trends within matched
    comparison families, locality tail fractions, and the **approval
    requirement: far-field sensitivity**. Each set carries an equilibrium
-   `farfield_reference` plus one `farfield_probe` per species (Mg and O; the
-   Born charges have opposite sign on the two sublattices, so a single cation
-   probe would approve only half the problem). Every probe must pass
-   independently. The gate asks how much of the DFT response to a displacement
+   `farfield_reference` (`displacements.farfield_reference_count`, default 2)
+   plus one `farfield_probe` per species (Mg and O; the Born charges have
+   opposite sign on the two sublattices, so a single cation probe would
+   approve only half the problem). Every reference x probe combination must
+   pass independently; the report records the per-bin minimum across all of
+   them and the reference-to-reference spread, which is run-to-run SCF scatter
+   the margin over the threshold has to survive. The gate asks how much of the DFT response to a displacement
    `H^LR` already explains, binned by distance from it:
    `reduction = 1 − ‖ΔH_SR‖ / ‖ΔH_full‖`. Every bin beyond
    `locality.farfield_min_radius` that carries real signal (above

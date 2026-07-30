@@ -161,12 +161,12 @@ def test_metadata_schema():
 
 def test_build_main_composition_and_seeding():
     plans = dp.build_main(CFG, PRIM_CELL)
-    assert len(plans) == 403                   # 400 + far-field reference + 2 probes
+    assert len(plans) == 404                   # 400 + 2 references + 2 probes
     # probes carry no q, so they cannot disturb the q-shell split, and are
     # pinned to train so they never leak into validation or test
     probes = [p for p in plans
               if p["metadata"].get("farfield_role") is not None]
-    assert len(probes) == 3
+    assert len(probes) == 4
     assert all(p["metadata"]["split_hint"] == "train" for p in probes)
     assert all(p["metadata"]["q_magnitude"] == 0.0 for p in probes)
     classes = [p["metadata"]["pattern_class"] for p in plans]
@@ -234,7 +234,7 @@ def test_longitudinal_polarization_parallel_to_folded_q():
 
 def test_build_large():
     plans = dp.build_large(CFG, PRIM_CELL)
-    assert len(plans) == CFG["displacements"]["large_count"] + 3
+    assert len(plans) == CFG["displacements"]["large_count"] + 4
     body = [p for p in plans
             if p["metadata"].get("farfield_role") is None]
     assert len(body) == CFG["displacements"]["large_count"]

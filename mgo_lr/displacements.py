@@ -175,9 +175,15 @@ def farfield_probe_plans(cfg, prim_cell, n, set_name, start_k,
     amp = float(cfg["displacements"].get("farfield_amplitude", 0.06))
     specs = []
     if with_reference:
-        specs.append(("farfield_reference",
-                      {"pattern_class": "farfield_reference", "modes": []},
-                      None))
+        # More than one reference is a robustness gate, not redundancy: the
+        # references share a geometry but are independent SCF runs, so
+        # comparing every probe against every reference exposes how much of
+        # the margin is run-to-run scatter rather than LR physics.
+        for _ in range(int(cfg["displacements"].get(
+                "farfield_reference_count", 2))):
+            specs.append(("farfield_reference",
+                          {"pattern_class": "farfield_reference",
+                           "modes": []}, None))
     # One probe per species: Mg is atom 0 and O is the first of the second
     # species block (ordering is species-major, n**3 of each).  A single
     # cation probe would approve the LR term on one sublattice only, and the
@@ -192,7 +198,7 @@ def farfield_probe_plans(cfg, prim_cell, n, set_name, start_k,
     for offset, (cls, pat, atom) in enumerate(specs):
         k = start_k + offset
         meta = _metadata(n, prim_cell, pat,
-                         _hash_id("grp", set_name, n, cls), k)
+                         _hash_id("grp", set_name, n, cls, offset), k)
         meta["displaced_atom_index"] = atom
         meta["farfield_role"] = "probe" if atom is not None else "reference"
         if split_hint is not None:
