@@ -91,7 +91,14 @@ raw_data_dir
             self.process()
         if load_graph:
             begin = time.time()
-            loaded_data = torch.load(self.data_file)
+            # torch >= 2.6 flipped torch.load's weights_only default to True,
+            # which cannot unpickle the torch_geometric classes in a graph
+            # cache (DataEdgeAttr, DataTensorAttr, GlobalStorage) and fails
+            # with an UnpicklingError.  self.data_file is always written by
+            # self.process() on this machine, so it is a trusted local file,
+            # not untrusted input -- weights_only=False is safe here and is
+            # preferable to pinning torch or maintaining a global allowlist.
+            loaded_data = torch.load(self.data_file, weights_only=False)
             self.data, self.slices, self.info = loaded_data
             print(f'Finish loading the processed {len(self)} structures (spinful: {self.info["spinful"]}, '
                 f'the number of atomic types: {len(self.info["index_to_Z"])}), cost {time.time() - begin:.2f} seconds')
