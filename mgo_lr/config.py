@@ -26,6 +26,7 @@ REQUIRED = [
     "validation.delta", "validation.tau_eq", "validation.tau_u",
     "validation.tau_translation", "validation.tau_reconstruct",
     "validation.tau_hermiticity", "validation.tau_G",
+    "validation.tau_G_abs",
     "validation.tau_overlap_diag", "validation.tier2_enforce",
     "locality.bin_width", "locality.tail_floor",
     "locality.min_tail_improvement",

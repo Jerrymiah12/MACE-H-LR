@@ -204,16 +204,29 @@ def tier1_snapshot(cfg, folder, status, sc, born, ws_lr_def=None,
         failures.append("lr_definition disagrees with workspace metadata.yaml")
     r_imag = float(lr_meta.get("r_imag", float("nan")))
     lr_conv = float(lr_meta.get("lr_convergence", float("nan")))
+    # Labels written before lr_convergence_abs existed have no absolute value;
+    # NaN keeps them on the original relative-only gate.
+    _abs = lr_meta.get("lr_convergence_abs")
+    lr_conv_abs = float(_abs) if _abs is not None else float("nan")
     metrics["r_imag"] = r_imag
     metrics["lr_convergence"] = lr_conv
+    metrics["lr_convergence_abs"] = lr_conv_abs
     if not np.isfinite(r_imag):
         failures.append("imaginary_residual is NaN/Inf")
     elif r_imag >= float(cfg["lr"]["imaginary_tolerance"]):
         failures.append(f"imaginary_residual = {r_imag:.3e}")
+    # Mixed criterion: a label is converged if the reciprocal cutoff changes it
+    # by a small *fraction* of itself OR by a negligible absolute amount.  The
+    # relative arm alone rejects transverse modes, whose analytic LR response is
+    # ~1e-11 eV -- there the ratio is dominated by its near-zero denominator
+    # even though the cutoff moves the label by only ~1e-15 eV.
     if not np.isfinite(lr_conv):
         failures.append("lr_convergence is NaN/Inf")
-    elif lr_conv >= float(val["tau_G"]):
-        failures.append(f"lr_convergence = {lr_conv:.3e}")
+    elif lr_conv >= float(val["tau_G"]) \
+            and not (np.isfinite(lr_conv_abs)
+                     and lr_conv_abs < float(val["tau_G_abs"])):
+        failures.append(f"lr_convergence = {lr_conv:.3e} "
+                        f"(absolute {lr_conv_abs:.3e} eV)")
 
     dmeta = json.load(open(os.path.join(folder,
                                         "displacement_metadata.json")))

@@ -145,6 +145,34 @@ loader's `os.walk` traversal does not follow directory symlinks. Run
    their 4 meV Fermi-level difference otherwise swamps a ~1.4 meV far-field
    signal.
 
+### Which set the far-field gate actually approves
+
+The gate is a statement about the **large-cell set only**. Applying it to
+`pilot` or `main` measures cell size, not label quality:
+
+| set | supercell | cell | role of its locality report |
+|---|---|---|---|
+| `pilot` | 2x2x2 | 6.02 Å | diagnostic |
+| `main` | 3x3x3 | 9.04 Å | diagnostic |
+| `large` | 4x4x4 | 12.05 Å | **publication / approval gate** |
+
+A 3x3x3 cell has no usable far-field region: the 6–7 Å bin holds 34–52 matched
+blocks (against 7390 at 4x4x4), and the measured reductions peak at
+0.83% / 0.26% / −0.0003% against a 5% threshold. The same bins at 4x4x4 give
+6.10% / 7.05% / 8.67% / 10.91%, all four reference x probe combinations pass,
+and the reference-to-reference spread is at machine precision.
+
+So a `NOT YET` on `main` means **insufficient geometric separation, not invalid
+labels** — those snapshots pass Tier 1 and Tier 2 on their own terms. Do not
+lower `min_farfield_improvement` to make `main` pass, and do not regenerate the
+main set at 4x4x4 to chase it; the large-cell set is what demonstrates the LR
+split, and it is also the honest held-out probe of cell-size extrapolation.
+
+Note when reading the reports: the far-field reductions come from the
+reference x probe combinations (4 of them: 2 references x 2 probes), *not* from
+the `n_snapshots` field. That field counts the snapshots feeding the other
+locality statistics — tail fractions, odd response, comparison families.
+
 ## Publication safeguards
 
 - Main-set q shells are assigned to train/validation/test before patterns are

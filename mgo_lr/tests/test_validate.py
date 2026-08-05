@@ -320,6 +320,52 @@ def test_validate_rejects_broken_reciprocal_set(tmp_path):
     assert "reciprocal_set" in _rejected_reason(ws, sid)
 
 
+def _set_conv(ws, store, sid, rel, absolute="keep"):
+    p = os.path.join(store.folder(sid), "lr_metadata.json")
+    meta = json.load(open(p))
+    meta["lr_convergence"] = rel
+    if absolute == "drop":
+        meta.pop("lr_convergence_abs", None)
+    elif absolute != "keep":
+        meta["lr_convergence_abs"] = absolute
+    with open(p, "w") as f:
+        json.dump(meta, f)
+    return p
+
+
+def test_lr_convergence_passes_on_the_absolute_arm(tmp_path):
+    # transverse-mode repro: |H_LR| is ~zero so the relative ratio blows up,
+    # but the cutoff moves the label by a negligible absolute amount.
+    ws, cfg, store = ladder_workspace(tmp_path)
+    sid = store.list()[0]
+    _set_conv(ws, store, sid, 1.5e-3, 7.6e-15)
+    assert validate.validate_stage(cfg, ws, Args()) == 0
+    qc = json.load(open(os.path.join(store.folder(sid),
+                                     "quality_checks.json")))
+    m = qc["tier1"]["metrics"]
+    assert m["lr_convergence"] == 1.5e-3
+    assert m["lr_convergence_abs"] == 7.6e-15
+    assert qc["tier1"]["failures"] == []
+
+
+def test_lr_convergence_fails_when_both_arms_fail(tmp_path):
+    ws, cfg, store = ladder_workspace(tmp_path)
+    sid = store.list()[0]
+    _set_conv(ws, store, sid, 1.5e-3, 1.0e-9)
+    assert validate.validate_stage(cfg, ws, Args()) == 1
+    assert "lr_convergence" in _rejected_reason(ws, sid)
+
+
+def test_lr_convergence_legacy_metadata_uses_relative_arm_only(tmp_path):
+    # labels written before lr_convergence_abs existed must keep the old gate
+    # rather than passing by default on a missing key.
+    ws, cfg, store = ladder_workspace(tmp_path)
+    sid = store.list()[0]
+    _set_conv(ws, store, sid, 1.5e-3, "drop")
+    assert validate.validate_stage(cfg, ws, Args()) == 1
+    assert "lr_convergence" in _rejected_reason(ws, sid)
+
+
 def test_validate_rejects_lr_definition_mismatch(tmp_path):
     ws, cfg, store = ladder_workspace(tmp_path)
     sid = store.list()[0]

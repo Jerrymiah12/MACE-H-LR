@@ -109,6 +109,14 @@ def test_lr_process_nonzero_for_optical(tmp_path):
         assert np.allclose(v, h_lr[pk].T, atol=1e-10)
     meta = json.load(open(os.path.join(folder, "lr_metadata.json")))
     assert meta["lr_convergence"] < cfg["validation"]["tau_G"]
+    # the absolute companion is recorded alongside the ratio, and the two are
+    # exactly related through the recorded denominator:
+    #   conv = conv_abs / (||H_LR at the larger cutoff|| + delta)
+    delta = cfg["validation"]["delta"]
+    expected = meta["lr_convergence_abs"] / (meta["lr_norm_converged"] + delta)
+    assert meta["lr_convergence_abs"] >= 0.0
+    assert meta["lr_norm_converged"] > 0.0
+    assert abs(meta["lr_convergence"] - expected) <= 1e-12 * max(expected, 1.0)
 
 
 def test_lr_process_idempotent_and_lambda_guard(tmp_path):

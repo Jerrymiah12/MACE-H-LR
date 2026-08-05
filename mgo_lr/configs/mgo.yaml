@@ -75,6 +75,13 @@ validation:
   tau_reconstruct: 1.0e-12      # relative Frobenius
   tau_hermiticity: 1.0e-8       # eV, max abs
   tau_G: 1.0e-6                 # relative Frobenius
+  # Absolute companion to tau_G; a label passes on EITHER arm.  Transverse
+  # modes carry |H_LR| ~ 1e-11 eV and shift by ~1e-15 eV when the reciprocal
+  # cutoff changes, so their relative ratio is meaningless while the label is
+  # converged.  Measured on the MgO main set, those shifts span 9.9e-18 to
+  # 1.6e-14 eV, so 1e-12 clears the worst case by ~61x while staying far below
+  # any meaningful label precision.
+  tau_G_abs: 1.0e-12            # eV, absolute Frobenius
   tau_overlap_diag: 0.05        # |S_ii - 1| on R=0 diagonal
   tier2_enforce: true           # E_sign/E_linear are hard checks
   # A reversal counts only if it clears BOTH tolerances.  Established from the
@@ -91,6 +98,10 @@ locality:
   farfield_min_radius: 4.0      # Angstrom, bins beyond this must improve
   farfield_noise_floor: 1.0e-6  # eV, below this |dH_full| is SCF noise
   farfield_min_blocks: 20       # ignore bins with too few blocks
+  # This gate approves the LARGE (4x4x4) set only.  pilot and main are too
+  # small to have a far-field region -- their reports are diagnostic, and a
+  # NOT YET there means insufficient geometric separation, not bad labels.
+  # See "Which set the far-field gate actually approves" in README.md.
   min_farfield_improvement: 0.05  # >=5% reduction in every qualifying bin
   # Tail statistics are reported as a diagnostic but no longer gate: H^LR is
   # proportional to the overlap matrix, so it inherits H_full's radial profile

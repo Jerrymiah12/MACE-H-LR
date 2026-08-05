@@ -312,6 +312,7 @@ def lr_process_stage(cfg, workspace, args):
             _invalidate_lr_outputs(folder, workspace)
             store.write_status(sid, "converted", lr_failed=None,
                                r_imag=None, lr_convergence=None,
+                               lr_convergence_abs=None,
                                lr_rerun_pending=True)
         pos = np.loadtxt(os.path.join(folder, "site_positions.dat")).T
         u = minimum_image_displacements(sc.cell, pos, sc.cart)
@@ -334,6 +335,7 @@ def lr_process_stage(cfg, workspace, args):
             store.write_status(sid, "converted",
                                lr_failed=f"imaginary_residual {r_imag:.3e}",
                                r_imag=None, lr_convergence=None,
+                               lr_convergence_abs=None,
                                lr_rerun_pending=False)
             exit_code = 1
             continue
@@ -344,7 +346,14 @@ def lr_process_stage(cfg, workspace, args):
         coeffs2 = lr_coefficients(g2, dipoles, sc.cart, eps, lam, volume)
         v2 = np.real(evaluate_potential(g2, coeffs2, pos))
         h_lr2 = assemble_lr_hamiltonian(s_blocks, v2)
-        conv = blocks_diff_norm(h_lr2, h_lr) / (blocks_norm(h_lr2) + delta)
+        # Report the cutoff difference both ways.  The relative ratio alone is
+        # unstable for transverse modes: the analytic dipolar response is
+        # essentially zero there (|H_LR| ~ 1e-11 eV), so a converged label with
+        # a ~1e-15 eV cutoff difference still divides by a near-zero
+        # denominator and reads as a large relative error.
+        conv_abs = blocks_diff_norm(h_lr2, h_lr)
+        conv_norm = blocks_norm(h_lr2)      # ||H_LR|| at the larger cutoff
+        conv = conv_abs / (conv_norm + delta)
         h_sr = {}
         for k in set(h_full) | set(h_lr):
             hf = h_full.get(k)
@@ -362,13 +371,15 @@ def lr_process_stage(cfg, workspace, args):
                                       "n_vectors": int(len(n_int)),
                                       "r_imag": r_imag,
                                       "lr_convergence": conv,
+                                      "lr_convergence_abs": conv_abs,
+                                      "lr_norm_converged": conv_norm,
                                       "code_version": __version__}, indent=1))
         failure_path = os.path.join(folder, "lr_failure.json")
         if os.path.exists(failure_path):
             os.remove(failure_path)
         store.write_status(sid, "lr_done", r_imag=r_imag,
-                           lr_convergence=conv, lr_failed=None,
-                           lr_rerun_pending=False)
+                           lr_convergence=conv, lr_convergence_abs=conv_abs,
+                           lr_failed=None, lr_rerun_pending=False)
         processed += 1
     print(f"{args.set_name}: lr-processed {processed}, skipped {skipped}")
     return exit_code
