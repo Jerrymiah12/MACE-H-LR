@@ -75,13 +75,22 @@ validation:
   tau_reconstruct: 1.0e-12      # relative Frobenius
   tau_hermiticity: 1.0e-8       # eV, max abs
   tau_G: 1.0e-6                 # relative Frobenius
-  # Absolute companion to tau_G; a label passes on EITHER arm.  Transverse
-  # modes carry |H_LR| ~ 1e-11 eV and shift by ~1e-15 eV when the reciprocal
-  # cutoff changes, so their relative ratio is meaningless while the label is
-  # converged.  Measured on the MgO main set, those shifts span 9.9e-18 to
-  # 1.6e-14 eV, so 1e-12 clears the worst case by ~61x while staying far below
-  # any meaningful label precision.
-  tau_G_abs: 1.0e-12            # eV, absolute Frobenius
+  # Absolute companion to tau_G; a label passes on EITHER arm.  Transverse and
+  # mixed_low_q modes carry a near-zero |H_LR|, so the relative ratio is
+  # dominated by its own denominator while the label is perfectly converged.
+  #
+  # This threshold is deliberately an absolute *energy*, not a number tuned to
+  # one supercell.  The cutoff shift scales with the cell: on the 3x3x3 main
+  # set it spans 4.0e-25 to 2.0e-11 eV, on the 4x4x4 set 1.6e-16 to 6.1e-11 eV,
+  # and an earlier 1e-12 (fitted to the 3x3x3 transverse cases) sat *below* the
+  # residual of 23 of the 36 measured 4x4x4 labels -- it silently switched the
+  # absolute arm off for the larger cell and rejected 4 sound snapshots.
+  # 1 neV is ~1000x below DFT SCF convergence and 16x above the largest shift
+  # observed at either size, so it certifies "the cutoff does not move this
+  # label" at any cell size.  The relative arm keeps its teeth where the LR
+  # field is physically significant: |H_LR| = 0.1 eV at ratio 1e-3 is a 1e-4 eV
+  # shift and is still rejected.
+  tau_G_abs: 1.0e-9             # eV, absolute Frobenius
   tau_overlap_diag: 0.05        # |S_ii - 1| on R=0 diagonal
   tier2_enforce: true           # E_sign/E_linear are hard checks
   # A reversal counts only if it clears BOTH tolerances.  Established from the

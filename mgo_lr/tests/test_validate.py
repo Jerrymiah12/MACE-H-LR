@@ -348,10 +348,25 @@ def test_lr_convergence_passes_on_the_absolute_arm(tmp_path):
     assert qc["tier1"]["failures"] == []
 
 
-def test_lr_convergence_fails_when_both_arms_fail(tmp_path):
+def test_lr_convergence_absolute_arm_covers_the_larger_supercell(tmp_path):
+    # 4x4x4 mixed_low_q repro: the cutoff residual of a sound label grows with
+    # the cell (1.6e-16 to 6.1e-11 eV measured), so the absolute arm must not be
+    # calibrated to the 3x3x3 residuals or it stops working at the larger size.
     ws, cfg, store = ladder_workspace(tmp_path)
     sid = store.list()[0]
-    _set_conv(ws, store, sid, 1.5e-3, 1.0e-9)
+    _set_conv(ws, store, sid, 1.2424e-3, 2.84e-11)
+    assert validate.validate_stage(cfg, ws, Args()) == 0
+    qc = json.load(open(os.path.join(store.folder(sid),
+                                     "quality_checks.json")))
+    assert qc["tier1"]["failures"] == []
+
+
+def test_lr_convergence_fails_when_both_arms_fail(tmp_path):
+    # 1e-6 eV: a shift this large is a real change to the label, not roundoff,
+    # whatever the cell size.
+    ws, cfg, store = ladder_workspace(tmp_path)
+    sid = store.list()[0]
+    _set_conv(ws, store, sid, 1.5e-3, 1.0e-6)
     assert validate.validate_stage(cfg, ws, Args()) == 1
     assert "lr_convergence" in _rejected_reason(ws, sid)
 
