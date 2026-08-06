@@ -10,8 +10,35 @@ point at the frozen 404-snapshot 3x3x3 main set.
     make_trainval_view.py    builds the dataset directory both configs read
     check_split_wiring.py    proves the configs reproduce the frozen splits
     freeze_provenance.py     writes / verifies `provenance/`
+    setup_gpu_env.sh         builds the CUDA environment
+    smoke_onebatch.py        does the pipeline run at all on this box?
+    smoke_train.ini            (its config -- pilot data, tiny model)
+    smoke_production.py      do a few real epochs run, on the real splits?
 
 Run with `python deephe3-train.py training/<config>.ini` from the repo root.
+
+## Runbook
+
+    ./training/setup_gpu_env.sh /path/to/venv_cuda
+    export MGO_LR_WORKSPACE=/path/to/run
+    export MGO_LR_TRAINING_ROOT=/path/to/training_runs
+
+    python training/freeze_provenance.py --verify        # dataset unchanged?
+    python training/make_trainval_view.py                # 330 + 37
+    python training/check_split_wiring.py                # splits wired right?
+    python training/smoke_onebatch.py                    # pipeline runs?
+    python training/smoke_production.py --target sr --epochs 2
+    python deephe3-train.py training/train_sr.ini        # the real run
+
+then switch the workspace export to `full` and repeat from
+`check_split_wiring.py` for the baseline (see "The two runs cannot share a
+workspace export" below).
+
+`smoke_production.py` deliberately shares `save_graph_dir` with the production
+run: the graph cache is the same data either way and building it is the
+expensive step, so the smoke warms exactly the cache the real run will use.
+Only `save_dir` and `num_epoch` differ. Pass `--skip-train` to do the cache
+build and the membership assertions without training.
 
 ## Paths
 
@@ -114,8 +141,13 @@ batch_size=1:
 
 CPU is not an option -- a single epoch costs over half a day. Both configs
 therefore ship with `device = cuda`; set it back to `cpu` only for the small
-wiring checks. Neither production run has been started, so nothing here is a
-partially trained model.
+wiring checks.
+
+`setup_gpu_env.sh` builds the environment. There is **no torch_scatter** in
+it: MACE-H aggregates with `torch_geometric.utils.scatter`, which is pure
+PyTorch, so nothing has to be compiled against the exact torch build and
+`nvcc` is not needed. Verified on `torch 2.13.0+cu129` / Python 3.14 against
+an RTX 5090 (sm_120, 31.8 GiB).
 
 The graph caches (`graphs_sr/`, `graphs_full/`) are deliberately **not**
 prebuilt: a 330-snapshot cache is ~8 GB, cheap to regenerate, and awkward to
@@ -150,12 +182,46 @@ protect against building both while the workspace is in one export state.
 Sanity check before training: `run/metadata.yaml` -> `training_target` must
 match the config you are about to run.
 
-## Reconstruction
+## Reconstruction and evaluation
 
 The SR run predicts `H_SR`. To compare against the baseline in `H_full` terms,
 reconstruct `H_full_pred = H_SR_pred + H_LR`, taking `H_LR` from each
 snapshot's `hamiltonians_lr.h5` -- it is an analytic label, not a prediction.
 The identity `H_full - H_SR - H_LR` holds to 7.0e-15 eV on the stored labels.
+
+`H_LR` is stored only where it is nonzero (13554 of 24894 blocks on a 3x3x3
+snapshot), and `H_full - H_SR` is exactly 0 on the rest, so a missing key
+contributes nothing to the sum.
+
+`evaluate.py` does all of this:
+
+    python training/evaluate.py --sr-run DIR --full-run DIR --set test  --out test.json
+    python training/evaluate.py --sr-run DIR --full-run DIR --set large --out large.json
+
+It loads each run's `best_model.pkl` through that run's own `src/`, predicts,
+reconstructs, and scores against `hamiltonians_full.h5` -- MAE and RMSE in eV,
+overall and by distance bin, displacement family and |q| shell. Distance bins
+use `mgo_lr.locality.block_distance` with the same 1 A width as the locality
+reports, so the two line up.
+
+Evaluation is independent of the workspace export state: it takes the label
+files by name and only needs the graph, whose edges come from the Hamiltonian
+keys, which are the same 24894 blocks under either export.
+
+### How big is the effect you are looking for?
+
+`||H_LR|| / ||H_full||` varies over orders of magnitude across the set, and
+that is the point -- it tracks the displacement family:
+
+    3x3x3 transverse modes      ~1e-15   (max|H_LR| ~ 5e-14 eV)
+    3x3x3 polar modes           ~1e-4    (max|H_LR| ~ 5e-3 eV)
+    4x4x4 polar modes           ~3e-4    (max|H_LR| ~ 1.5e-2 eV)
+
+On snapshots where `H_LR` is ~1e-14 eV the two targets are identical to far
+below any achievable model error, and no difference between the runs is
+possible even in principle. The signal lives in the polar/longitudinal
+families and the low-|q| shells, which is exactly why the report is
+stratified. Read the family and |q| breakdowns before the overall number.
 
 ## Never train on these
 
