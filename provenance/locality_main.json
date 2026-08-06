@@ -1,0 +1,5706 @@
+{
+ "set": "main",
+ "n_snapshots": 404,
+ "farfield": {
+  "references": [
+   "snapshot_000401",
+   "snapshot_000402"
+  ],
+  "probes": {
+   "snapshot_000401|snapshot_000403": [
+    {
+     "r_lo": 0.0,
+     "r_hi": 1.0,
+     "count": 891,
+     "dh_full": 6.486814174056445,
+     "dh_sr": 6.4866883614339335,
+     "reduction": 1.93951328241182e-05
+    },
+    {
+     "r_lo": 2.0,
+     "r_hi": 3.0,
+     "count": 4623,
+     "dh_full": 2.824960821087714,
+     "dh_sr": 2.822799952337503,
+     "reduction": 0.000764919900510086
+    },
+    {
+     "r_lo": 3.0,
+     "r_hi": 4.0,
+     "count": 12113,
+     "dh_full": 1.6026713671232384,
+     "dh_sr": 1.600463596644845,
+     "reduction": 0.0013775565744063023
+    },
+    {
+     "r_lo": 4.0,
+     "r_hi": 5.0,
+     "count": 6101,
+     "dh_full": 0.35926576127850895,
+     "dh_sr": 0.3562982906007724,
+     "reduction": 0.008259820438152321
+    },
+    {
+     "r_lo": 5.0,
+     "r_hi": 6.0,
+     "count": 1100,
+     "dh_full": 0.09299154079620861,
+     "dh_sr": 0.09275407961708589,
+     "reduction": 0.002553578283460478
+    },
+    {
+     "r_lo": 6.0,
+     "r_hi": 7.0,
+     "count": 34,
+     "dh_full": 0.009812352813387973,
+     "dh_sr": 0.00981218628154884,
+     "reduction": 1.697165219183283e-05
+    }
+   ],
+   "snapshot_000401|snapshot_000404": [
+    {
+     "r_lo": 0.0,
+     "r_hi": 1.0,
+     "count": 861,
+     "dh_full": 4.483885285391706,
+     "dh_sr": 4.483938080463547,
+     "reduction": -1.1774402885134094e-05
+    },
+    {
+     "r_lo": 2.0,
+     "r_hi": 3.0,
+     "count": 5220,
+     "dh_full": 1.9286899257050478,
+     "dh_sr": 1.9285141246974433,
+     "reduction": 9.115047746222071e-05
+    },
+    {
+     "r_lo": 3.0,
+     "r_hi": 4.0,
+     "count": 11925,
+     "dh_full": 0.548034315056423,
+     "dh_sr": 0.5448929391477041,
+     "reduction": 0.005732078854214562
+    },
+    {
+     "r_lo": 4.0,
+     "r_hi": 5.0,
+     "count": 5928,
+     "dh_full": 0.1787898550358008,
+     "dh_sr": 0.17668069213769771,
+     "reduction": 0.011796882421996169
+    },
+    {
+     "r_lo": 5.0,
+     "r_hi": 6.0,
+     "count": 908,
+     "dh_full": 0.03342092233174951,
+     "dh_sr": 0.03327303082546028,
+     "reduction": 0.004425117440542192
+    },
+    {
+     "r_lo": 6.0,
+     "r_hi": 7.0,
+     "count": 52,
+     "dh_full": 0.00976655351719647,
+     "dh_sr": 0.00976658360085061,
+     "reduction": -3.08027331086258e-06
+    }
+   ],
+   "snapshot_000402|snapshot_000403": [
+    {
+     "r_lo": 0.0,
+     "r_hi": 1.0,
+     "count": 891,
+     "dh_full": 6.486814174056445,
+     "dh_sr": 6.4866883614339335,
+     "reduction": 1.93951328241182e-05
+    },
+    {
+     "r_lo": 2.0,
+     "r_hi": 3.0,
+     "count": 4623,
+     "dh_full": 2.824960821087714,
+     "dh_sr": 2.822799952337503,
+     "reduction": 0.000764919900510086
+    },
+    {
+     "r_lo": 3.0,
+     "r_hi": 4.0,
+     "count": 12113,
+     "dh_full": 1.6026713671232384,
+     "dh_sr": 1.600463596644845,
+     "reduction": 0.0013775565744063023
+    },
+    {
+     "r_lo": 4.0,
+     "r_hi": 5.0,
+     "count": 6101,
+     "dh_full": 0.35926576127850895,
+     "dh_sr": 0.3562982906007724,
+     "reduction": 0.008259820438152321
+    },
+    {
+     "r_lo": 5.0,
+     "r_hi": 6.0,
+     "count": 1100,
+     "dh_full": 0.09299154079620861,
+     "dh_sr": 0.09275407961708589,
+     "reduction": 0.002553578283460478
+    },
+    {
+     "r_lo": 6.0,
+     "r_hi": 7.0,
+     "count": 34,
+     "dh_full": 0.009812352813387973,
+     "dh_sr": 0.00981218628154884,
+     "reduction": 1.697165219183283e-05
+    }
+   ],
+   "snapshot_000402|snapshot_000404": [
+    {
+     "r_lo": 0.0,
+     "r_hi": 1.0,
+     "count": 861,
+     "dh_full": 4.483885285391706,
+     "dh_sr": 4.483938080463547,
+     "reduction": -1.1774402885134094e-05
+    },
+    {
+     "r_lo": 2.0,
+     "r_hi": 3.0,
+     "count": 5220,
+     "dh_full": 1.9286899257050478,
+     "dh_sr": 1.9285141246974433,
+     "reduction": 9.115047746222071e-05
+    },
+    {
+     "r_lo": 3.0,
+     "r_hi": 4.0,
+     "count": 11925,
+     "dh_full": 0.548034315056423,
+     "dh_sr": 0.5448929391477041,
+     "reduction": 0.005732078854214562
+    },
+    {
+     "r_lo": 4.0,
+     "r_hi": 5.0,
+     "count": 5928,
+     "dh_full": 0.1787898550358008,
+     "dh_sr": 0.17668069213769771,
+     "reduction": 0.011796882421996169
+    },
+    {
+     "r_lo": 5.0,
+     "r_hi": 6.0,
+     "count": 908,
+     "dh_full": 0.03342092233174951,
+     "dh_sr": 0.03327303082546028,
+     "reduction": 0.004425117440542192
+    },
+    {
+     "r_lo": 6.0,
+     "r_hi": 7.0,
+     "count": 52,
+     "dh_full": 0.00976655351719647,
+     "dh_sr": 0.00976658360085061,
+     "reduction": -3.08027331086258e-06
+    }
+   ]
+  },
+  "unmatched": {
+   "snapshot_000401|snapshot_000403": 32,
+   "snapshot_000401|snapshot_000404": 0,
+   "snapshot_000402|snapshot_000403": 32,
+   "snapshot_000402|snapshot_000404": 0
+  },
+  "per_combination_pass": {
+   "snapshot_000401|snapshot_000403": false,
+   "snapshot_000401|snapshot_000404": false,
+   "snapshot_000402|snapshot_000403": false,
+   "snapshot_000402|snapshot_000404": false
+  },
+  "worst_bin_reduction": [
+   {
+    "r_lo": 4.0,
+    "r_hi": 5.0,
+    "reduction": 0.008259820438152321
+   },
+   {
+    "r_lo": 5.0,
+    "r_hi": 6.0,
+    "reduction": 0.002553578283460478
+   },
+   {
+    "r_lo": 6.0,
+    "r_hi": 7.0,
+    "reduction": -3.08027331086258e-06
+   }
+  ],
+  "reference_spread": {
+   "snapshot_000403": [
+    {
+     "r_lo": 0.0,
+     "spread": 0.0,
+     "n_references": 2
+    },
+    {
+     "r_lo": 2.0,
+     "spread": 0.0,
+     "n_references": 2
+    },
+    {
+     "r_lo": 3.0,
+     "spread": 0.0,
+     "n_references": 2
+    },
+    {
+     "r_lo": 4.0,
+     "spread": 0.0,
+     "n_references": 2
+    },
+    {
+     "r_lo": 5.0,
+     "spread": 0.0,
+     "n_references": 2
+    },
+    {
+     "r_lo": 6.0,
+     "spread": 0.0,
+     "n_references": 2
+    }
+   ],
+   "snapshot_000404": [
+    {
+     "r_lo": 0.0,
+     "spread": 0.0,
+     "n_references": 2
+    },
+    {
+     "r_lo": 2.0,
+     "spread": 0.0,
+     "n_references": 2
+    },
+    {
+     "r_lo": 3.0,
+     "spread": 0.0,
+     "n_references": 2
+    },
+    {
+     "r_lo": 4.0,
+     "spread": 0.0,
+     "n_references": 2
+    },
+    {
+     "r_lo": 5.0,
+     "spread": 0.0,
+     "n_references": 2
+    },
+    {
+     "r_lo": 6.0,
+     "spread": 0.0,
+     "n_references": 2
+    }
+   ]
+  },
+  "qualifying_bins": [
+   {
+    "r_lo": 4.0,
+    "r_hi": 5.0,
+    "count": 6101,
+    "dh_full": 0.35926576127850895,
+    "dh_sr": 0.3562982906007724,
+    "reduction": 0.008259820438152321
+   },
+   {
+    "r_lo": 5.0,
+    "r_hi": 6.0,
+    "count": 1100,
+    "dh_full": 0.09299154079620861,
+    "dh_sr": 0.09275407961708589,
+    "reduction": 0.002553578283460478
+   },
+   {
+    "r_lo": 6.0,
+    "r_hi": 7.0,
+    "count": 34,
+    "dh_full": 0.009812352813387973,
+    "dh_sr": 0.00981218628154884,
+    "reduction": 1.697165219183283e-05
+   },
+   {
+    "r_lo": 4.0,
+    "r_hi": 5.0,
+    "count": 5928,
+    "dh_full": 0.1787898550358008,
+    "dh_sr": 0.17668069213769771,
+    "reduction": 0.011796882421996169
+   },
+   {
+    "r_lo": 5.0,
+    "r_hi": 6.0,
+    "count": 908,
+    "dh_full": 0.03342092233174951,
+    "dh_sr": 0.03327303082546028,
+    "reduction": 0.004425117440542192
+   },
+   {
+    "r_lo": 6.0,
+    "r_hi": 7.0,
+    "count": 52,
+    "dh_full": 0.00976655351719647,
+    "dh_sr": 0.00976658360085061,
+    "reduction": -3.08027331086258e-06
+   },
+   {
+    "r_lo": 4.0,
+    "r_hi": 5.0,
+    "count": 6101,
+    "dh_full": 0.35926576127850895,
+    "dh_sr": 0.3562982906007724,
+    "reduction": 0.008259820438152321
+   },
+   {
+    "r_lo": 5.0,
+    "r_hi": 6.0,
+    "count": 1100,
+    "dh_full": 0.09299154079620861,
+    "dh_sr": 0.09275407961708589,
+    "reduction": 0.002553578283460478
+   },
+   {
+    "r_lo": 6.0,
+    "r_hi": 7.0,
+    "count": 34,
+    "dh_full": 0.009812352813387973,
+    "dh_sr": 0.00981218628154884,
+    "reduction": 1.697165219183283e-05
+   },
+   {
+    "r_lo": 4.0,
+    "r_hi": 5.0,
+    "count": 5928,
+    "dh_full": 0.1787898550358008,
+    "dh_sr": 0.17668069213769771,
+    "reduction": 0.011796882421996169
+   },
+   {
+    "r_lo": 5.0,
+    "r_hi": 6.0,
+    "count": 908,
+    "dh_full": 0.03342092233174951,
+    "dh_sr": 0.03327303082546028,
+    "reduction": 0.004425117440542192
+   },
+   {
+    "r_lo": 6.0,
+    "r_hi": 7.0,
+    "count": 52,
+    "dh_full": 0.00976655351719647,
+    "dh_sr": 0.00976658360085061,
+    "reduction": -3.08027331086258e-06
+   }
+  ],
+  "lr_explains_far_field": false
+ },
+ "tail": {
+  "radii": [
+   1.0,
+   2.0,
+   3.0,
+   4.0,
+   5.0,
+   6.0,
+   7.0,
+   8.0,
+   9.0,
+   10.0,
+   11.0
+  ],
+  "F_full": [
+   0.1748071399720209,
+   0.1748071399720209,
+   0.06931471780681307,
+   0.013525808979236068,
+   0.003584484505812786,
+   0.0008148961805170572,
+   8.515220233277445e-05,
+   2.893919827581047e-05,
+   2.963202688385679e-11,
+   6.960372544296086e-16,
+   0.0
+  ],
+  "F_lr": [
+   0.48991371226496544,
+   0.48991371226496544,
+   0.26043344869310586,
+   0.05520346536104557,
+   0.021787891514708925,
+   0.004420410205614082,
+   0.00014049278273010288,
+   1.5400838407482696e-05,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "F_sr": [
+   0.17480710741264008,
+   0.17480710741264008,
+   0.06931469320058468,
+   0.013525803613002792,
+   0.0035844828269186594,
+   0.000814895914147494,
+   8.515220325248863e-05,
+   2.8939200728474832e-05,
+   2.9632033518341276e-11,
+   6.960374009148065e-16,
+   0.0
+  ],
+  "f_sr_below_f_full": false
+ },
+ "binned": {
+  "full": [
+   {
+    "r_lo": 0.0,
+    "r_hi": 1.0,
+    "count": 21816,
+    "mean": 139.79950108786505,
+    "median": 140.54853090406834,
+    "max": 145.8264632496977
+   },
+   {
+    "r_lo": 2.0,
+    "r_hi": 3.0,
+    "count": 139108,
+    "mean": 19.586319172016367,
+    "median": 20.25234657705812,
+    "max": 22.18506429831283
+   },
+   {
+    "r_lo": 3.0,
+    "r_hi": 4.0,
+    "count": 428108,
+    "mean": 6.615512458356152,
+    "median": 3.627088847333911,
+    "max": 14.378071925794442
+   },
+   {
+    "r_lo": 4.0,
+    "r_hi": 5.0,
+    "count": 654480,
+    "mean": 2.4281343343572335,
+    "median": 1.9635054625289716,
+    "max": 7.275137431970952
+   },
+   {
+    "r_lo": 5.0,
+    "r_hi": 6.0,
+    "count": 525180,
+    "mean": 1.4831648856790907,
+    "median": 0.8358893222925079,
+    "max": 2.4290800038057436
+   },
+   {
+    "r_lo": 6.0,
+    "r_hi": 7.0,
+    "count": 1438386,
+    "mean": 0.42614662550186794,
+    "median": 0.44079830896054195,
+    "max": 1.2569514342170252
+   },
+   {
+    "r_lo": 7.0,
+    "r_hi": 8.0,
+    "count": 1281078,
+    "mean": 0.11714139046424217,
+    "median": 0.12297069053205896,
+    "max": 0.45551692135258404
+   },
+   {
+    "r_lo": 8.0,
+    "r_hi": 9.0,
+    "count": 2165924,
+    "mean": 0.04253988396868613,
+    "median": 0.0006885752855820172,
+    "max": 0.21882411205702937
+   },
+   {
+    "r_lo": 9.0,
+    "r_hi": 10.0,
+    "count": 2855360,
+    "mean": 2.875141537588191e-05,
+    "median": 1.1669175586007748e-06,
+    "max": 0.0009470005595695653
+   },
+   {
+    "r_lo": 10.0,
+    "r_hi": 11.0,
+    "count": 516652,
+    "mean": 7.823416208221199e-07,
+    "median": 7.17084692896672e-07,
+    "max": 4.079755754199021e-06
+   }
+  ],
+  "lr": [
+   {
+    "r_lo": 0.0,
+    "r_hi": 1.0,
+    "count": 21816,
+    "mean": 0.0007735618481376714,
+    "median": 1.3108176957499885e-06,
+    "max": 0.02090065721939858
+   },
+   {
+    "r_lo": 2.0,
+    "r_hi": 3.0,
+    "count": 139108,
+    "mean": 0.00023038209392624054,
+    "median": 2.812522858914142e-07,
+    "max": 0.005959489508685134
+   },
+   {
+    "r_lo": 3.0,
+    "r_hi": 4.0,
+    "count": 428108,
+    "mean": 0.00010226400650502205,
+    "median": 1.3305252802161957e-07,
+    "max": 0.005394370493077621
+   },
+   {
+    "r_lo": 4.0,
+    "r_hi": 5.0,
+    "count": 654480,
+    "mean": 2.7786285330454178e-05,
+    "median": 4.776260242086974e-08,
+    "max": 0.0014164465767279027
+   },
+   {
+    "r_lo": 5.0,
+    "r_hi": 6.0,
+    "count": 525180,
+    "mean": 2.302793607076316e-05,
+    "median": 4.5278509085119324e-08,
+    "max": 0.0015075734158100924
+   },
+   {
+    "r_lo": 6.0,
+    "r_hi": 7.0,
+    "count": 1438386,
+    "mean": 5.887200006395696e-06,
+    "median": 9.119513451852686e-09,
+    "max": 0.0007650626365262663
+   },
+   {
+    "r_lo": 7.0,
+    "r_hi": 8.0,
+    "count": 1281078,
+    "mean": 9.653386165190603e-07,
+    "median": 1.2642568775410618e-09,
+    "max": 0.00017757308960104632
+   },
+   {
+    "r_lo": 8.0,
+    "r_hi": 9.0,
+    "count": 987660,
+    "mean": 4.431982610814978e-07,
+    "median": 4.189951212707985e-10,
+    "max": 3.1615155355758106e-05
+   }
+  ],
+  "sr": [
+   {
+    "r_lo": 0.0,
+    "r_hi": 1.0,
+    "count": 21816,
+    "mean": 139.7994954375699,
+    "median": 140.5416563720142,
+    "max": 145.82646325053918
+   },
+   {
+    "r_lo": 2.0,
+    "r_hi": 3.0,
+    "count": 139108,
+    "mean": 19.586318072435837,
+    "median": 20.252339618629705,
+    "max": 22.185064298312863
+   },
+   {
+    "r_lo": 3.0,
+    "r_hi": 4.0,
+    "count": 428108,
+    "mean": 6.6155096124209125,
+    "median": 3.6270869717018206,
+    "max": 14.378093703565023
+   },
+   {
+    "r_lo": 4.0,
+    "r_hi": 5.0,
+    "count": 654480,
+    "mean": 2.4281338133161725,
+    "median": 1.9635054626853323,
+    "max": 7.2751374525487815
+   },
+   {
+    "r_lo": 5.0,
+    "r_hi": 6.0,
+    "count": 525180,
+    "mean": 1.4831646187126704,
+    "median": 0.8358893222925081,
+    "max": 2.4293425701282323
+   },
+   {
+    "r_lo": 6.0,
+    "r_hi": 7.0,
+    "count": 1438386,
+    "mean": 0.4261465538816586,
+    "median": 0.4407985962145484,
+    "max": 1.2569955400766837
+   },
+   {
+    "r_lo": 7.0,
+    "r_hi": 8.0,
+    "count": 1281078,
+    "mean": 0.11714138722505585,
+    "median": 0.12297001712418264,
+    "max": 0.455507377083231
+   },
+   {
+    "r_lo": 8.0,
+    "r_hi": 9.0,
+    "count": 2165924,
+    "mean": 0.042539883187221954,
+    "median": 0.0006885752855820172,
+    "max": 0.2188241103761666
+   },
+   {
+    "r_lo": 9.0,
+    "r_hi": 10.0,
+    "count": 2855360,
+    "mean": 2.875141537588191e-05,
+    "median": 1.1669175586007748e-06,
+    "max": 0.0009470005595695653
+   },
+   {
+    "r_lo": 10.0,
+    "r_hi": 11.0,
+    "count": 516652,
+    "mean": 7.823416208221199e-07,
+    "median": 7.17084692896672e-07,
+    "max": 4.079755754199021e-06
+   }
+  ]
+ },
+ "odd_response": [
+  {
+   "cos_theta": -0.0006198893745435488,
+   "r_lr": 6.013302802950219e-14,
+   "sids": [
+    "snapshot_000331",
+    "snapshot_000332"
+   ],
+   "amplitude": 0.02,
+   "family": "fam-c820b8534c"
+  },
+  {
+   "cos_theta": 0.0009014228323570977,
+   "r_lr": 6.207870587462028e-09,
+   "sids": [
+    "snapshot_000333",
+    "snapshot_000334"
+   ],
+   "amplitude": 0.01,
+   "family": "fam-26bec12ec7"
+  },
+  {
+   "cos_theta": -0.01425792478176849,
+   "r_lr": 7.358647030052023e-14,
+   "sids": [
+    "snapshot_000335",
+    "snapshot_000336"
+   ],
+   "amplitude": 0.01,
+   "family": "fam-9febae0c0b"
+  },
+  {
+   "cos_theta": -0.0011157269980096955,
+   "r_lr": 4.468950994288425e-05,
+   "sids": [
+    "snapshot_000337",
+    "snapshot_000338"
+   ],
+   "amplitude": 0.005,
+   "family": "fam-d1c940d737"
+  },
+  {
+   "cos_theta": 0.004934024430984819,
+   "r_lr": 4.214706803305755e-08,
+   "sids": [
+    "snapshot_000339",
+    "snapshot_000340"
+   ],
+   "amplitude": 0.02,
+   "family": "fam-902bd34d1f"
+  },
+  {
+   "cos_theta": -0.0006534386217880365,
+   "r_lr": 6.013022044657118e-14,
+   "sids": [
+    "snapshot_000341",
+    "snapshot_000342"
+   ],
+   "amplitude": 0.02,
+   "family": "fam-fcac0a36b8"
+  },
+  {
+   "cos_theta": 0.011897665654100185,
+   "r_lr": 3.41240356203851e-05,
+   "sids": [
+    "snapshot_000343",
+    "snapshot_000344"
+   ],
+   "amplitude": 0.04,
+   "family": "fam-a17aef0861"
+  },
+  {
+   "cos_theta": 0.00822740329916586,
+   "r_lr": 6.34106191384885e-14,
+   "sids": [
+    "snapshot_000345",
+    "snapshot_000346"
+   ],
+   "amplitude": 0.02,
+   "family": "fam-f4eb4fa7f7"
+  },
+  {
+   "cos_theta": -0.0009247212008541337,
+   "r_lr": 3.3354353016730834e-14,
+   "sids": [
+    "snapshot_000347",
+    "snapshot_000348"
+   ],
+   "amplitude": 0.005,
+   "family": "fam-705a6aa61a"
+  },
+  {
+   "cos_theta": 0.008549203477493427,
+   "r_lr": 6.242239423870904e-14,
+   "sids": [
+    "snapshot_000349",
+    "snapshot_000350"
+   ],
+   "amplitude": 0.04,
+   "family": "fam-22fdd53999"
+  },
+  {
+   "cos_theta": -0.0006867949305131201,
+   "r_lr": 3.317105675196149e-14,
+   "sids": [
+    "snapshot_000351",
+    "snapshot_000352"
+   ],
+   "amplitude": 0.01,
+   "family": "fam-fc626baa2c"
+  },
+  {
+   "cos_theta": 0.015815527347718118,
+   "r_lr": 1.234317719997904e-07,
+   "sids": [
+    "snapshot_000353",
+    "snapshot_000354"
+   ],
+   "amplitude": 0.06,
+   "family": "fam-c9884dd027"
+  },
+  {
+   "cos_theta": 0.007464389093975099,
+   "r_lr": 4.4924288931055404e-05,
+   "sids": [
+    "snapshot_000355",
+    "snapshot_000356"
+   ],
+   "amplitude": 0.005,
+   "family": "fam-9af715e3c8"
+  },
+  {
+   "cos_theta": 0.0015513493387286751,
+   "r_lr": 1.0559020900177647e-08,
+   "sids": [
+    "snapshot_000357",
+    "snapshot_000358"
+   ],
+   "amplitude": 0.005,
+   "family": "fam-0aebf6d2f7"
+  },
+  {
+   "cos_theta": 0.010173662758099233,
+   "r_lr": 4.007953965022335e-14,
+   "sids": [
+    "snapshot_000359",
+    "snapshot_000360"
+   ],
+   "amplitude": 0.02,
+   "family": "fam-b828d21394"
+  },
+  {
+   "cos_theta": -0.0006599899053288153,
+   "r_lr": 3.314411828053315e-14,
+   "sids": [
+    "snapshot_000361",
+    "snapshot_000362"
+   ],
+   "amplitude": 0.04,
+   "family": "fam-313e05eac5"
+  },
+  {
+   "cos_theta": 0.013456654412375485,
+   "r_lr": 8.29148934340403e-08,
+   "sids": [
+    "snapshot_000363",
+    "snapshot_000364"
+   ],
+   "amplitude": 0.04,
+   "family": "fam-0f33641cb3"
+  },
+  {
+   "cos_theta": 6.27466297743436e-05,
+   "r_lr": 1.1854966394461319e-11,
+   "sids": [
+    "snapshot_000365",
+    "snapshot_000366"
+   ],
+   "amplitude": 0.005,
+   "family": "fam-12af37544a"
+  },
+  {
+   "cos_theta": -0.00047633027293880753,
+   "r_lr": 2.0739690834886124e-08,
+   "sids": [
+    "snapshot_000367",
+    "snapshot_000368"
+   ],
+   "amplitude": 0.01,
+   "family": "fam-11b38efe0d"
+  },
+  {
+   "cos_theta": 0.005671303558988196,
+   "r_lr": 4.221191356287723e-08,
+   "sids": [
+    "snapshot_000369",
+    "snapshot_000370"
+   ],
+   "amplitude": 0.02,
+   "family": "fam-aaf26dc5e4"
+  }
+ ],
+ "families": {
+  "fam-b0b76cb679": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000001",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 1.0712607198333055e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.0712607198333055e-12
+   }
+  },
+  "fam-ebb2e6713d": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000002",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 1.1096401908358346e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.1096401908358346e-12
+   }
+  },
+  "fam-33be5166ab": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000003",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.012718358795922827
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.012718358795922827
+   }
+  },
+  "fam-4e9a0b677c": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000004",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.06,
+     "lr_norm": 0.15589781891916757
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.15589781891916757
+   }
+  },
+  "fam-00d1c0fddd": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000005",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.654940539489515e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.654940539489515e-06
+   }
+  },
+  "fam-463d553f93": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000006",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 1.1394919505384487e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.1394919505384487e-12
+   }
+  },
+  "fam-db3eb63493": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000007",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 1.2055475997354254e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2055475997354254e-11
+   }
+  },
+  "fam-502f007bc5": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000008",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 3.3993547507763095e-09
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.3993547507763095e-09
+   }
+  },
+  "fam-a368008d5b": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000009",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 0.01011090200426316
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.01011090200426316
+   }
+  },
+  "fam-cde450b1fb": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000010",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 2.1190227425840586e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.1190227425840586e-05
+   }
+  },
+  "fam-a24a760e56": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000011",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 8.52613152560553e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.52613152560553e-12
+   }
+  },
+  "fam-f1fc6f93b6": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000012",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 0.05142853599198416
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.05142853599198416
+   }
+  },
+  "fam-03775af818": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000013",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 1.4769290839059923e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.4769290839059923e-11
+   }
+  },
+  "fam-46a1901f20": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000014",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 2.2981831696370015e-13
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 2.2981831696370015e-13
+   }
+  },
+  "fam-2761049f8d": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000015",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 7.236082526994236e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 7.236082526994236e-12
+   }
+  },
+  "fam-f10fff9b13": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000016",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 3.4008016695987995e-09
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.4008016695987995e-09
+   }
+  },
+  "fam-5e6fff8f4d": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000017",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 8.904400669456537e-07
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.904400669456537e-07
+   }
+  },
+  "fam-4f548758ea": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000018",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.1305598817767324e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.1305598817767324e-12
+   }
+  },
+  "fam-2f2f3bd088": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000019",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.06,
+     "lr_norm": 0.14984794671849722
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.14984794671849722
+   }
+  },
+  "fam-b70759053c": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000020",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 0.050693111727319835
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.050693111727319835
+   }
+  },
+  "fam-e684935078": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000021",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.30888317426835e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.30888317426835e-06
+   }
+  },
+  "fam-fdf828b3fe": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000022",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.207623581693772e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.207623581693772e-11
+   }
+  },
+  "fam-9f78d253a2": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000023",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 0.10323730076450616
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.10323730076450616
+   }
+  },
+  "fam-9eed8814fc": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000024",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 0.05053794271049568
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.05053794271049568
+   }
+  },
+  "fam-45d82d8b5b": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000025",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 7.090897552660499e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 7.090897552660499e-12
+   }
+  },
+  "fam-dd48b03b62": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000026",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 1.476231251073178e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.476231251073178e-11
+   }
+  },
+  "fam-63516ac06b": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000027",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 1.4762373044542008e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.4762373044542008e-11
+   }
+  },
+  "fam-1a7452adc1": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000028",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 4.098822968371328e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 4.098822968371328e-12
+   }
+  },
+  "fam-d362c5c07b": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000029",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.6552090659770497e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.6552090659770497e-06
+   }
+  },
+  "fam-8532bd1ac2": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000030",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.655630244123246e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.655630244123246e-06
+   }
+  },
+  "fam-2669a63dc0": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000031",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 8.570066576854335e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.570066576854335e-12
+   }
+  },
+  "fam-ec9045541f": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000032",
+     "polarization_class": "transverse",
+     "amplitude": 0.04,
+     "lr_norm": 1.2055550023588042e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2055550023588042e-11
+   }
+  },
+  "fam-ce066139a6": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000033",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.06,
+     "lr_norm": 3.207937540290306e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.207937540290306e-05
+   }
+  },
+  "fam-38289e9580": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000034",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 8.572276300569971e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.572276300569971e-12
+   }
+  },
+  "fam-97c19df0fc": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000035",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 3.400252955153997e-09
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.400252955153997e-09
+   }
+  },
+  "fam-34bf28742b": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000036",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 4.099189951586222e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 4.099189951586222e-12
+   }
+  },
+  "fam-ecdbe437b7": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000037",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 2.261567692993113e-13
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 2.261567692993113e-13
+   }
+  },
+  "fam-64187e2ea8": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000038",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.06,
+     "lr_norm": 3.201162482966303e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.201162482966303e-05
+   }
+  },
+  "fam-38daa9df23": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000039",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 1.4762180121155274e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.4762180121155274e-11
+   }
+  },
+  "fam-d58a342b14": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000040",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.307510020346605e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.307510020346605e-06
+   }
+  },
+  "fam-90e7a00f45": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000041",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.06,
+     "lr_norm": 0.15620225285070516
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.15620225285070516
+   }
+  },
+  "fam-6113b2f380": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000042",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 2.730050280321966e-08
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.730050280321966e-08
+   }
+  },
+  "fam-b2d7d546a2": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000043",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.012755410291028025
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.012755410291028025
+   }
+  },
+  "fam-7bdfde04bb": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000044",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.012726686800462308
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.012726686800462308
+   }
+  },
+  "fam-e56f6f6064": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000045",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.06,
+     "lr_norm": 3.2069112442757525e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.2069112442757525e-05
+   }
+  },
+  "fam-6e49ce040a": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000046",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.315030298620446e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.315030298620446e-06
+   }
+  },
+  "fam-5e942c1e71": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000047",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.002478556069575697
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.002478556069575697
+   }
+  },
+  "fam-79a88d8085": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000048",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.02557580955106614
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.02557580955106614
+   }
+  },
+  "fam-a9f51226bc": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000049",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 0.10016940025303667
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.10016940025303667
+   }
+  },
+  "fam-b0b7d1484d": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000050",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.025382920622124123
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025382920622124123
+   }
+  },
+  "fam-0e8c46db7d": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000051",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 6.790192723107485e-09
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 6.790192723107485e-09
+   }
+  },
+  "fam-ff34040aa8": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000052",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.311209651112163e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.311209651112163e-06
+   }
+  },
+  "fam-b53021b757": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000053",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.4762622617675972e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.4762622617675972e-11
+   }
+  },
+  "fam-97850d98c5": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000054",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 1.1094114384839728e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.1094114384839728e-12
+   }
+  },
+  "fam-5a3c8f48f8": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000055",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 3.5526006237772263e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 3.5526006237772263e-06
+   }
+  },
+  "fam-31300e88b8": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000056",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 1.063616454566085e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.063616454566085e-05
+   }
+  },
+  "fam-a1a1debdb3": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000057",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.06,
+     "lr_norm": 4.098400973829115e-08
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 4.098400973829115e-08
+   }
+  },
+  "fam-225ca88c21": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000058",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 4.553090221052988e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 4.553090221052988e-06
+   }
+  },
+  "fam-b52008a6fb": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000059",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.308846088409954e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.308846088409954e-06
+   }
+  },
+  "fam-6b398c4537": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000060",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 0.10256175873646091
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.10256175873646091
+   }
+  },
+  "fam-4c4d7e61bd": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000061",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 1.070521721170857e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.070521721170857e-12
+   }
+  },
+  "fam-2bc0b8bc91": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000062",
+     "polarization_class": "transverse",
+     "amplitude": 0.04,
+     "lr_norm": 1.2072375927438295e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2072375927438295e-11
+   }
+  },
+  "fam-2e07d05c11": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000063",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 8.527236186839008e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.527236186839008e-12
+   }
+  },
+  "fam-0d3632f813": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000064",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 1.3583361378337147e-08
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.3583361378337147e-08
+   }
+  },
+  "fam-4c864c24e8": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000065",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 4.575295668057345e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 4.575295668057345e-06
+   }
+  },
+  "fam-7e646d2ef8": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000066",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.025483772246001502
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025483772246001502
+   }
+  },
+  "fam-3638b9c7a0": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000067",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 0.00493387160141183
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.00493387160141183
+   }
+  },
+  "fam-db14fc3aa4": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000068",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 8.526920783297356e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.526920783297356e-12
+   }
+  },
+  "fam-03cdf4137c": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000069",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.306730715420089e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.306730715420089e-06
+   }
+  },
+  "fam-25ef833f47": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000070",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 2.120639755089756e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.120639755089756e-05
+   }
+  },
+  "fam-6a286bb9b6": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000071",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 8.570291776882277e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.570291776882277e-12
+   }
+  },
+  "fam-4004933c9c": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000072",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 1.2069577663558964e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2069577663558964e-11
+   }
+  },
+  "fam-c924b85bb5": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000073",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 1.2729534803904432e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2729534803904432e-11
+   }
+  },
+  "fam-7954d73db2": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000074",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 5.657296664879523e-07
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.657296664879523e-07
+   }
+  },
+  "fam-7ba64e6c3c": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000075",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 1.782171274706504e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.782171274706504e-06
+   }
+  },
+  "fam-0d974d31b9": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000076",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.4763037912250585e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.4763037912250585e-11
+   }
+  },
+  "fam-ef7bab16cc": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000077",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 3.589448911489393e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 3.589448911489393e-06
+   }
+  },
+  "fam-b333c25908": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000078",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 8.571683026367026e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.571683026367026e-12
+   }
+  },
+  "fam-90343be919": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000079",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.02540492714685319
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.02540492714685319
+   }
+  },
+  "fam-d337b65d22": {
+   "q_magnitude": 1.6209583286751343,
+   "members": [
+    {
+     "sid": "snapshot_000080",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 1.0415366072165597e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.0415366072165597e-05
+   }
+  },
+  "fam-7cc484cfe4": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000081",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.315286636286882e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.315286636286882e-06
+   }
+  },
+  "fam-df2ef8bd2f": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000082",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 2.1190583303578286e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.1190583303578286e-05
+   }
+  },
+  "fam-eb379c6509": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000083",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 1.3632587869806359e-08
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.3632587869806359e-08
+   }
+  },
+  "fam-e0339514bc": {
+   "q_magnitude": 1.6209583286751343,
+   "members": [
+    {
+     "sid": "snapshot_000084",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 1.7874772868157175e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.7874772868157175e-06
+   }
+  },
+  "fam-b3d39bba17": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000085",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 1.4762518730677408e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.4762518730677408e-11
+   }
+  },
+  "fam-0b576dd6a3": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000086",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 8.527318025591624e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.527318025591624e-12
+   }
+  },
+  "fam-1ac338cce4": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000087",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.1089667576153196e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.1089667576153196e-12
+   }
+  },
+  "fam-53c447aeea": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000088",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 3.553188324086162e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 3.553188324086162e-06
+   }
+  },
+  "fam-4b54a6c4fa": {
+   "q_magnitude": 1.6209583286751343,
+   "members": [
+    {
+     "sid": "snapshot_000089",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 3.5865780712370035e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 3.5865780712370035e-06
+   }
+  },
+  "fam-0ec350f1ee": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000090",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.306914673224746e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.306914673224746e-06
+   }
+  },
+  "fam-abac245946": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000091",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 7.091049215061379e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 7.091049215061379e-12
+   }
+  },
+  "fam-c8c5cb77ae": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000092",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 7.47955460793114e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 7.47955460793114e-12
+   }
+  },
+  "fam-a71fa05715": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000093",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 3.557440716341032e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 3.557440716341032e-06
+   }
+  },
+  "fam-b189f661eb": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000094",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.06,
+     "lr_norm": 3.208245278336683e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.208245278336683e-05
+   }
+  },
+  "fam-f30b897967": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000095",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.2070936115208031e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2070936115208031e-11
+   }
+  },
+  "fam-081fa48fb8": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000096",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.06,
+     "lr_norm": 0.15144992863696985
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.15144992863696985
+   }
+  },
+  "fam-ddd897bfac": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000097",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.2730034572447798e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2730034572447798e-11
+   }
+  },
+  "fam-5d9c990930": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000098",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 1.2072259382753589e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2072259382753589e-11
+   }
+  },
+  "fam-0f168f718a": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000099",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 2.1201987774671775e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.1201987774671775e-05
+   }
+  },
+  "fam-2b96a2417f": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000100",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 2.2550235225680262e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.2550235225680262e-06
+   }
+  },
+  "fam-f1b49a653e": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000101",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 6.8056387143289955e-09
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 6.8056387143289955e-09
+   }
+  },
+  "fam-959e1d1341": {
+   "q_magnitude": 1.6209583286751343,
+   "members": [
+    {
+     "sid": "snapshot_000102",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 1.13522181251082e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.13522181251082e-06
+   }
+  },
+  "fam-4267c4fcd5": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000103",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 0.10368840724464148
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.10368840724464148
+   }
+  },
+  "fam-f0e6784b0b": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000104",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 1.03036370157283e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.03036370157283e-11
+   }
+  },
+  "fam-5ffa739fc0": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000105",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 5.66503807123178e-07
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.66503807123178e-07
+   }
+  },
+  "fam-9539398cd6": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000106",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 3.3985372203961556e-09
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.3985372203961556e-09
+   }
+  },
+  "fam-0cbe7d2fe9": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000107",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 8.526782333654968e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.526782333654968e-12
+   }
+  },
+  "fam-9c819b8829": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000108",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 1.2804491468422005e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2804491468422005e-11
+   }
+  },
+  "fam-52c9fb9151": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000109",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 1.3595944931966264e-08
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.3595944931966264e-08
+   }
+  },
+  "fam-7de5370d4c": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000110",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 2.1223720706684524e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.1223720706684524e-05
+   }
+  },
+  "fam-69b7863dc1": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000111",
+     "polarization_class": "transverse",
+     "amplitude": 0.04,
+     "lr_norm": 8.526440764466822e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.526440764466822e-12
+   }
+  },
+  "fam-05a6650e6d": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000112",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 0.10144179553304673
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.10144179553304673
+   }
+  },
+  "fam-000982d30f": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000113",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 1.0605076879317219e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.0605076879317219e-05
+   }
+  },
+  "fam-0d7b34d0d8": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000114",
+     "polarization_class": "transverse",
+     "amplitude": 0.04,
+     "lr_norm": 1.2071178071802902e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2071178071802902e-11
+   }
+  },
+  "fam-ea02b184ca": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000115",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.025528580654492154
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025528580654492154
+   }
+  },
+  "fam-31729a1e5e": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000116",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.02541157693525052
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.02541157693525052
+   }
+  },
+  "fam-5f335399f8": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000117",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 1.4764405789305598e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.4764405789305598e-11
+   }
+  },
+  "fam-084283eb9f": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000118",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 2.2568595728062717e-13
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 2.2568595728062717e-13
+   }
+  },
+  "fam-e56330747c": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000119",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.2055264422159936e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2055264422159936e-11
+   }
+  },
+  "fam-e601b43221": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000120",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.02550722073579357
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.02550722073579357
+   }
+  },
+  "fam-922cb92797": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000121",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 1.0618633679450573e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.0618633679450573e-05
+   }
+  },
+  "fam-ba7a0f9acb": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000122",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.06,
+     "lr_norm": 0.15348108835948446
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.15348108835948446
+   }
+  },
+  "fam-bb1e01b26d": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000123",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 8.571122578115277e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.571122578115277e-12
+   }
+  },
+  "fam-588d62e7a2": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000124",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 1.0615566127079288e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.0615566127079288e-05
+   }
+  },
+  "fam-7e18fef2bf": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000125",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 8.526429746504066e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.526429746504066e-12
+   }
+  },
+  "fam-82f1d91963": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000126",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.6563570783938123e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.6563570783938123e-06
+   }
+  },
+  "fam-0041242a4e": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000127",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 1.0640149015634604e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.0640149015634604e-05
+   }
+  },
+  "fam-692633de20": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000128",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 4.374834412928205e-13
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 4.374834412928205e-13
+   }
+  },
+  "fam-3a151845eb": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000129",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 0.05093109648714289
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.05093109648714289
+   }
+  },
+  "fam-9236d4b090": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000130",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.2055274092071164e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2055274092071164e-11
+   }
+  },
+  "fam-b64dbc230a": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000131",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 8.526842286059165e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.526842286059165e-12
+   }
+  },
+  "fam-411fc4a019": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000132",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 1.2072223504148484e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2072223504148484e-11
+   }
+  },
+  "fam-936d94cd7c": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000133",
+     "polarization_class": "transverse",
+     "amplitude": 0.04,
+     "lr_norm": 1.2060940618414852e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2060940618414852e-11
+   }
+  },
+  "fam-07deea5197": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000134",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 1.1155746816000108e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.1155746816000108e-12
+   }
+  },
+  "fam-4af4ceff6f": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000135",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.012762668040736055
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.012762668040736055
+   }
+  },
+  "fam-732f4f40a2": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000136",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 1.2825083181578209e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2825083181578209e-11
+   }
+  },
+  "fam-4464ffffd5": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000137",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 0.10113547922573111
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.10113547922573111
+   }
+  },
+  "fam-a38afb34a4": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000138",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.2069852386699219e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2069852386699219e-11
+   }
+  },
+  "fam-ce1533f4ce": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000139",
+     "polarization_class": "transverse",
+     "amplitude": 0.06,
+     "lr_norm": 7.0913507271795136e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 7.0913507271795136e-12
+   }
+  },
+  "fam-47458e292f": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000140",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.06,
+     "lr_norm": 6.7997190465366065e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 6.7997190465366065e-06
+   }
+  },
+  "fam-734536a570": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000141",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.654656874984399e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.654656874984399e-06
+   }
+  },
+  "fam-37c3d8d06b": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000142",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 2.727855941687737e-08
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.727855941687737e-08
+   }
+  },
+  "fam-ce5a22bd32": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000143",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 1.476116178858672e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.476116178858672e-11
+   }
+  },
+  "fam-385c73c9e7": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000144",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 4.098946228419183e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 4.098946228419183e-12
+   }
+  },
+  "fam-fe9a7b30d2": {
+   "q_magnitude": 1.6209583286751343,
+   "members": [
+    {
+     "sid": "snapshot_000145",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 2.2618681568722144e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.2618681568722144e-06
+   }
+  },
+  "fam-8693edbb06": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000146",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 2.1261691561067572e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.1261691561067572e-05
+   }
+  },
+  "fam-8ba1d71587": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000147",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 7.09011301964163e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 7.09011301964163e-12
+   }
+  },
+  "fam-49f3312d10": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000148",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 1.3633596449742104e-08
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.3633596449742104e-08
+   }
+  },
+  "fam-521b7d37ce": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000149",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 2.1206483629214093e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.1206483629214093e-05
+   }
+  },
+  "fam-fc0caff669": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000150",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 8.57082142071152e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.57082142071152e-12
+   }
+  },
+  "fam-d8c2d33249": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000151",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.3116064279519674e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.3116064279519674e-06
+   }
+  },
+  "fam-fa2189531d": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000152",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.025509727345761894
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025509727345761894
+   }
+  },
+  "fam-6f73c76867": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000153",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.0021843102503745016
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.0021843102503745016
+   }
+  },
+  "fam-99ac621a8d": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000154",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.025402748235911495
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025402748235911495
+   }
+  },
+  "fam-a92698c9d4": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000155",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.025487311249195465
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.025487311249195465
+   }
+  },
+  "fam-699f9702e1": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000156",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.012754663483069403
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.012754663483069403
+   }
+  },
+  "fam-faa0e3c79e": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000157",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 6.797587020655358e-09
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 6.797587020655358e-09
+   }
+  },
+  "fam-ef9ce4117b": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000158",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.02551208867229844
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.02551208867229844
+   }
+  },
+  "fam-1a07eb3578": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000159",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.655457430998768e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.655457430998768e-06
+   }
+  },
+  "fam-3cb61e64a4": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000160",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.033437170870006215
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.033437170870006215
+   }
+  },
+  "fam-78d8340801": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000161",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.012775331913461536
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.012775331913461536
+   }
+  },
+  "fam-c6efefee77": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000162",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 5.934281106979886e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 5.934281106979886e-06
+   }
+  },
+  "fam-7c19bc4401": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000163",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.0024946500939593557
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.0024946500939593557
+   }
+  },
+  "fam-0db7943464": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000164",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.018051481014035337
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.018051481014035337
+   }
+  },
+  "fam-17a7dac12b": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000165",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 5.31467477672386e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 5.31467477672386e-06
+   }
+  },
+  "fam-76898bca29": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000166",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 0.025515232360305437
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.025515232360305437
+   }
+  },
+  "fam-0f9886c627": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000167",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.02546264988432792
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.02546264988432792
+   }
+  },
+  "fam-a094974b85": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000168",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 6.22096483504977e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 6.22096483504977e-12
+   }
+  },
+  "fam-a0622b6a74": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000169",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 3.940210450766165e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 3.940210450766165e-12
+   }
+  },
+  "fam-31a1c551bd": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000170",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 6.914567749944396e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 6.914567749944396e-12
+   }
+  },
+  "fam-bca27bcbb6": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000171",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 7.511810897201259e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 7.511810897201259e-06
+   }
+  },
+  "fam-fbe5c6c736": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000172",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.307430454668399e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.307430454668399e-06
+   }
+  },
+  "fam-8e84cd5aba": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000173",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 0.025517317238591852
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.025517317238591852
+   }
+  },
+  "fam-cdeea11eeb": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000174",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.02541306831071444
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.02541306831071444
+   }
+  },
+  "fam-447607d5bb": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000175",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 6.221159915542117e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 6.221159915542117e-06
+   }
+  },
+  "fam-5959367e26": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000176",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 3.7479941823332713e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.7479941823332713e-06
+   }
+  },
+  "fam-54045f111c": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000177",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.0036225419810577593
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.0036225419810577593
+   }
+  },
+  "fam-a207d5c03a": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000178",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 2.6561478503269306e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 2.6561478503269306e-06
+   }
+  },
+  "fam-6a38b8c592": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000179",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 0.03617558901327957
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.03617558901327957
+   }
+  },
+  "fam-2edb82ab29": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000180",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.02560725042346058
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.02560725042346058
+   }
+  },
+  "fam-4c33c7c533": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000181",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 6.796936769347752e-09
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 6.796936769347752e-09
+   }
+  },
+  "fam-a5c0dedc16": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000182",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.9364510540843115e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.9364510540843115e-06
+   }
+  },
+  "fam-be2d14a0b4": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000183",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 5.315311329136884e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 5.315311329136884e-06
+   }
+  },
+  "fam-50db5639cd": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000184",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 1.9591555959320088e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.9591555959320088e-06
+   }
+  },
+  "fam-dcac0cd719": {
+   "q_magnitude": 1.6209583286751343,
+   "members": [
+    {
+     "sid": "snapshot_000185",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 1.9717860699069572e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.9717860699069572e-06
+   }
+  },
+  "fam-33da52e3f2": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000186",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.0017640542485893578
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.0017640542485893578
+   }
+  },
+  "fam-da209c7fec": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000187",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 0.012739116559099442
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.012739116559099442
+   }
+  },
+  "fam-efc7638fa3": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000188",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 5.306231063748699e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 5.306231063748699e-06
+   }
+  },
+  "fam-e33f88094a": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000189",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.012723002554624075
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.012723002554624075
+   }
+  },
+  "fam-db3d791ffd": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000190",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.002482625293859862
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.002482625293859862
+   }
+  },
+  "fam-705d03fced": {
+   "q_magnitude": 1.6209583286751343,
+   "members": [
+    {
+     "sid": "snapshot_000191",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 3.07888578344552e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 3.07888578344552e-06
+   }
+  },
+  "fam-d2b2aa11b9": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000192",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.654051534180011e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.654051534180011e-06
+   }
+  },
+  "fam-0f0db6ea6a": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000193",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 9.808831324711984e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 9.808831324711984e-12
+   }
+  },
+  "fam-04ddd70a93": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000194",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.6547182470056476e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.6547182470056476e-06
+   }
+  },
+  "fam-866a55f2d4": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000195",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 5.309201659893504e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 5.309201659893504e-06
+   }
+  },
+  "fam-261f7aae5b": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000196",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 0.02560755211013089
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.02560755211013089
+   }
+  },
+  "fam-f83500c128": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000197",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 2.2684830701997153e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.2684830701997153e-06
+   }
+  },
+  "fam-b8b86e2fea": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000198",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 0.025606855343508702
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.025606855343508702
+   }
+  },
+  "fam-3ca2e22d18": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000199",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 8.184069826622263e-13
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.184069826622263e-13
+   }
+  },
+  "fam-d1e1531f33": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000200",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.025575245556640522
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025575245556640522
+   }
+  },
+  "fam-faf3921ec3": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000201",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 5.93834817195362e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.93834817195362e-06
+   }
+  },
+  "fam-ce59b834df": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000202",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.025490514456016838
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025490514456016838
+   }
+  },
+  "fam-37def1b7dd": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000203",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.654260234643898e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.654260234643898e-06
+   }
+  },
+  "fam-f39e3c0e33": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000204",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 5.306290621657843e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.306290621657843e-06
+   }
+  },
+  "fam-3e46a39d6c": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000205",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.02860118123072473
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.02860118123072473
+   }
+  },
+  "fam-56443e9690": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000206",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 1.3509023033203557e-08
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.3509023033203557e-08
+   }
+  },
+  "fam-86924ffd67": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000207",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.025607264987315782
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025607264987315782
+   }
+  },
+  "fam-8e4f0ee844": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000208",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.724372157526475e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.724372157526475e-06
+   }
+  },
+  "fam-af786dba27": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000209",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 1.4394646776559851e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.4394646776559851e-06
+   }
+  },
+  "fam-5324204680": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000210",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 4.115003280431425e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 4.115003280431425e-12
+   }
+  },
+  "fam-1da62bbdda": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000211",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.025605223047777185
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025605223047777185
+   }
+  },
+  "fam-ec499be5d7": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000212",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.656432977944167e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.656432977944167e-06
+   }
+  },
+  "fam-b07494104b": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000213",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 7.222233748782703e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 7.222233748782703e-12
+   }
+  },
+  "fam-2498a9eff3": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000214",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 3.085068319249082e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 3.085068319249082e-06
+   }
+  },
+  "fam-56ff83e8f1": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000215",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.012738446661976483
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.012738446661976483
+   }
+  },
+  "fam-b68c7be377": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000216",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 5.821929810300798e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 5.821929810300798e-12
+   }
+  },
+  "fam-ff0c10ec7f": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000217",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 0.001242436962774722
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.001242436962774722
+   }
+  },
+  "fam-7598412d5f": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000218",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 5.1902220238845656e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 5.1902220238845656e-12
+   }
+  },
+  "fam-0e51845193": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000219",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.01275194621172957
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.01275194621172957
+   }
+  },
+  "fam-a0ed24ae83": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000220",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 1.2069338290385687e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2069338290385687e-11
+   }
+  },
+  "fam-7a8cf267fc": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000221",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 3.3977465127317984e-09
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 3.3977465127317984e-09
+   }
+  },
+  "fam-8164c6ac80": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000222",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 1.2135340598302685e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2135340598302685e-11
+   }
+  },
+  "fam-737413650b": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000223",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.025591326078934735
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025591326078934735
+   }
+  },
+  "fam-bfc92f670d": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000224",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.025388513097355198
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025388513097355198
+   }
+  },
+  "fam-48bb480eb2": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000225",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.04323885536779738
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.04323885536779738
+   }
+  },
+  "fam-d2293bad13": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000226",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.025600171035608785
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025600171035608785
+   }
+  },
+  "fam-c99edba0ee": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000227",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 3.757515780476331e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.757515780476331e-06
+   }
+  },
+  "fam-224c69e11b": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000228",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.02538923656389733
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.02538923656389733
+   }
+  },
+  "fam-453889ee3f": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000229",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 1.0541109686771755e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.0541109686771755e-06
+   }
+  },
+  "fam-ad1726e527": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000230",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.012736897280108763
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.012736897280108763
+   }
+  },
+  "fam-b3a314ee07": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000231",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.0017603099884250832
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.0017603099884250832
+   }
+  },
+  "fam-8ca1ace898": {
+   "q_magnitude": 1.6209583286751343,
+   "members": [
+    {
+     "sid": "snapshot_000232",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 2.654850937243437e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.654850937243437e-06
+   }
+  },
+  "fam-3c3d1bf7d9": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000233",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 0.0012425162168640447
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.0012425162168640447
+   }
+  },
+  "fam-9c3f42868d": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000234",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 5.937850850553814e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 5.937850850553814e-06
+   }
+  },
+  "fam-4772748fbd": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000235",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 5.938307238347581e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 5.938307238347581e-06
+   }
+  },
+  "fam-d83b8eaba9": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000236",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.02560735773135703
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.02560735773135703
+   }
+  },
+  "fam-0acb4d55be": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000237",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.012718762832296617
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.012718762832296617
+   }
+  },
+  "fam-5cf4c00d15": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000238",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.028563303994182217
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.028563303994182217
+   }
+  },
+  "fam-14f40f30bd": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000239",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.002499894868954637
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.002499894868954637
+   }
+  },
+  "fam-94278622c9": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000240",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 0.025576055640066236
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.025576055640066236
+   }
+  },
+  "fam-92891886e8": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000241",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 2.656423409863324e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 2.656423409863324e-06
+   }
+  },
+  "fam-c4b7aa6b44": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000242",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 5.307789387766052e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 5.307789387766052e-06
+   }
+  },
+  "fam-d90d93b90f": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000243",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.025403740089886377
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.025403740089886377
+   }
+  },
+  "fam-97b9584623": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000244",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 2.65414512689761e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 2.65414512689761e-06
+   }
+  },
+  "fam-95eafb955c": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000245",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.03610003742676054
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.03610003742676054
+   }
+  },
+  "fam-430e83de0d": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000246",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.937878547145028e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.937878547145028e-06
+   }
+  },
+  "fam-861456d110": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000247",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 5.315480728070033e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 5.315480728070033e-06
+   }
+  },
+  "fam-22631914ed": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000248",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.0012440716329343011
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.0012440716329343011
+   }
+  },
+  "fam-9becba7463": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000249",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.315602767512603e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.315602767512603e-06
+   }
+  },
+  "fam-47565208c6": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000250",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 2.655349407719311e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 2.655349407719311e-06
+   }
+  },
+  "fam-b440a2486d": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000251",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.025597143057883825
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025597143057883825
+   }
+  },
+  "fam-a23e9048e7": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000252",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.025517835010894666
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.025517835010894666
+   }
+  },
+  "fam-7adeb10ca9": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000253",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 2.654333936594683e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.654333936594683e-06
+   }
+  },
+  "fam-fc43dd156c": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000254",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.02559207449521471
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.02559207449521471
+   }
+  },
+  "fam-71e3154755": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000255",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 0.020582717842883846
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.020582717842883846
+   }
+  },
+  "fam-364b59b255": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000256",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 5.932663914431384e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.932663914431384e-06
+   }
+  },
+  "fam-3c9fad8f28": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000257",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.012763729639723494
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.012763729639723494
+   }
+  },
+  "fam-6788b0cd1c": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000258",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.012718624012695839
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.012718624012695839
+   }
+  },
+  "fam-64dbd09443": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000259",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 3.015542142885499e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.015542142885499e-06
+   }
+  },
+  "fam-2476cd0cb5": {
+   "q_magnitude": 1.6209583286751343,
+   "members": [
+    {
+     "sid": "snapshot_000260",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.1849370235161516e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.1849370235161516e-06
+   }
+  },
+  "fam-29fe4202d6": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000261",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.003750852086049147
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.003750852086049147
+   }
+  },
+  "fam-08bd4015c7": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000262",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.012763882586918
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.012763882586918
+   }
+  },
+  "fam-af0fa95ea1": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000263",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 6.797738379405109e-09
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 6.797738379405109e-09
+   }
+  },
+  "fam-e40f2719aa": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000264",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.012743741281073574
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.012743741281073574
+   }
+  },
+  "fam-5261c06036": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000265",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 0.0012467026402395247
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.0012467026402395247
+   }
+  },
+  "fam-4419dcdbb1": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000266",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.02545981906302184
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.02545981906302184
+   }
+  },
+  "fam-8721bb4a5f": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000267",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 0.02558838193858108
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.02558838193858108
+   }
+  },
+  "fam-75879b80bd": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000268",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.655598445320473e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.655598445320473e-06
+   }
+  },
+  "fam-abdea9910c": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000269",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.0017634159303051198
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.0017634159303051198
+   }
+  },
+  "fam-af034abe3d": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000270",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 0.036052728581099425
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 0.036052728581099425
+   }
+  },
+  "fam-db79520b95": {
+   "q_magnitude": 0.0,
+   "members": [
+    {
+     "sid": "snapshot_000271",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.008287773400530074
+    },
+    {
+     "sid": "snapshot_000274",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.007018426857063568
+    },
+    {
+     "sid": "snapshot_000280",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.010429063131399524
+    },
+    {
+     "sid": "snapshot_000284",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.012247871768167998
+    },
+    {
+     "sid": "snapshot_000300",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.006951704760351419
+    },
+    {
+     "sid": "snapshot_000305",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.006509530187183196
+    },
+    {
+     "sid": "snapshot_000308",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.006983950869093557
+    },
+    {
+     "sid": "snapshot_000313",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.012232826533671387
+    },
+    {
+     "sid": "snapshot_000316",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.009142861420514901
+    },
+    {
+     "sid": "snapshot_000322",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.00816622935240079
+    },
+    {
+     "sid": "snapshot_000323",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.006848487622450969
+    },
+    {
+     "sid": "snapshot_000325",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.010329441039810764
+    },
+    {
+     "sid": "snapshot_000326",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.009266841793641643
+    },
+    {
+     "sid": "snapshot_000329",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.0071973832511145535
+    },
+    {
+     "sid": "snapshot_000330",
+     "polarization_class": "none",
+     "amplitude": 0.02,
+     "lr_norm": 0.007041175951896302
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "none": 0.00857690452928604
+   }
+  },
+  "fam-41d48239c0": {
+   "q_magnitude": 0.0,
+   "members": [
+    {
+     "sid": "snapshot_000272",
+     "polarization_class": "none",
+     "amplitude": 0.04,
+     "lr_norm": 0.014712600620562994
+    },
+    {
+     "sid": "snapshot_000283",
+     "polarization_class": "none",
+     "amplitude": 0.04,
+     "lr_norm": 0.015700679311679223
+    },
+    {
+     "sid": "snapshot_000296",
+     "polarization_class": "none",
+     "amplitude": 0.04,
+     "lr_norm": 0.011445066325648732
+    },
+    {
+     "sid": "snapshot_000299",
+     "polarization_class": "none",
+     "amplitude": 0.04,
+     "lr_norm": 0.01184046099806266
+    },
+    {
+     "sid": "snapshot_000302",
+     "polarization_class": "none",
+     "amplitude": 0.04,
+     "lr_norm": 0.01216282703142401
+    },
+    {
+     "sid": "snapshot_000306",
+     "polarization_class": "none",
+     "amplitude": 0.04,
+     "lr_norm": 0.015956301969426764
+    },
+    {
+     "sid": "snapshot_000310",
+     "polarization_class": "none",
+     "amplitude": 0.04,
+     "lr_norm": 0.0159383056051332
+    },
+    {
+     "sid": "snapshot_000311",
+     "polarization_class": "none",
+     "amplitude": 0.04,
+     "lr_norm": 0.019232266202331556
+    },
+    {
+     "sid": "snapshot_000327",
+     "polarization_class": "none",
+     "amplitude": 0.04,
+     "lr_norm": 0.01636635384461039
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "none": 0.01481720687876439
+   }
+  },
+  "fam-a91675abd9": {
+   "q_magnitude": 0.0,
+   "members": [
+    {
+     "sid": "snapshot_000273",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.004879953003162493
+    },
+    {
+     "sid": "snapshot_000276",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.0038750955852775064
+    },
+    {
+     "sid": "snapshot_000278",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.004498438318202739
+    },
+    {
+     "sid": "snapshot_000281",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.002859791903911376
+    },
+    {
+     "sid": "snapshot_000285",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.0036818375404094076
+    },
+    {
+     "sid": "snapshot_000286",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.005028354338562629
+    },
+    {
+     "sid": "snapshot_000292",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.0035742046308700954
+    },
+    {
+     "sid": "snapshot_000293",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.004736472401516741
+    },
+    {
+     "sid": "snapshot_000297",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.004692873123011655
+    },
+    {
+     "sid": "snapshot_000301",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.005480328877203375
+    },
+    {
+     "sid": "snapshot_000309",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.00491262169897872
+    },
+    {
+     "sid": "snapshot_000315",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.0033826052295892273
+    },
+    {
+     "sid": "snapshot_000317",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.0053124582909229515
+    },
+    {
+     "sid": "snapshot_000318",
+     "polarization_class": "none",
+     "amplitude": 0.01,
+     "lr_norm": 0.0043823390021315006
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "none": 0.00437838385312503
+   }
+  },
+  "fam-46bb7253cc": {
+   "q_magnitude": 0.0,
+   "members": [
+    {
+     "sid": "snapshot_000275",
+     "polarization_class": "none",
+     "amplitude": 0.005,
+     "lr_norm": 0.0018466764460855405
+    },
+    {
+     "sid": "snapshot_000277",
+     "polarization_class": "none",
+     "amplitude": 0.005,
+     "lr_norm": 0.0021797026236740104
+    },
+    {
+     "sid": "snapshot_000279",
+     "polarization_class": "none",
+     "amplitude": 0.005,
+     "lr_norm": 0.0029379922068165257
+    },
+    {
+     "sid": "snapshot_000287",
+     "polarization_class": "none",
+     "amplitude": 0.005,
+     "lr_norm": 0.002435598552773353
+    },
+    {
+     "sid": "snapshot_000288",
+     "polarization_class": "none",
+     "amplitude": 0.005,
+     "lr_norm": 0.0034080865030010656
+    },
+    {
+     "sid": "snapshot_000298",
+     "polarization_class": "none",
+     "amplitude": 0.005,
+     "lr_norm": 0.0028285303921715735
+    },
+    {
+     "sid": "snapshot_000304",
+     "polarization_class": "none",
+     "amplitude": 0.005,
+     "lr_norm": 0.001864130232519338
+    },
+    {
+     "sid": "snapshot_000307",
+     "polarization_class": "none",
+     "amplitude": 0.005,
+     "lr_norm": 0.002841081645829612
+    },
+    {
+     "sid": "snapshot_000314",
+     "polarization_class": "none",
+     "amplitude": 0.005,
+     "lr_norm": 0.0017833364080996816
+    },
+    {
+     "sid": "snapshot_000319",
+     "polarization_class": "none",
+     "amplitude": 0.005,
+     "lr_norm": 0.002795164274717402
+    },
+    {
+     "sid": "snapshot_000321",
+     "polarization_class": "none",
+     "amplitude": 0.005,
+     "lr_norm": 0.0027589445712206382
+    },
+    {
+     "sid": "snapshot_000324",
+     "polarization_class": "none",
+     "amplitude": 0.005,
+     "lr_norm": 0.0031608416346791493
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "none": 0.002570007124298991
+   }
+  },
+  "fam-7d8ab7e485": {
+   "q_magnitude": 0.0,
+   "members": [
+    {
+     "sid": "snapshot_000282",
+     "polarization_class": "none",
+     "amplitude": 0.06,
+     "lr_norm": 0.02513515842032512
+    },
+    {
+     "sid": "snapshot_000289",
+     "polarization_class": "none",
+     "amplitude": 0.06,
+     "lr_norm": 0.036570330421574336
+    },
+    {
+     "sid": "snapshot_000290",
+     "polarization_class": "none",
+     "amplitude": 0.06,
+     "lr_norm": 0.03241056683868942
+    },
+    {
+     "sid": "snapshot_000291",
+     "polarization_class": "none",
+     "amplitude": 0.06,
+     "lr_norm": 0.017423892555516504
+    },
+    {
+     "sid": "snapshot_000294",
+     "polarization_class": "none",
+     "amplitude": 0.06,
+     "lr_norm": 0.02936923580879608
+    },
+    {
+     "sid": "snapshot_000295",
+     "polarization_class": "none",
+     "amplitude": 0.06,
+     "lr_norm": 0.03227980017879086
+    },
+    {
+     "sid": "snapshot_000303",
+     "polarization_class": "none",
+     "amplitude": 0.06,
+     "lr_norm": 0.03424584611406573
+    },
+    {
+     "sid": "snapshot_000312",
+     "polarization_class": "none",
+     "amplitude": 0.06,
+     "lr_norm": 0.03933178417792126
+    },
+    {
+     "sid": "snapshot_000320",
+     "polarization_class": "none",
+     "amplitude": 0.06,
+     "lr_norm": 0.025719768928611476
+    },
+    {
+     "sid": "snapshot_000328",
+     "polarization_class": "none",
+     "amplitude": 0.06,
+     "lr_norm": 0.03881876642744603
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "none": 0.031130514987173685
+   }
+  },
+  "fam-c820b8534c": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000331",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.2072518965045348e-11
+    },
+    {
+     "sid": "snapshot_000332",
+     "polarization_class": "transverse",
+     "amplitude": -0.02,
+     "lr_norm": 1.207059902155499e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2071558993300168e-11
+   }
+  },
+  "fam-26bec12ec7": {
+   "q_magnitude": 1.6209583286751346,
+   "members": [
+    {
+     "sid": "snapshot_000333",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 1.7829542288473217e-06
+    },
+    {
+     "sid": "snapshot_000334",
+     "polarization_class": "transverse",
+     "amplitude": -0.01,
+     "lr_norm": 1.7795265722388649e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.7812404005430934e-06
+   }
+  },
+  "fam-9febae0c0b": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000335",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 1.4762916305370534e-11
+    },
+    {
+     "sid": "snapshot_000336",
+     "polarization_class": "transverse",
+     "amplitude": -0.01,
+     "lr_norm": 1.4762905316235316e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.4762910810802923e-11
+   }
+  },
+  "fam-d1c940d737": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000337",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.012766826335263179
+    },
+    {
+     "sid": "snapshot_000338",
+     "polarization_class": "longitudinal",
+     "amplitude": -0.005,
+     "lr_norm": 0.01272674879031328
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.012746787562788228
+   }
+  },
+  "fam-902bd34d1f": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000339",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 1.0604243271558807e-05
+    },
+    {
+     "sid": "snapshot_000340",
+     "polarization_class": "longitudinal",
+     "amplitude": -0.02,
+     "lr_norm": 1.0641883871439941e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.0623063571499374e-05
+   }
+  },
+  "fam-fcac0a36b8": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000341",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.207199093419317e-11
+    },
+    {
+     "sid": "snapshot_000342",
+     "polarization_class": "transverse",
+     "amplitude": -0.02,
+     "lr_norm": 1.2071396214484278e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2071693574338724e-11
+   }
+  },
+  "fam-a17aef0861": {
+   "q_magnitude": 0.9774746503667285,
+   "members": [
+    {
+     "sid": "snapshot_000343",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 0.009802844918000592
+    },
+    {
+     "sid": "snapshot_000344",
+     "polarization_class": "longitudinal",
+     "amplitude": -0.04,
+     "lr_norm": 0.01010816274577409
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.009955503831887341
+   }
+  },
+  "fam-f4eb4fa7f7": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000345",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.2730568111992078e-11
+    },
+    {
+     "sid": "snapshot_000346",
+     "polarization_class": "transverse",
+     "amplitude": -0.02,
+     "lr_norm": 1.2730048840951206e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2730308476471642e-11
+   }
+  },
+  "fam-705a6aa61a": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000347",
+     "polarization_class": "transverse",
+     "amplitude": 0.005,
+     "lr_norm": 8.571716437943293e-12
+    },
+    {
+     "sid": "snapshot_000348",
+     "polarization_class": "transverse",
+     "amplitude": -0.005,
+     "lr_norm": 8.571617545264978e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.571666991604135e-12
+   }
+  },
+  "fam-22fdd53999": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000349",
+     "polarization_class": "transverse",
+     "amplitude": 0.04,
+     "lr_norm": 1.2729912364380484e-11
+    },
+    {
+     "sid": "snapshot_000350",
+     "polarization_class": "transverse",
+     "amplitude": -0.04,
+     "lr_norm": 1.2730269673230493e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.2730091018805488e-11
+   }
+  },
+  "fam-fc626baa2c": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000351",
+     "polarization_class": "transverse",
+     "amplitude": 0.01,
+     "lr_norm": 8.526995337234179e-12
+    },
+    {
+     "sid": "snapshot_000352",
+     "polarization_class": "transverse",
+     "amplitude": -0.01,
+     "lr_norm": 8.52671481349529e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.526855075364735e-12
+   }
+  },
+  "fam-c9884dd027": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000353",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.06,
+     "lr_norm": 3.176419692101743e-05
+    },
+    {
+     "sid": "snapshot_000354",
+     "polarization_class": "longitudinal",
+     "amplitude": -0.06,
+     "lr_norm": 3.208109276761756e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.1922644844317494e-05
+   }
+  },
+  "fam-9af715e3c8": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000355",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 0.012720011231498279
+    },
+    {
+     "sid": "snapshot_000356",
+     "polarization_class": "longitudinal",
+     "amplitude": -0.005,
+     "lr_norm": 0.012773539207981362
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 0.01274677521973982
+   }
+  },
+  "fam-0aebf6d2f7": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000357",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 2.6553993777696745e-06
+    },
+    {
+     "sid": "snapshot_000358",
+     "polarization_class": "longitudinal",
+     "amplitude": -0.005,
+     "lr_norm": 2.655087314911977e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.6552433463408256e-06
+   }
+  },
+  "fam-b828d21394": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000359",
+     "polarization_class": "transverse",
+     "amplitude": 0.02,
+     "lr_norm": 1.0304128136017269e-11
+    },
+    {
+     "sid": "snapshot_000360",
+     "polarization_class": "transverse",
+     "amplitude": -0.02,
+     "lr_norm": 1.030411357457702e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 1.0304120855297143e-11
+   }
+  },
+  "fam-313e05eac5": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000361",
+     "polarization_class": "transverse",
+     "amplitude": 0.04,
+     "lr_norm": 8.527291060967089e-12
+    },
+    {
+     "sid": "snapshot_000362",
+     "polarization_class": "transverse",
+     "amplitude": -0.04,
+     "lr_norm": 8.527257389553918e-12
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "transverse": 8.527274225260503e-12
+   }
+  },
+  "fam-0f33641cb3": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000363",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.04,
+     "lr_norm": 2.1287289533987383e-05
+    },
+    {
+     "sid": "snapshot_000364",
+     "polarization_class": "longitudinal",
+     "amplitude": -0.04,
+     "lr_norm": 2.123191634268832e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 2.1259602938337852e-05
+   }
+  },
+  "fam-12af37544a": {
+   "q_magnitude": 0.8465178787728991,
+   "members": [
+    {
+     "sid": "snapshot_000365",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.005,
+     "lr_norm": 3.3974314778371637e-09
+    },
+    {
+     "sid": "snapshot_000366",
+     "polarization_class": "longitudinal",
+     "amplitude": -0.005,
+     "lr_norm": 3.4006526140909976e-09
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 3.3990420459640804e-09
+   }
+  },
+  "fam-11b38efe0d": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000367",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.01,
+     "lr_norm": 5.315406605989105e-06
+    },
+    {
+     "sid": "snapshot_000368",
+     "polarization_class": "longitudinal",
+     "amplitude": -0.01,
+     "lr_norm": 5.305984069116939e-06
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 5.310695337553022e-06
+   }
+  },
+  "fam-aaf26dc5e4": {
+   "q_magnitude": 1.3823579074245267,
+   "members": [
+    {
+     "sid": "snapshot_000369",
+     "polarization_class": "longitudinal",
+     "amplitude": 0.02,
+     "lr_norm": 1.0620594034881767e-05
+    },
+    {
+     "sid": "snapshot_000370",
+     "polarization_class": "longitudinal",
+     "amplitude": -0.02,
+     "lr_norm": 1.0625565221373497e-05
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "longitudinal": 1.0623079628127632e-05
+   }
+  },
+  "fam-1cf6b9c45b": {
+   "q_magnitude": 0.0,
+   "members": [
+    {
+     "sid": "snapshot_000371",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0017802843736847394
+    },
+    {
+     "sid": "snapshot_000372",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0012221810609536771
+    },
+    {
+     "sid": "snapshot_000373",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0009058152740165735
+    },
+    {
+     "sid": "snapshot_000374",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0011259761499822754
+    },
+    {
+     "sid": "snapshot_000375",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0011965250038205697
+    },
+    {
+     "sid": "snapshot_000376",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0016078240216730105
+    },
+    {
+     "sid": "snapshot_000377",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0005626881436528204
+    },
+    {
+     "sid": "snapshot_000378",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0010015143269104655
+    },
+    {
+     "sid": "snapshot_000379",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0010548759162023868
+    },
+    {
+     "sid": "snapshot_000380",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0013952361027202197
+    },
+    {
+     "sid": "snapshot_000381",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0013413968192133208
+    },
+    {
+     "sid": "snapshot_000382",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0009111117934816892
+    },
+    {
+     "sid": "snapshot_000383",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0009738766114489102
+    },
+    {
+     "sid": "snapshot_000384",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0015683550833772058
+    },
+    {
+     "sid": "snapshot_000385",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0011244593492785407
+    },
+    {
+     "sid": "snapshot_000386",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0009466415293837776
+    },
+    {
+     "sid": "snapshot_000387",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0018138449747952512
+    },
+    {
+     "sid": "snapshot_000388",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0013260285841493976
+    },
+    {
+     "sid": "snapshot_000389",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.001257296694073654
+    },
+    {
+     "sid": "snapshot_000390",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0014272575586670873
+    },
+    {
+     "sid": "snapshot_000391",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.001650741820757004
+    },
+    {
+     "sid": "snapshot_000392",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0016883525252680426
+    },
+    {
+     "sid": "snapshot_000393",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.00093333620027522
+    },
+    {
+     "sid": "snapshot_000394",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0010194123220270408
+    },
+    {
+     "sid": "snapshot_000395",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0014373918939952232
+    },
+    {
+     "sid": "snapshot_000396",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.000903096533526216
+    },
+    {
+     "sid": "snapshot_000397",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0011913461412118064
+    },
+    {
+     "sid": "snapshot_000398",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0007671441365856523
+    },
+    {
+     "sid": "snapshot_000399",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0009518273670403914
+    },
+    {
+     "sid": "snapshot_000400",
+     "polarization_class": "none",
+     "amplitude": 0.0025,
+     "lr_norm": 0.0010470417204946976
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "none": 0.001204429334422229
+   }
+  },
+  "fam-ee704c9ab5": {
+   "q_magnitude": 0.0,
+   "members": [
+    {
+     "sid": "snapshot_000401",
+     "polarization_class": "none",
+     "amplitude": 0.0,
+     "lr_norm": 1.4764925269648177e-11
+    },
+    {
+     "sid": "snapshot_000402",
+     "polarization_class": "none",
+     "amplitude": 0.0,
+     "lr_norm": 1.4764925269648177e-11
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "none": 1.4764925269648177e-11
+   }
+  },
+  "fam-a1d4ee2bc5": {
+   "q_magnitude": 0.0,
+   "members": [
+    {
+     "sid": "snapshot_000403",
+     "polarization_class": "none",
+     "amplitude": 0.06,
+     "lr_norm": 0.007635181125335635
+    },
+    {
+     "sid": "snapshot_000404",
+     "polarization_class": "none",
+     "amplitude": 0.06,
+     "lr_norm": 0.0076349441107954425
+    }
+   ],
+   "mean_lr_norm_by_class": {
+    "none": 0.007635062618065539
+   }
+  }
+ },
+ "wavevector_comparisons": []
+}

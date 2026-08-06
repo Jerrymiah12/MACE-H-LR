@@ -86,11 +86,23 @@ validation:
   # residual of 23 of the 36 measured 4x4x4 labels -- it silently switched the
   # absolute arm off for the larger cell and rejected 4 sound snapshots.
   # 1 neV is ~1000x below DFT SCF convergence and 16x above the largest shift
-  # observed at either size, so it certifies "the cutoff does not move this
-  # label" at any cell size.  The relative arm keeps its teeth where the LR
-  # field is physically significant: |H_LR| = 0.1 eV at ratio 1e-3 is a 1e-4 eV
-  # shift and is still rejected.
-  tau_G_abs: 1.0e-9             # eV, absolute Frobenius
+  # observed (6.1e-11 eV, on the 4x4x4 set), so across the cell sizes actually
+  # measured -- 3x3x3 and 4x4x4 -- it certifies "the cutoff does not move this
+  # label".
+  #
+  # That claim is scoped to those two sizes and does NOT extrapolate.  The
+  # residual grows with the cell (2.0e-11 -> 6.1e-11 eV, roughly 3x for one
+  # step in linear size), so the 16x headroom here is about two such steps of
+  # margin, not an asymptotic guarantee.  Before trusting this gate at 5x5x5 or
+  # larger, re-measure the distribution of `lr_convergence_abs` at that size and
+  # confirm the sound labels still sit well under the threshold; if they do not,
+  # raise `reciprocal_cutoff` rather than loosening `tau_G_abs` to fit -- the
+  # point of an absolute energy threshold is that it is not tuned per supercell.
+  #
+  # The relative arm keeps its teeth where the LR field is physically
+  # significant: |H_LR| = 0.1 eV at ratio 1e-3 is a 1e-4 eV shift and is still
+  # rejected.
+  tau_G_abs: 1.0e-9             # eV, absolute Frobenius; see the scope note above
   tau_overlap_diag: 0.05        # |S_ii - 1| on R=0 diagonal
   tier2_enforce: true           # E_sign/E_linear are hard checks
   # A reversal counts only if it clears BOTH tolerances.  Established from the

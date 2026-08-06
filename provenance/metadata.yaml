@@ -1,0 +1,158 @@
+lr_definition:
+  ewald_lambda: 0.35
+  reciprocal_cutoff: 11.282666955670823
+  reciprocal_tolerance: 1.0e-10
+  reciprocal_set:
+    inversion_symmetric: true
+    excludes_G_zero: true
+    cutoff_type: dielectric_ellipsoid
+  imaginary_tolerance: 1.0e-08
+  gauge: G_zero_equals_zero
+  sign_convention: electron_potential_energy
+  phase_convention: reference_positions
+  reference_artifacts_sha256:
+    atomic_numbers.npy: 323787a48bb6f01e3face0e4de16f852eee8812078de25eb2e9cb7b8a0fb41a4
+    born_effective_charges.npy: 1adb05f216df8d6feb287e6e86dbd41b17a3cc468747d920e1e308e7b09b7b6c
+    dielectric_infinity.npy: 3dd0884d085fe9435557d347246f10d3cca035538125432b003d3f2c6fb3f6a0
+    reference_cell.npy: 0980b586eabf13c8b8e97aac139cbaefced2cd5a8d6a2d49c784e49a9f8ae76c
+    reference_positions.npy: 8e28eae7f94b7a5471623ed3fea422895c81cc5b8de7ed684c54018278c8bc77
+    species_order.json: a4a7d85756b61a245833e900cf5cd66dc240f2dfdacb9c0b1ea94d0ffb7e0654
+units:
+  energy: eV
+  length: angstrom
+  charge: e
+material: MgO
+exchange_correlation: PBE
+atom_ordering: species_major_cell_minor (np.ndindex)
+mode_normalization: max_species_weight_1
+supercells:
+  pilot: 2
+  main: 3
+  large: 4
+supercell_matrices:
+  pilot:
+  - - 2
+    - 0
+    - 0
+  - - 0
+    - 2
+    - 0
+  - - 0
+    - 0
+    - 2
+  main:
+  - - 3
+    - 0
+    - 0
+  - - 0
+    - 3
+    - 0
+  - - 0
+    - 0
+    - 3
+  large:
+  - - 4
+    - 0
+    - 0
+  - - 0
+    - 4
+    - 0
+  - - 0
+    - 0
+    - 4
+displacement_seed: 20260720
+code_versions:
+  mgo_lr: 0.2.0
+  abacus: '3.7'
+  quantum_espresso: '7.2'
+dft_settings:
+  abacus:
+    pseudo_dir: /home/jbailey/.claude/jobs/14a2d259/tmp/pp
+    orbital_dir: /home/jbailey/.claude/jobs/14a2d259/tmp/orb
+    pseudopotentials:
+      Mg: Mg_ONCV_PBE-1.0.upf
+      O: O_ONCV_PBE-1.0.upf
+    orbitals:
+      Mg: Mg_gga_8au_100Ry_4s2p1d.orb
+      O: O_gga_8au_100Ry_2s2p1d.orb
+    orbital_types:
+      Mg:
+      - 0
+      - 0
+      - 0
+      - 0
+      - 1
+      - 1
+      - 2
+      O:
+      - 0
+      - 0
+      - 1
+      - 1
+      - 2
+    ecutwfc: 100
+    scf_thr: 1.0e-08
+    scf_nmax: 100
+    smearing_method: gaussian
+    smearing_sigma: 0.002
+    kmesh_primitive:
+    - 8
+    - 8
+    - 8
+    kmesh_supercell:
+      pilot:
+      - 4
+      - 4
+      - 4
+      main:
+      - 3
+      - 3
+      - 3
+      large:
+      - 2
+      - 2
+      - 2
+    gamma_only_algorithm: false
+    csr_h_filename: data-HR-sparse_SPIN0.csr
+    csr_s_filename: data-SR-sparse_SPIN0.csr
+    version: '3.7'
+  qe:
+    pseudo_dir: /home/jbailey/.claude/jobs/14a2d259/tmp/pp
+    pseudopotentials:
+      Mg: Mg_ONCV_PBE-1.0.upf
+      O: O_ONCV_PBE-1.0.upf
+    ecutwfc: 80
+    kmesh:
+    - 8
+    - 8
+    - 8
+    conv_thr: 1.0e-12
+    tr2_ph: 1.0e-14
+    version: '7.2'
+    pw_command: mpirun -n 16 pw.x
+    ph_command: mpirun -n 16 ph.x
+splits:
+  main:
+    train: 330
+    validation: 37
+    test: 37
+  pilot: 20
+  large_test: 44
+loader_split_roots:
+  train: loader_splits/train
+  validation: loader_splits/validation
+  test: loader_splits/test
+provenance:
+  abacus:
+    pseudopotentials:
+      Mg_ONCV_PBE-1.0.upf: a3f8accad5560fffacc7d6accdf6c3741c390a33a361494f626c5d378e752782
+      O_ONCV_PBE-1.0.upf: 1e7f05c526e5c56037b834d659ee86be5781cfb992ada71e5baf45f4450fd414
+    orbitals:
+      Mg_gga_8au_100Ry_4s2p1d.orb: 92a696aa6bfb7230315a320bfedaddcca2b984accc1b28fe38ab163ca81a3471
+      O_gga_8au_100Ry_2s2p1d.orb: 54424f7750d114360b1be066f9dbc80237ea6dd4b37b4e95ea43812fa67f6a02
+  quantum_espresso:
+    pseudopotentials:
+      Mg_ONCV_PBE-1.0.upf: a3f8accad5560fffacc7d6accdf6c3741c390a33a361494f626c5d378e752782
+      O_ONCV_PBE-1.0.upf: 1e7f05c526e5c56037b834d659ee86be5781cfb992ada71e5baf45f4450fd414
+  missing_files: []
+training_target: sr

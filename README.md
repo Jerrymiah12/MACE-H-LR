@@ -45,6 +45,16 @@ ${python_path} ./deephe3-train.py ./configs/train.ini | tee -a sh/log_train.txt
 
 as the slurm bash file in the ./sh directory. 
 
+### MgO long-range experiment
+
+`mgo_lr/` builds the MgO dataset that splits each Hamiltonian into an analytic
+long-range part and a short-range remainder, `H_full = H_SR + H_LR`. The paired
+training runs that test whether learning `H_SR` extrapolates better across cell
+sizes than learning `H_full` directly live in `training/` — see
+[training/README.md](training/README.md) for the configs, the split wiring and
+the GPU handoff, and [provenance/README.md](provenance/README.md) for the frozen
+dataset identity, counts and checksums.
+
 ### Model inference
 
 Given the trained model, you can get the predicted Hamiltonian matrices (i.e., the "Hamiltonians_pred.h5" file) by 

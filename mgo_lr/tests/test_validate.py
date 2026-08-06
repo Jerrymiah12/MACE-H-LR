@@ -361,9 +361,42 @@ def test_lr_convergence_absolute_arm_covers_the_larger_supercell(tmp_path):
     assert qc["tier1"]["failures"] == []
 
 
+def test_lr_convergence_absolute_arm_boundary_is_one_nanoelectronvolt(tmp_path):
+    # The absolute arm is the *only* thing keeping transverse labels in the set,
+    # so where exactly it cuts is load-bearing.  Pin the configured value and
+    # both sides of the comparison: the gate is a strict `<`, so a residual of
+    # exactly tau_G_abs is rejected and one ULP below it passes.
+    #
+    # The 1e-9 eV value is justified for the 3x3x3 and 4x4x4 cells only -- the
+    # measured residuals top out at 6.1e-11 eV at 4x4x4 and grow with the cell.
+    # See the scope note on `tau_G_abs` in mgo_lr/configs/mgo.yaml before
+    # relying on this threshold at a larger supercell.
+    ws, cfg, store = ladder_workspace(tmp_path)
+    sid = store.list()[0]
+    tau = float(cfg["validation"]["tau_G_abs"])
+    assert tau == 1.0e-9, f"tau_G_abs is {tau}, this test pins 1e-9 eV"
+
+    # exactly at the threshold: rejected, because the gate is `< tau_G_abs`
+    _set_conv(ws, store, sid, 1.5e-3, tau)
+    assert validate.validate_stage(cfg, ws, Args()) == 1
+    assert "lr_convergence" in _rejected_reason(ws, sid)
+
+    # one ULP below: accepted on the absolute arm alone
+    ws, cfg, store = ladder_workspace(tmp_path / "below")
+    sid = store.list()[0]
+    _set_conv(ws, store, sid, 1.5e-3, float(np.nextafter(tau, 0.0)))
+    assert validate.validate_stage(cfg, ws, Args()) == 0
+    qc = json.load(open(os.path.join(store.folder(sid),
+                                     "quality_checks.json")))
+    assert qc["tier1"]["failures"] == []
+    # and the largest residual actually measured on the 4x4x4 set clears it
+    # with the ~16x headroom the config comment claims
+    assert 6.1e-11 < tau and tau / 6.1e-11 > 16.0
+
+
 def test_lr_convergence_fails_when_both_arms_fail(tmp_path):
     # 1e-6 eV: a shift this large is a real change to the label, not roundoff,
-    # whatever the cell size.
+    # at either of the cell sizes this gate has been measured on (3x3x3, 4x4x4).
     ws, cfg, store = ladder_workspace(tmp_path)
     sid = store.list()[0]
     _set_conv(ws, store, sid, 1.5e-3, 1.0e-6)

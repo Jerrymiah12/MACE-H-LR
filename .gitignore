@@ -1,3 +1,11 @@
 __pycache__/
 *.pyc
 .DS_Store
+.pytest_cache/
+
+# agent scratch; the global ignore only covers settings.local.json
+.claude/
+
+# training artefacts: the data_trainval view, graph caches (~8 GB each) and
+# run output dirs.  Default `training_root` from training/train_sr.ini.
+/training_runs/

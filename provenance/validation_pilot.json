@@ -1,0 +1,109 @@
+{
+ "set": "pilot",
+ "counts": {
+  "validated": 20,
+  "rejected": 0
+ },
+ "tier1": {
+  "snapshot_000001": [],
+  "snapshot_000002": [],
+  "snapshot_000003": [],
+  "snapshot_000004": [],
+  "snapshot_000005": [],
+  "snapshot_000006": [],
+  "snapshot_000007": [],
+  "snapshot_000008": [],
+  "snapshot_000009": [],
+  "snapshot_000010": [],
+  "snapshot_000011": [],
+  "snapshot_000012": [],
+  "snapshot_000013": [],
+  "snapshot_000014": [],
+  "snapshot_000015": [],
+  "snapshot_000016": [],
+  "snapshot_000017": [],
+  "snapshot_000018": [],
+  "snapshot_000019": [],
+  "snapshot_000020": []
+ },
+ "tier2": {
+  "e_sign": [
+   {
+    "group": "grp-ba7cde4893",
+    "amplitude": 0.0025,
+    "sids": [
+     "snapshot_000002",
+     "snapshot_000003"
+    ],
+    "value": 0.0010646340198773435
+   },
+   {
+    "group": "grp-ba7cde4893",
+    "amplitude": 0.005,
+    "sids": [
+     "snapshot_000004",
+     "snapshot_000005"
+    ],
+    "value": 0.001066520910895956
+   },
+   {
+    "group": "grp-ba7cde4893",
+    "amplitude": 0.01,
+    "sids": [
+     "snapshot_000006",
+     "snapshot_000007"
+    ],
+    "value": 0.0010711037138046878
+   },
+   {
+    "group": "grp-ba7cde4893",
+    "amplitude": 0.02,
+    "sids": [
+     "snapshot_000008",
+     "snapshot_000009"
+    ],
+    "value": 0.0010792226506921134
+   },
+   {
+    "group": "grp-4b2fdaea6a",
+    "amplitude": 0.01,
+    "sids": [
+     "snapshot_000010",
+     "snapshot_000011"
+    ],
+    "value": 0.001066520910895956
+   }
+  ],
+  "e_linear": [
+   {
+    "group": "grp-ba7cde4893",
+    "amplitude": 0.0025,
+    "sids": [
+     "snapshot_000002",
+     "snapshot_000004"
+    ],
+    "value": 0.000736315010652816
+   },
+   {
+    "group": "grp-ba7cde4893",
+    "amplitude": 0.005,
+    "sids": [
+     "snapshot_000004",
+     "snapshot_000006"
+    ],
+    "value": 0.0007380732772496084
+   },
+   {
+    "group": "grp-ba7cde4893",
+    "amplitude": 0.01,
+    "sids": [
+     "snapshot_000006",
+     "snapshot_000008"
+    ],
+    "value": 0.0007378726455115117
+   }
+  ],
+  "violations": [],
+  "enforced": true
+ }
+}
