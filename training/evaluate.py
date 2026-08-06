@@ -104,7 +104,14 @@ class Report:
 
 
 def snapshot_dirs(workspace, which):
-    """(graph_root, {sid: truth_folder}) for a held-out set."""
+    """(sids, graph_root, {sid: truth_folder}) for a held-out set.
+
+    Snapshot ids are unique only *within* a set: `main`, `pilot` and
+    `large_test` each number from snapshot_000001, so all 44 large ids also
+    name unrelated main-set structures. Every lookup here is therefore scoped
+    to one set's directory, and results from different sets must never be
+    merged on id alone.
+    """
     splits_path = os.path.join(paths.PROVENANCE_DIR, "splits.json")
     with open(splits_path) as f:
         splits = json.load(f)

@@ -24,7 +24,6 @@ Usage
     python training/smoke_production.py --target full --epochs 2
 """
 import argparse
-import json
 import os
 import re
 import subprocess
@@ -102,9 +101,13 @@ def preflight(config_path, workspace):
     splits = paths.load_frozen_splits(workspace, "main")
     want_train = sorted(splits["train"])
     want_val = sorted(splits["validation"])
+    # Snapshot ids are unique only *within* a set -- `main`, `pilot` and
+    # `large_test` each number from snapshot_000001, so all 44 large ids also
+    # name unrelated main-set structures. Comparing ids across sets is
+    # therefore meaningless; the large set is excluded structurally instead,
+    # by the view being built only from main's train and validation loader
+    # views, which the exact-membership assertions below already pin.
     forbidden = set(splits["test"])
-    with open(os.path.join(paths.PROVENANCE_DIR, "splits.json")) as f:
-        forbidden |= set(json.load(f)["large_test"])
 
     import torch
 
@@ -136,13 +139,18 @@ def preflight(config_path, workspace):
     assert got_train == want_train, "train loader is not the frozen 330"
     assert got_val == want_val, "validation loader is not the frozen 37"
     leaked = sorted(present & forbidden)
-    assert not leaked, ("held-out snapshots are in the training dataset: "
-                        f"{leaked[:5]}{'...' if len(leaked) > 5 else ''}")
+    assert not leaked, ("held-out main-set test snapshots are in the training "
+                        f"dataset: {leaked[:5]}"
+                        f"{'...' if len(leaked) > 5 else ''}")
     assert not set(got_train) & set(got_val), "train and validation overlap"
+    assert len(present) == 367, \
+        (f"dataset holds {len(present)} snapshots, expected exactly 367 "
+         "(330 train + 37 validation) -- anything else means the view picked "
+         "up structures it should not have")
     print(f"  train loader      330 snapshots == frozen main.train")
     print(f"  validation loader  37 snapshots == frozen main.validation")
-    print(f"  dataset holds {len(present)} snapshots, none from main.test "
-          f"or large_test")
+    print(f"  dataset holds {len(present)} snapshots (330+37), "
+          f"none from main.test")
     return config
 
 
