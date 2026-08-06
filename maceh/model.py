@@ -3,7 +3,11 @@ import os
 import torch
 from torch import nn
 import torch.nn.functional as F
-from torch_scatter import scatter
+# torch_geometric's scatter, not torch_scatter's: it is pure PyTorch, so it
+# needs no compiled CUDA extension pinned to the exact torch build.  Drop-in
+# here -- every call site passes dim/dim_size/reduce by keyword, and the two
+# agree on real and complex tensors alike (see maceh/tests/test_scatter.py).
+from torch_geometric.utils import scatter
 from e3nn.nn import Gate
 from e3nn.o3 import Irreps, Linear, SphericalHarmonics, FullyConnectedTensorProduct
 from .from_nequip.cutoffs import PolynomialCutoff

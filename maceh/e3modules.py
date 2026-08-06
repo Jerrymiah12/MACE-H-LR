@@ -1,8 +1,8 @@
 import torch
 from torch import nn
 import torch.nn.functional as F
-from torch_scatter import scatter
-from torch_geometric.utils import degree
+# torch_geometric's scatter, not torch_scatter's -- see the note in model.py
+from torch_geometric.utils import scatter, degree
 
 from e3nn.o3 import Irrep, Irreps, wigner_3j, matrix_to_angles, Linear, FullyConnectedTensorProduct, TensorProduct, SphericalHarmonics
 from e3nn.nn import Extract
