@@ -128,21 +128,27 @@ def snapshot_dirs(workspace, which):
     return sids, graph_root, truth
 
 
-def build_eval_config(run_dir, graph_root, training_root, dataset_name, device):
-    """The run's own train.ini, repointed at the evaluation set."""
+def build_eval_config(run_dir, graph_root, training_root, which, label, device):
+    """The run's own train.ini, repointed at the evaluation set.
+
+    The graph cache is keyed on the *set*, not the model: the two runs differ
+    only in their output paths, so they produce identical graphs, and the
+    stored labels are never read here -- predictions are scored against the
+    h5 files directly. So both models share one cache per evaluation set.
+    """
     src_ini = os.path.join(run_dir, "src", "train.ini")
     if not os.path.isfile(src_ini):
         raise SystemExit(f"{src_ini}: missing; is {run_dir} a finished run?")
     cp = paths.read_config(src_ini)
     cp["data"]["processed_data_dir"] = graph_root
     cp["data"]["save_graph_dir"] = os.path.join(training_root, "graphs_eval")
-    cp["data"]["dataset_name"] = dataset_name
+    cp["data"]["dataset_name"] = f"eval{which}"
     cp["basic"]["save_dir"] = os.path.join(training_root, "eval_scratch",
-                                           dataset_name)
+                                           f"{which}_{label}")
     cp["train"]["extra_validation"] = "[]"
     if device:
         cp["basic"]["device"] = device
-    out = os.path.join(training_root, f"eval_{dataset_name}.ini")
+    out = os.path.join(training_root, f"eval_{which}_{label}.ini")
     os.makedirs(training_root, exist_ok=True)
     with open(out, "w") as f:
         cp.write(f)
@@ -284,7 +290,7 @@ def main():
             continue
         print(f"\n[{label}] {run_dir}")
         cfg = build_eval_config(run_dir, graph_root, training_root,
-                                f"eval{args.which}{label}", args.device)
+                                args.which, label, args.device)
         preds = predict(run_dir, cfg, sids)
         print(f"  predicted {len(preds)} snapshots; scoring in full-H space"
               f"{' (H_SR_pred + H_LR)' if add_lr else ' (direct)'}")
