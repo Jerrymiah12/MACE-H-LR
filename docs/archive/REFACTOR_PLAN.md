@@ -7,7 +7,7 @@ pending group approval.
 **Upstream:** MACE-H (`maurergroup/MACE-H`, arXiv:2508.15108) → DeepH-E3 (`Xiaoxun-Gong/DeepH-E3`, arXiv:2210.13955). MIT licensed.
 
 Implementation verification: local `pre-refactor` tag at
-`2bad8021ca7581207de0fdb817ed3f6266c16a55`; 289 default CPU tests pass and
+`b546ea841f93eaace2584f6e49487cc57a4ffe7f`; 289 default CPU tests pass and
 4 environment-dependent tests skip; all 75 curated result artifacts have
 sibling checksum/provenance manifests. No remote was added or pushed.
 

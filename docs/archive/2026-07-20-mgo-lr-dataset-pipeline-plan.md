@@ -21,7 +21,7 @@
 - LR phase convention: reference positions `R⁰` in dipole coefficients; potential evaluated at snapshot positions; `V` is electron potential energy (sign `LR_SIGN = −1` in constants, pinned by test).
 - One global seed `displacements.seed`; all randomness through `np.random.default_rng([seed, ...])` with documented derived streams.
 - Raw DFT outputs are read-only; `hamiltonians_full.h5` is never rewritten after `collect-dft`; `export-target` only ever (re)writes `hamiltonians.h5` and refuses to clobber a non-exported file.
-- Commit after every task with the message given in the task's final step (append the standard `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>` trailer).
+- Commit after every task with the message given in the task's final step (no attribution trailer).
 
 ---
 
