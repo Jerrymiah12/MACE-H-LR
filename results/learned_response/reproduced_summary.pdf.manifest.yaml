@@ -5,5 +5,5 @@ command: "python -m workflows.analysis.reproduce_summary"
 inputs:
   primary: "results/learned_response/metrics.json"
 environment: "environment.yml"
-sha256: "de2f2a84556a2d5ba624c79cf69b8dde4a7c127825f61ceb96ceb1f5cf3c46d9"
+sha256: "0fc12760eb82542adcc589a68e081637051860f4788e80d94d21f72be9a0a0bd"
 
