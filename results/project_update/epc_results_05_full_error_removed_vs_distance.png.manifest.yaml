@@ -1,0 +1,9 @@
+artifact: "results/project_update/epc_results_05_full_error_removed_vs_distance.png"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.make_results_figures"
+inputs:
+  primary: "workflows/epc/comparison_metrics.json"
+environment: "environment.yml"
+sha256: "ab8e01414aaaf5b5b00f2356c8860f7cb7fc5898478d3a018f9e2bee75361f8e"
+

@@ -1,0 +1,9 @@
+artifact: "results/project_update/FULL_H_PIPELINE_AUDIT.md"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.audit_full_h_pipeline"
+inputs:
+  primary: "provenance/metadata.yaml"
+environment: "environment.yml"
+sha256: "ce859a50428614e524d62a9b00aa9a3553c170c3aa390fd11b352483e88c32b0"
+

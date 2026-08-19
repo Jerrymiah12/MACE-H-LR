@@ -1,0 +1,35 @@
+MACE-H-LR derives from MACE-H (github.com/maurergroup/MACE-H,
+arXiv:2508.15108), imported into this history at commit
+2c331bc1bf18a5c5ca72f58979b5ebba3c7230ed. MACE-H derives from DeepH-E3
+(github.com/Xiaoxun-Gong/DeepH-E3, arXiv:2210.13955). Both projects are
+distributed under the MIT License.
+
+Inherited largely unchanged: src/maceh/{graph,model,maceh,macehmodules,
+e3modules,kernel,utils,statistics,analyzer}, default configuration files, and
+the OpenMX preprocessing resources.
+
+Developed in this project: src/maceh/{response,epc,paths}, the MgO dataset and
+training campaigns under workflows/, and the MgO response/EPC analyses.
+
+Copied third-party source lives under src/maceh/_vendor/. Each directory has
+an ORIGIN record and its license is reproduced under licenses/. Every vendored
+component is MIT licensed, so the distribution as a whole is MIT.
+
+One exception used to sit here. The spherical Bessel radial basis originates in
+DimeNet, whose repository is licensed under the Hippocratic License 2.1 -- not
+MIT, and not OSI-approved. This was re-verified on 2026-08-18 by fetching
+https://raw.githubusercontent.com/gasteigerjo/dimenet/master/LICENSE.md, which
+opens "DimeNet Copyright 2020 Johannes Gasteiger" and "Hippocratic License
+Version Number: 2.1." and contains no MIT grant.
+
+PyTorch Geometric redistributes the same functions under MIT as
+torch_geometric.nn.models.dimenet_utils. Since PyG is already a required
+dependency, maceh/e3modules.py imports bessel_basis from there and the vendored
+copy has been removed. The two implementations are symbolically identical --
+verified equal for all 25 functions of a 5x5 basis, maximum difference exactly
+zero -- so this changed no numerical result. It removes the license exception
+rather than restating it: this project distributes no Hippocratic-licensed code.
+
+The exact upstream revisions of the copied vendor files were not recorded by
+the predecessor repositories. The ORIGIN files state this limitation rather
+than inventing provenance.

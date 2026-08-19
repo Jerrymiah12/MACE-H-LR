@@ -1,0 +1,6 @@
+{
+  "sr_test_mae_meV": {"value": 1.0, "rtol": 1e-12},
+  "epc_xx_meV_per_ang": {"value": 1500.0, "rtol": 1e-12},
+  "born_Mg_xx": {"value": 1.9622, "rtol": 1e-12},
+  "eps_inf_xx": {"value": 3.135573418, "rtol": 1e-12}
+}

@@ -1,0 +1,9 @@
+artifact: "results/project_update/epc_results_02_cartesian_component_mae.png"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.make_results_figures"
+inputs:
+  primary: "workflows/epc/comparison_metrics.json"
+environment: "environment.yml"
+sha256: "8d9be65723b7aa589c6c259667e0c231dd1079d5fdecf250d3996260ca12a0e6"
+

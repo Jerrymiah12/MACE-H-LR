@@ -1,0 +1,256 @@
+{
+  "scope": {
+    "hamiltonian_snapshots": [
+      "snapshot_000080",
+      "snapshot_000229",
+      "snapshot_000295",
+      "snapshot_000333",
+      "snapshot_000334"
+    ],
+    "hamiltonian_quantity": "full-H matrix elements",
+    "epc_quantity": "Cartesian AO EPC before phonon/band contraction",
+    "tensor_epc_mode_plotted": "geometry_dependent"
+  },
+  "sources": {
+    "regular_training_metrics": "<MACEH_RUNS_ROOT>/result_figures/metrics.json",
+    "locked_tensor_report": "<MACEH_RUNS_ROOT>/run_sr_tensors_partial/2026-08-13_19-04-59_sr_born_epsilon_partial/locked_test_report.json",
+    "epc": {
+      "dft": "<MACEH_RUNS_ROOT>/epc/actual/structure_primitive/epc_cartesian_actual.h5",
+      "full": "<MACEH_RUNS_ROOT>/epc/full/structure_primitive/epc_cartesian_pred.h5",
+      "sr": "<MACEH_RUNS_ROOT>/epc/sr/structure_primitive/epc_cartesian_pred.h5",
+      "tensor": "<MACEH_RUNS_ROOT>/epc/sr_tensors_geometry/structure_primitive/epc_cartesian_pred.h5",
+      "tensor_frozen": "<MACEH_RUNS_ROOT>/epc/sr_tensors_frozen/structure_primitive/epc_cartesian_pred.h5"
+    },
+    "sha256": {
+      "locked_tensor_report": "230de9618fafb93e4e3a85e9f205ea2e56ae29f690166b948a8b38c7e19a4d73",
+      "epc_dft": "4d42fbfb689f7d7e0ae06f80f03feb146c41343cc2fa12f4c1bd3f5bf0061cfc",
+      "epc_full": "86d19b690c9770a626a5889f44fb62b2ee947ea1795e00e677955ac1e47de15c",
+      "epc_sr": "db1fd9309cdba550e496d47f6cdc84bb2dd2a2c0cd4590c3f5a96f3e614d6b3d",
+      "epc_tensor": "6ec9fdb9dde1fd34c4eca7f0327085043316fbf51a5abfae713c25a5d41224a2",
+      "epc_tensor_frozen": "7a8401413e2e79b604f59422930381c869d50acdfc79227bf9941c7fecbee565"
+    }
+  },
+  "hamiltonian": {
+    "dft": {
+      "mae": 0.0,
+      "rmse": 0.0,
+      "n_elements": 0,
+      "max_abs": 0.0
+    },
+    "full": {
+      "mae": 0.00041658257314827225,
+      "rmse": 0.0017198693655606685,
+      "n_elements": 24423360,
+      "max_abs": 0.4810840084765573
+    },
+    "sr": {
+      "mae": 0.00048677548993223346,
+      "rmse": 0.0018114031040818441,
+      "n_elements": 24423360,
+      "max_abs": 0.26386350375420875
+    },
+    "tensor": {
+      "mae": 0.00048499937138868436,
+      "max_abs": 0.2871365758018385,
+      "n_elements": 24423360,
+      "rmse": 0.0018056594833013814
+    }
+  },
+  "hamiltonian_by_snapshot": {
+    "dft": {
+      "snapshot_000080": {
+        "mae": 0.0,
+        "rmse": 0.0
+      },
+      "snapshot_000229": {
+        "mae": 0.0,
+        "rmse": 0.0
+      },
+      "snapshot_000295": {
+        "mae": 0.0,
+        "rmse": 0.0
+      },
+      "snapshot_000333": {
+        "mae": 0.0,
+        "rmse": 0.0
+      },
+      "snapshot_000334": {
+        "mae": 0.0,
+        "rmse": 0.0
+      }
+    },
+    "full": {
+      "snapshot_000080": {
+        "mae": 0.0008535381498595796,
+        "rmse": 0.003012760996703793,
+        "max_abs": 0.4810840084765573,
+        "n_elements": 4837968
+      },
+      "snapshot_000229": {
+        "mae": 0.00016987607469021393,
+        "rmse": 0.000644349827089817,
+        "max_abs": 0.09242891665455648,
+        "n_elements": 4914918
+      },
+      "snapshot_000295": {
+        "mae": 0.0005860535841954832,
+        "rmse": 0.0018730570210979025,
+        "max_abs": 0.2917439595582749,
+        "n_elements": 4840638
+      },
+      "snapshot_000333": {
+        "mae": 0.00024898087072036174,
+        "rmse": 0.0009892674526577546,
+        "max_abs": 0.14482983779807057,
+        "n_elements": 4914918
+      },
+      "snapshot_000334": {
+        "mae": 0.00023386658898692203,
+        "rmse": 0.0009565360719650208,
+        "max_abs": 0.16488558566852873,
+        "n_elements": 4914918
+      }
+    },
+    "sr": {
+      "snapshot_000080": {
+        "mae": 0.0008658287548429556,
+        "rmse": 0.0027759077652026137,
+        "max_abs": 0.20950807467546895,
+        "n_elements": 4837968
+      },
+      "snapshot_000229": {
+        "mae": 0.0002469169797980962,
+        "rmse": 0.0010164604533709884,
+        "max_abs": 0.09056072096289115,
+        "n_elements": 4914918
+      },
+      "snapshot_000295": {
+        "mae": 0.0007220992897493406,
+        "rmse": 0.002250574229936334,
+        "max_abs": 0.26386350375420875,
+        "n_elements": 4840638
+      },
+      "snapshot_000333": {
+        "mae": 0.00030572016159656544,
+        "rmse": 0.0011612025061391604,
+        "max_abs": 0.09090042078225323,
+        "n_elements": 4914918
+      },
+      "snapshot_000334": {
+        "mae": 0.0003028033682227075,
+        "rmse": 0.001161811776755902,
+        "max_abs": 0.08914434852253278,
+        "n_elements": 4914918
+      }
+    },
+    "tensor": {
+      "snapshot_000080": {
+        "mae": 0.0008653521524852631,
+        "max_abs": 0.1956266973952836,
+        "n_elements": 4837968,
+        "rmse": 0.002768561182874192
+      },
+      "snapshot_000229": {
+        "mae": 0.00024402707308779725,
+        "max_abs": 0.09048469522508945,
+        "n_elements": 4914918,
+        "rmse": 0.0010173671949021555
+      },
+      "snapshot_000295": {
+        "mae": 0.0007216947834858006,
+        "max_abs": 0.2871365758018385,
+        "n_elements": 4840638,
+        "rmse": 0.0022460012012309326
+      },
+      "snapshot_000333": {
+        "mae": 0.00030322642134963446,
+        "max_abs": 0.09057131373841319,
+        "n_elements": 4914918,
+        "rmse": 0.0011491970588860781
+      },
+      "snapshot_000334": {
+        "mae": 0.0003002286062612159,
+        "max_abs": 0.08879312815643611,
+        "n_elements": 4914918,
+        "rmse": 0.0011544744484235788
+      }
+    }
+  },
+  "tensor_targets": {
+    "born": {
+      "mae": 0.002368645777383408,
+      "max_abs": 0.026461420898437282,
+      "n_elements": 2430,
+      "rmse": 0.004033028226118851
+    },
+    "epsilon": {
+      "mae": 0.00038931673221898316,
+      "max_abs": 0.001614174958374015,
+      "n_elements": 45,
+      "rmse": 0.0006019510789968182
+    },
+    "constant_baseline": {
+      "born_mae": 0.003201002423411069,
+      "born_rmse": 0.005011081350796271,
+      "epsilon_mae": 0.001466393926666793,
+      "epsilon_rmse": 0.0020249741242109156
+    }
+  },
+  "epc": {
+    "dft": {
+      "relative_l2": 0.0,
+      "complex_mae_eV_per_A": 0.0,
+      "complex_rmse_eV_per_A": 0.0,
+      "max_abs_error_eV_per_A": 0.0,
+      "cosine_similarity": 0.9999999999999993,
+      "norm_ratio_to_dft": 1.0,
+      "dft_norm": 1931.3801446152713,
+      "prediction_norm": 1931.3801446152713,
+      "n_complex_elements": 301056
+    },
+    "full": {
+      "relative_l2": 0.9192832286332208,
+      "complex_mae_eV_per_A": 0.5521893234320984,
+      "complex_rmse_eV_per_A": 3.2358878085350242,
+      "max_abs_error_eV_per_A": 92.29327568510709,
+      "cosine_similarity": 0.7306011954341585,
+      "norm_ratio_to_dft": 1.3461170451213467,
+      "dft_norm": 1931.3801446152713,
+      "prediction_norm": 2599.8637332755484,
+      "n_complex_elements": 301056
+    },
+    "sr": {
+      "relative_l2": 0.24355837420246343,
+      "complex_mae_eV_per_A": 0.26790276918694217,
+      "complex_rmse_eV_per_A": 0.8573283501757573,
+      "max_abs_error_eV_per_A": 51.01461190603968,
+      "cosine_similarity": 0.9700162157361147,
+      "norm_ratio_to_dft": 0.9541372851940193,
+      "dft_norm": 1931.3801446152713,
+      "prediction_norm": 1842.8018078608475,
+      "n_complex_elements": 301056
+    },
+    "tensor": {
+      "relative_l2": 0.24432775382543703,
+      "complex_mae_eV_per_A": 0.26881316773240377,
+      "complex_rmse_eV_per_A": 0.8600365755241268,
+      "max_abs_error_eV_per_A": 51.29698705978043,
+      "cosine_similarity": 0.9698249739054218,
+      "norm_ratio_to_dft": 0.9538083793848754,
+      "dft_norm": 1931.3801446152713,
+      "prediction_norm": 1842.1665657116182,
+      "n_complex_elements": 301056
+    }
+  },
+  "tensor_epc_frozen_vs_geometry": {
+    "relative_l2": 5.991039968132586e-10,
+    "complex_mae_eV_per_A": 4.257169693398889e-10,
+    "complex_rmse_eV_per_A": 2.0114417917570116e-09,
+    "max_abs_error_eV_per_A": 4.273303932933459e-07,
+    "cosine_similarity": 1.0000000000000002,
+    "norm_ratio_to_dft": 1.0000000000009126,
+    "dft_norm": 1842.1665657116182,
+    "prediction_norm": 1842.1665657132992,
+    "n_complex_elements": 301056
+  }
+}

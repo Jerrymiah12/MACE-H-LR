@@ -1,0 +1,9 @@
+artifact: "results/project_update/EPC_PIPELINE_DECOMPOSITION.md"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.analyze_epc_decomposition"
+inputs:
+  primary: "workflows/epc/comparison_metrics.json"
+environment: "environment.yml"
+sha256: "185dc29573f9ae7891a729f69fb6b9b357b685a475a61b35e8b1c51766eed649"
+

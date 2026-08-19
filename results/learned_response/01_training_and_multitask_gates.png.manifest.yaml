@@ -1,0 +1,9 @@
+artifact: "results/learned_response/01_training_and_multitask_gates.png"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.analysis.generate_plots"
+inputs:
+  primary: "results/learned_response/metrics.json"
+environment: "environment.yml"
+sha256: "1a86560525c957254d940128a1603708b53bb7ac445859f18768a3add7618405"
+

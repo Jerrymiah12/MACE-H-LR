@@ -1,0 +1,9 @@
+artifact: "results/project_update/response_scan_four_bucket_summary.pdf"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.analyze_response_scan"
+inputs:
+  primary: "results/project_update/response_scan_investigation.json"
+environment: "environment.yml"
+sha256: "f21cd1f99739d3e180b1db509f7620fd56f63c31f5a93e350265806a7141b236"
+

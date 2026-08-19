@@ -1,0 +1,9 @@
+artifact: "results/project_update/epc_02_dft_parity.pdf"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.make_results_figures"
+inputs:
+  primary: "workflows/epc/comparison_metrics.json"
+environment: "environment.yml"
+sha256: "bc346ff6cb73bcb5b8d5c7addfdc521bea10e371feb7bf825aac469938bb9e07"
+

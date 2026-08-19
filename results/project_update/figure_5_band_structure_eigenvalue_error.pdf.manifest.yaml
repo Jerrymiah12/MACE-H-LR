@@ -1,0 +1,9 @@
+artifact: "results/project_update/figure_5_band_structure_eigenvalue_error.pdf"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.training.make_result_figures"
+inputs:
+  primary: "provenance/metadata.yaml"
+environment: "environment.yml"
+sha256: "e8e2f7dbadb0ed0a756730e79b25a296512d280339e846d817e32fe192e7bfa5"
+

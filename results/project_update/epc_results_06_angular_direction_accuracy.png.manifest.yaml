@@ -1,0 +1,9 @@
+artifact: "results/project_update/epc_results_06_angular_direction_accuracy.png"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.make_results_figures"
+inputs:
+  primary: "workflows/epc/comparison_metrics.json"
+environment: "environment.yml"
+sha256: "2b44391ca3d1d670ad89891cf7c95ca3b4e3d6615df98746cae496df3c3268bf"
+

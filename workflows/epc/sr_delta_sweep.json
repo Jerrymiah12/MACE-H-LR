@@ -1,0 +1,67 @@
+{
+ "config": "workflows/epc/sr.ini",
+ "atom": 0,
+ "direction": "x",
+ "elapsed_seconds": 4.157634735107422,
+ "deltas": [
+  0.001,
+  0.0005,
+  0.0002,
+  0.0001,
+  5e-05,
+  2e-05,
+  1e-05,
+  5e-06
+ ],
+ "comparisons": [
+  {
+   "delta": 0.001,
+   "next_delta": 0.0005,
+   "relative_l2_difference": 0.008520245640103714,
+   "max_abs_difference_eV_per_A": 0.04953777783127389,
+   "max_difference_over_peak": 0.004211547870508945
+  },
+  {
+   "delta": 0.0005,
+   "next_delta": 0.0002,
+   "relative_l2_difference": 0.005087869263706637,
+   "max_abs_difference_eV_per_A": 0.029672012537208803,
+   "max_difference_over_peak": 0.0025226283091915615
+  },
+  {
+   "delta": 0.0002,
+   "next_delta": 0.0001,
+   "relative_l2_difference": 0.001027621444807103,
+   "max_abs_difference_eV_per_A": 0.007436722232675996,
+   "max_difference_over_peak": 0.0006322487789732512
+  },
+  {
+   "delta": 0.0001,
+   "next_delta": 5e-05,
+   "relative_l2_difference": 0.00027273590778561065,
+   "max_abs_difference_eV_per_A": 0.0020252244153223797,
+   "max_difference_over_peak": 0.0001721787850496092
+  },
+  {
+   "delta": 5e-05,
+   "next_delta": 2e-05,
+   "relative_l2_difference": 7.753098660500598e-05,
+   "max_abs_difference_eV_per_A": 0.0005793151954675002,
+   "max_difference_over_peak": 4.925172180071088e-05
+  },
+  {
+   "delta": 2e-05,
+   "next_delta": 1e-05,
+   "relative_l2_difference": 1.1117635666235895e-05,
+   "max_abs_difference_eV_per_A": 8.31994875771791e-05,
+   "max_difference_over_peak": 7.073382617416709e-06
+  },
+  {
+   "delta": 1e-05,
+   "next_delta": 5e-06,
+   "relative_l2_difference": 2.7810353799421525e-06,
+   "max_abs_difference_eV_per_A": 2.081711747425885e-05,
+   "max_difference_over_peak": 1.7698118261617101e-06
+  }
+ ]
+}

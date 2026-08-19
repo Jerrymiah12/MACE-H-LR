@@ -1,0 +1,75 @@
+{
+ "config": "workflows/epc/full_benchmark.ini",
+ "atom": 0,
+ "direction": "x",
+ "elapsed_seconds": 5.80697774887085,
+ "deltas": [
+  0.01,
+  0.005,
+  0.0025,
+  0.001,
+  0.0005,
+  0.0002,
+  0.0001,
+  5e-05,
+  2e-05
+ ],
+ "comparisons": [
+  {
+   "delta": 0.01,
+   "next_delta": 0.005,
+   "relative_l2_difference": 0.11077373703030781,
+   "max_abs_difference_eV_per_A": 0.9118320621698955,
+   "max_difference_over_peak": 0.07826222776798981
+  },
+  {
+   "delta": 0.005,
+   "next_delta": 0.0025,
+   "relative_l2_difference": 0.2796778432792895,
+   "max_abs_difference_eV_per_A": 2.9287612204921416,
+   "max_difference_over_peak": 0.25139632634817005
+  },
+  {
+   "delta": 0.0025,
+   "next_delta": 0.001,
+   "relative_l2_difference": 0.7376333375048453,
+   "max_abs_difference_eV_per_A": 9.637738342528381,
+   "max_difference_over_peak": 0.8272818630619162
+  },
+  {
+   "delta": 0.001,
+   "next_delta": 0.0005,
+   "relative_l2_difference": 0.6171591630923852,
+   "max_abs_difference_eV_per_A": 9.245427987663195,
+   "max_difference_over_peak": 0.7936048257401606
+  },
+  {
+   "delta": 0.0005,
+   "next_delta": 0.0002,
+   "relative_l2_difference": 0.3374826923847972,
+   "max_abs_difference_eV_per_A": 7.094370600045419,
+   "max_difference_over_peak": 0.5335120228604766
+  },
+  {
+   "delta": 0.0002,
+   "next_delta": 0.0001,
+   "relative_l2_difference": 0.032182324075103755,
+   "max_abs_difference_eV_per_A": 0.8291584618726553,
+   "max_difference_over_peak": 0.061394049992897264
+  },
+  {
+   "delta": 0.0001,
+   "next_delta": 5e-05,
+   "relative_l2_difference": 0.009753351770982455,
+   "max_abs_difference_eV_per_A": 0.15524991317659254,
+   "max_difference_over_peak": 0.011476327143381837
+  },
+  {
+   "delta": 5e-05,
+   "next_delta": 2e-05,
+   "relative_l2_difference": 0.0030685189648308425,
+   "max_abs_difference_eV_per_A": 0.0528521102710533,
+   "max_difference_over_peak": 0.00390583279037838
+  }
+ ]
+}

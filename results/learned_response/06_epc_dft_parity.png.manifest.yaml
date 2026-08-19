@@ -1,0 +1,9 @@
+artifact: "results/learned_response/06_epc_dft_parity.png"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.analysis.generate_plots"
+inputs:
+  primary: "results/learned_response/metrics.json"
+environment: "environment.yml"
+sha256: "1f4baaafc9f70482d77130a0df6cb6344983dcec667f5ec089cf453c4a959a5e"
+

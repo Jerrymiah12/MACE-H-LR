@@ -1,0 +1,9 @@
+artifact: "results/project_update/epc_results_03_magnitude_parity.pdf"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.make_results_figures"
+inputs:
+  primary: "workflows/epc/comparison_metrics.json"
+environment: "environment.yml"
+sha256: "76c205ae6b0bd665708b1ccd07eaad9301f2b45e8f2bec9967fd68242f6f2b99"
+

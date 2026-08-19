@@ -10,8 +10,8 @@ material:
     Mg: 24.305
     O: 15.999
 abacus:
-  pseudo_dir: /home/jbailey/.claude/jobs/14a2d259/tmp/pp
-  orbital_dir: /home/jbailey/.claude/jobs/14a2d259/tmp/orb
+  pseudo_dir: <MACEH_DATA_ROOT>/reference/pseudopotentials
+  orbital_dir: <MACEH_DATA_ROOT>/reference/orbitals
   pseudopotentials:
     Mg: Mg_ONCV_PBE-1.0.upf
     O: O_ONCV_PBE-1.0.upf
@@ -60,7 +60,7 @@ abacus:
   csr_s_filename: data-SR-sparse_SPIN0.csr
   version: '3.7'
 qe:
-  pseudo_dir: /home/jbailey/.claude/jobs/14a2d259/tmp/pp
+  pseudo_dir: <MACEH_DATA_ROOT>/reference/pseudopotentials
   pseudopotentials:
     Mg: Mg_ONCV_PBE-1.0.upf
     O: O_ONCV_PBE-1.0.upf

@@ -1,0 +1,6 @@
+Upstream: https://github.com/materialsproject/pymatgen
+Component: lattice neighbor-search utilities
+Revision: exact upstream revision was not recorded by DeepH-E3/MACE-H
+Inherited at: repository commit 2c331bc1bf18a5c5ca72f58979b5ebba3c7230ed
+License: MIT (see licenses/PYMATGEN.txt)
+

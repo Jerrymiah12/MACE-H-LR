@@ -1,0 +1,9 @@
+artifact: "results/project_update/full_h_pipeline_audit_equilibrium.pdf"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.audit_full_h_pipeline"
+inputs:
+  primary: "results/project_update/full_h_pipeline_audit.json"
+environment: "environment.yml"
+sha256: "9342ee2b0263b682dbb7ad122bdafb2f4ba77f85d05fccac676a7df5d5ca02b4"
+

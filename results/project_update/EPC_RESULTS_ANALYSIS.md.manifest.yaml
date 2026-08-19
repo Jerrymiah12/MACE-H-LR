@@ -1,0 +1,9 @@
+artifact: "results/project_update/EPC_RESULTS_ANALYSIS.md"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.make_results_figures"
+inputs:
+  primary: "workflows/epc/comparison_metrics.json"
+environment: "environment.yml"
+sha256: "9a15e3c26092abf66c1af84a135445b17ff08954a18b52eec92c05e7e7bd9fcb"
+

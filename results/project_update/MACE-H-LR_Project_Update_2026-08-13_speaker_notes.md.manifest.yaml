@@ -1,0 +1,9 @@
+artifact: "results/project_update/MACE-H-LR_Project_Update_2026-08-13_speaker_notes.md"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.analysis.build_project_update_presentation"
+inputs:
+  primary: "provenance/metadata.yaml"
+environment: "environment.yml"
+sha256: "f0a430fb3497b6d2678cd0319d1be5444eef5f2c4b8fc5fb68c7e26c3dd02232"
+

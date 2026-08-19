@@ -1,0 +1,9 @@
+artifact: "results/project_update/epc_03_component_error_heatmap.pdf"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.make_results_figures"
+inputs:
+  primary: "workflows/epc/comparison_metrics.json"
+environment: "environment.yml"
+sha256: "e6cb37068e236d604e0e7a6afbc15b5bdd610549530715f5ec9acd8d33b98d72"
+

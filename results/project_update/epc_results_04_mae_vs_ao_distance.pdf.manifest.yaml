@@ -1,0 +1,9 @@
+artifact: "results/project_update/epc_results_04_mae_vs_ao_distance.pdf"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.make_results_figures"
+inputs:
+  primary: "workflows/epc/comparison_metrics.json"
+environment: "environment.yml"
+sha256: "30af2883f7ba08d1ee7c6c1bb20c1f7be2da6d81b862fdb37db0d11df9e2cb22"
+

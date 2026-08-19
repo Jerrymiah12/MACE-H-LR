@@ -1,0 +1,112 @@
+import json
+import os
+
+import numpy as np
+import pytest
+import yaml
+
+from maceh.data.io.blocks import read_blocks
+from maceh.response.long_range import blocks_diff_norm
+from workflows.mgo_dataset import export
+from maceh.config import sha256_file
+from tests.integration.mgo_dataset.test_convert import Args
+from tests.integration.mgo_dataset.test_lr_process import converted_snapshot
+from tests.integration.mgo_dataset.test_validate import ladder_workspace
+
+
+def _args(target):
+    a = Args()
+    a.target = target
+    return a
+
+
+def test_export_lr_then_switch_to_sr(tmp_path):
+    ws, cfg, store = ladder_workspace(tmp_path)
+    folders = [store.folder(sid) for sid in store.list()]
+    before = {f: {n: sha256_file(os.path.join(f, n))
+                  for n in export.SOURCES.values()} for f in folders}
+    assert export.export_target_stage(cfg, ws, _args("lr")) == 0
+    for f in folders:
+        got = read_blocks(os.path.join(f, "hamiltonians.h5"))
+        want = read_blocks(os.path.join(f, "hamiltonians_lr.h5"))
+        assert blocks_diff_norm(got, want) == 0.0
+        marker = json.load(open(os.path.join(f, "export_metadata.json")))
+        assert marker["target"] == "lr"
+    assert export.export_target_stage(cfg, ws, _args("sr")) == 0
+    for f in folders:
+        got = read_blocks(os.path.join(f, "hamiltonians.h5"))
+        want = read_blocks(os.path.join(f, "hamiltonians_sr.h5"))
+        assert blocks_diff_norm(got, want) == 0.0
+        # sources untouched by both exports
+        for n, digest in before[f].items():
+            assert sha256_file(os.path.join(f, n)) == digest
+    meta = yaml.safe_load(open(os.path.join(ws, "metadata.yaml")))
+    assert meta["training_target"] == "sr"
+
+
+def test_export_full_from_converted_only(tmp_path):
+    ws, cfg, store, sid, sc = converted_snapshot(tmp_path)   # no lr-process
+    assert export.export_target_stage(cfg, ws, _args("full")) == 0
+    f = store.folder(sid)
+    assert os.path.exists(os.path.join(f, "hamiltonians.h5"))
+
+
+def test_export_sr_refuses_partial_dataset(tmp_path):
+    # P1 regression: export is all-or-nothing.  With a snapshot only `converted`
+    # (no sr source), requesting sr must fail and change NOTHING — never
+    # silently skip it and advertise a mixed dataset as uniform sr.
+    ws, cfg, store, sid, sc = converted_snapshot(tmp_path)   # no lr-process
+    assert export.export_target_stage(cfg, ws, _args("full")) == 0
+    f = store.folder(sid)
+    full_before = sha256_file(os.path.join(f, "hamiltonians.h5"))
+    with pytest.raises(SystemExit, match="all-or-nothing"):
+        export.export_target_stage(cfg, ws, _args("sr"))
+    assert sha256_file(os.path.join(f, "hamiltonians.h5")) == full_before
+    meta = yaml.safe_load(open(os.path.join(ws, "metadata.yaml")))
+    assert meta["training_target"] == "full"                 # target unchanged
+
+
+def test_export_preflight_leaves_no_partial_targets(tmp_path):
+    ws, cfg, store = ladder_workspace(tmp_path)
+    missing_sid = store.list()[1]
+    os.remove(os.path.join(store.folder(missing_sid), "hamiltonians_sr.h5"))
+    with pytest.raises(SystemExit, match="incomplete dataset"):
+        export.export_target_stage(cfg, ws, _args("sr"))
+    for sid in store.list():
+        assert not os.path.lexists(
+            os.path.join(store.folder(sid), "hamiltonians.h5"))
+        assert not os.path.exists(
+            os.path.join(store.folder(sid), "export_metadata.json"))
+    metadata = yaml.safe_load(open(os.path.join(ws, "metadata.yaml")))
+    assert "training_target" not in metadata
+
+
+def test_export_rejects_stale_reference_identity(tmp_path):
+    ws, cfg, store = ladder_workspace(tmp_path)
+    path = os.path.join(ws, "reference", "dielectric_infinity.npy")
+    dielectric = np.load(path)
+    dielectric[0, 0] += 0.1
+    np.save(path, dielectric)
+    with pytest.raises(SystemExit, match="reference artifacts"):
+        export.export_target_stage(cfg, ws, _args("sr"))
+    assert all(not os.path.lexists(
+        os.path.join(store.folder(sid), "hamiltonians.h5"))
+        for sid in store.list())
+
+
+def test_export_refuses_foreign_file(tmp_path):
+    ws, cfg, store = ladder_workspace(tmp_path)
+    sid = store.list()[0]
+    folder = store.folder(sid)
+    target = os.path.join(folder, "hamiltonians.h5")
+    with open(target, "w") as f:
+        f.write("precious hand-made data")
+    with pytest.raises(SystemExit, match="refusing"):
+        export.export_target_stage(cfg, ws, _args("lr"))
+    assert open(target).read() == "precious hand-made data"
+
+
+def test_export_requires_target(tmp_path):
+    ws, cfg, store = ladder_workspace(tmp_path)
+    with pytest.raises(SystemExit, match="target"):
+        export.export_target_stage(cfg, ws, Args())

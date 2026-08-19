@@ -1,0 +1,9 @@
+artifact: "results/learned_response/05_epc_q_resolved.pdf"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.analysis.generate_plots"
+inputs:
+  primary: "results/learned_response/metrics.json"
+environment: "environment.yml"
+sha256: "4f1d4864aed107526d156612091bdd59066f0db603ee8119761ea7a6e0777b2c"
+

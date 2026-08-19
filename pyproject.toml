@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "maceh-lr"
+description = "Equivariant Hamiltonian learning with analytic long-range response and EPC workflows"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE", "NOTICE", "licenses/*.txt"]
+authors = [{name = "Jeremiah Bailey"}]
+dynamic = ["version"]
+dependencies = [
+  "e3nn>=0.5",
+  "h5py>=3.8",
+  "matplotlib>=3.7",
+  "numpy>=1.24",
+  "pathos>=0.3",
+  "pymatgen>=2023.5",
+  "PyYAML>=6",
+  "scipy>=1.10",
+  "seekpath>=2.0",
+  "sympy>=1.11",
+  "tensorboard>=2.12",
+  "torch>=2.0",
+  "torch-geometric>=2.3",
+  "tqdm>=4.65",
+  "wandb>=0.15",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+analysis = ["python-docx>=1.1", "python-pptx>=0.6"]
+
+[project.scripts]
+maceh = "maceh.cli:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "maceh.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+maceh = [
+  "default_configs/*.ini",
+  "data/*.json",
+  "data/*.jl",
+  "_vendor/*/ORIGIN",
+  "_vendor/*/*.txt",
+]
+
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib"
+testpaths = ["tests"]
+markers = [
+  "slow: long-running",
+  "gpu: requires CUDA",
+  "dft: requires ABACUS or Quantum ESPRESSO",
+  "bigdata: requires MACEH_DATA_ROOT",
+]

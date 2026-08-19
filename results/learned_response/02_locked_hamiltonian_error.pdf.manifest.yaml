@@ -1,0 +1,9 @@
+artifact: "results/learned_response/02_locked_hamiltonian_error.pdf"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.analysis.generate_plots"
+inputs:
+  primary: "results/learned_response/metrics.json"
+environment: "environment.yml"
+sha256: "76b6b5d10ade8db85092780d560aea91d39ab61dc7917a7bbfce6e08e5f84b2c"
+

@@ -1,0 +1,9 @@
+artifact: "results/learned_response/metrics.json"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.analysis.generate_plots"
+inputs:
+  primary: "provenance/metadata.yaml"
+environment: "environment.yml"
+sha256: "5e0bde9fed935760047912982c02306002eab32e1f8116dc43c672d1ecc116ec"
+

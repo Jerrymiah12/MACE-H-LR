@@ -1,0 +1,247 @@
+{
+  "conclusion": "Full-H is an independently trained direct total-Hamiltonian predictor; it is not SR plus learned Born/dielectric heads and analytic LR reconstruction.",
+  "models": {
+    "sr": {
+      "run_dir": "<MACEH_RUNS_ROOT>/run_sr/2026-08-06_15-56-09_sr",
+      "checkpoint": {
+        "path": "<MACEH_RUNS_ROOT>/run_sr/2026-08-06_15-56-09_sr/best_model.pkl",
+        "sha256": "03168b3db8b5c61abf1a14375d6cd5488f66856fdc6ecd44ca552f3410b35583",
+        "epoch": 1681,
+        "validation_loss": 2.866399023414435e-06,
+        "state_tensor_count": 1352,
+        "state_scalar_count": 50045998,
+        "born_dielectric_head_key_matches": [],
+        "last_state_keys": [
+          "edge_update.edge_update_blocks.2.sc.weight",
+          "edge_update.edge_update_blocks.2.sc.output_mask",
+          "edge_update.edge_update_blocks.2.norm.weight",
+          "edge_update.edge_update_blocks.2.norm.bias",
+          "edge_update.edge_update_blocks.2.skip_connect.sc.weight",
+          "edge_update.edge_update_blocks.2.skip_connect.sc.bias",
+          "edge_update.edge_update_blocks.2.skip_connect.sc.output_mask",
+          "edge_update.lin_edge.weight",
+          "edge_update.lin_edge.bias",
+          "edge_update.lin_edge.output_mask"
+        ]
+      },
+      "config": {
+        "training_config": "<MACEH_RUNS_ROOT>/run_sr/2026-08-06_15-56-09_sr/src/train.ini",
+        "dataset_name": "mgo404sr",
+        "training_target": "hamiltonian",
+        "epc_config": "workflows/epc/sr.ini",
+        "analytic_lr_workspace": "./run",
+        "analytic_lr_overlap_dir": "./data/pilot/snapshot_000001",
+        "analytic_lr_config": "./provenance/config.resolved.yaml",
+        "gauge_overlap_dir": "./data/pilot/snapshot_000001"
+      }
+    },
+    "full": {
+      "run_dir": "<MACEH_RUNS_ROOT>/run_full/2026-08-08_13-03-35_full",
+      "checkpoint": {
+        "path": "<MACEH_RUNS_ROOT>/run_full/2026-08-08_13-03-35_full/best_model.pkl",
+        "sha256": "ef8d56cadc2b899c66d9162b0ca80c8f2ab2717309a83f0b588440e8464ed56f",
+        "epoch": 1723,
+        "validation_loss": 2.4440567916400665e-06,
+        "state_tensor_count": 1352,
+        "state_scalar_count": 50045998,
+        "born_dielectric_head_key_matches": [],
+        "last_state_keys": [
+          "edge_update.edge_update_blocks.2.sc.weight",
+          "edge_update.edge_update_blocks.2.sc.output_mask",
+          "edge_update.edge_update_blocks.2.norm.weight",
+          "edge_update.edge_update_blocks.2.norm.bias",
+          "edge_update.edge_update_blocks.2.skip_connect.sc.weight",
+          "edge_update.edge_update_blocks.2.skip_connect.sc.bias",
+          "edge_update.edge_update_blocks.2.skip_connect.sc.output_mask",
+          "edge_update.lin_edge.weight",
+          "edge_update.lin_edge.bias",
+          "edge_update.lin_edge.output_mask"
+        ]
+      },
+      "config": {
+        "training_config": "<MACEH_RUNS_ROOT>/run_full/2026-08-08_13-03-35_full/src/train.ini",
+        "dataset_name": "mgo404full",
+        "training_target": "hamiltonian",
+        "epc_config": "workflows/epc/full.ini",
+        "analytic_lr_workspace": null,
+        "analytic_lr_overlap_dir": null,
+        "analytic_lr_config": null,
+        "gauge_overlap_dir": "./data/pilot/snapshot_000001"
+      }
+    }
+  },
+  "fixed_reference_tensors": {
+    "born_effective_charges": {
+      "path": "<MACEH_DATA_ROOT>/reference/born_effective_charges.npy",
+      "sha256": "1adb05f216df8d6feb287e6e86dbd41b17a3cc468747d920e1e308e7b09b7b6c",
+      "shape": [
+        2,
+        3,
+        3
+      ],
+      "values": [
+        [
+          [
+            2.01451,
+            -0.0,
+            -0.0
+          ],
+          [
+            0.0,
+            2.01451,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            2.01451
+          ]
+        ],
+        [
+          [
+            -2.01451,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -2.01451,
+            0.0
+          ],
+          [
+            0.0,
+            -0.0,
+            -2.01451
+          ]
+        ]
+      ]
+    },
+    "dielectric_infinity": {
+      "path": "<MACEH_DATA_ROOT>/reference/dielectric_infinity.npy",
+      "sha256": "3dd0884d085fe9435557d347246f10d3cca035538125432b003d3f2c6fb3f6a0",
+      "shape": [
+        3,
+        3
+      ],
+      "values": [
+        [
+          3.305289435,
+          0.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          3.305289435,
+          0.0
+        ],
+        [
+          -0.0,
+          -0.0,
+          3.305289435
+        ]
+      ]
+    }
+  },
+  "derivative_path": {
+    "method": "central finite difference of predicted Hamiltonians",
+    "sr_analytic_lr_uses_fixed_numpy_tensors": true,
+    "autodiff_through_born_or_dielectric": false,
+    "learned_tensor_case_available": false
+  },
+  "equilibrium": {
+    "snapshot": "<MACEH_DATA_ROOT>/pilot/snapshot_000001",
+    "analytic_lr_label": {
+      "block_count": 4016,
+      "n_elements": 787440,
+      "l2_norm_eV": 7.378349076773686e-16,
+      "max_abs_eV": 6.343321288130453e-17
+    },
+    "raw": {
+      "full_vs_sr_plus_lr": {
+        "candidate_block_count": 7376,
+        "reference_block_count": 7376,
+        "common_block_count": 7376,
+        "same_key_set": true,
+        "n_elements": 1456272,
+        "mae_eV": 0.00012878018857961275,
+        "rmse_eV": 0.00037431486922649975,
+        "max_abs_eV": 0.04730224609375,
+        "relative_l2": 0.0007332584819265828,
+        "candidate_norm_ratio": 1.0001586417631403,
+        "cosine_similarity": 0.9999997437902497
+      },
+      "sr_plus_lr_vs_dft": {
+        "candidate_block_count": 7376,
+        "reference_block_count": 7376,
+        "common_block_count": 7376,
+        "same_key_set": true,
+        "n_elements": 1456272,
+        "mae_eV": 0.00034536616017587587,
+        "rmse_eV": 0.0020437684258553376,
+        "max_abs_eV": 0.061193378541270396,
+        "relative_l2": 0.004003432069866982,
+        "candidate_norm_ratio": 0.9999557045267907,
+        "cosine_similarity": 0.9999919868919313
+      },
+      "full_vs_dft": {
+        "candidate_block_count": 7376,
+        "reference_block_count": 7376,
+        "common_block_count": 7376,
+        "same_key_set": true,
+        "n_elements": 1456272,
+        "mae_eV": 0.00032825311542326765,
+        "rmse_eV": 0.0019956575288948234,
+        "max_abs_eV": 0.05742130684601865,
+        "relative_l2": 0.003909190126716707,
+        "candidate_norm_ratio": 1.0001143392628191,
+        "cosine_similarity": 0.9999923665258177
+      }
+    },
+    "gauge_projection_coefficients_eV": {
+      "dft": 6.256707274615059,
+      "sr": 6.257075790681453,
+      "full": 6.259793471358688
+    },
+    "gauge_projected": {
+      "full_vs_sr_plus_lr": {
+        "candidate_block_count": 7376,
+        "reference_block_count": 7376,
+        "common_block_count": 7376,
+        "same_key_set": true,
+        "n_elements": 1456272,
+        "mae_eV": 0.0001302254637593189,
+        "rmse_eV": 0.00037021168011285526,
+        "max_abs_eV": 0.04458456541651401,
+        "relative_l2": 0.0007488617905232878,
+        "candidate_norm_ratio": 1.0001403715260324,
+        "cosine_similarity": 0.9999997294930638
+      },
+      "sr_plus_lr_vs_dft": {
+        "candidate_block_count": 7376,
+        "reference_block_count": 7376,
+        "common_block_count": 7376,
+        "same_key_set": true,
+        "n_elements": 1456272,
+        "mae_eV": 0.00034557767256277356,
+        "rmse_eV": 0.0020437546836161815,
+        "max_abs_eV": 0.061193114666089884,
+        "relative_l2": 0.004133882362260037,
+        "candidate_norm_ratio": 0.9999488679752047,
+        "cosine_similarity": 0.9999914563786974
+      },
+      "full_vs_dft": {
+        "candidate_block_count": 7376,
+        "reference_block_count": 7376,
+        "common_block_count": 7376,
+        "same_key_set": true,
+        "n_elements": 1456272,
+        "mae_eV": 0.00033024193417459206,
+        "rmse_eV": 0.001994670241672168,
+        "max_abs_eV": 0.05741909698111153,
+        "relative_l2": 0.004034599747550766,
+        "candidate_norm_ratio": 1.0000892323237567,
+        "cosine_similarity": 0.9999918657094837
+      }
+    }
+  }
+}

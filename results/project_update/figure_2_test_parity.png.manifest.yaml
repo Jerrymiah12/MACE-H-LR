@@ -1,0 +1,9 @@
+artifact: "results/project_update/figure_2_test_parity.png"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.training.make_result_figures"
+inputs:
+  primary: "provenance/metadata.yaml"
+environment: "environment.yml"
+sha256: "6a3c0e10150385eb32397cd357eea9d7e61c4b8ef61c4006205eef1b2851f503"
+

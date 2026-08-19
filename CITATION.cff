@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "Please cite MACE-H-LR, MACE-H, and DeepH-E3 when using this software."
+title: "MACE-H-LR"
+type: software
+version: 0.1.0
+date-released: 2026-08-17
+authors:
+  - family-names: Bailey
+    given-names: Jeremiah
+license: MIT
+repository-code: "https://github.com/Jerrymiah12/mace-h-lr"
+preferred-citation:
+  type: article
+  title: "Equivariant Electronic Hamiltonian Prediction with Many-Body Message Passing"
+  authors:
+    - family-names: Qian
+      given-names: Chen
+    - family-names: Vitartas
+      given-names: Valdas
+    - family-names: Kermode
+      given-names: James
+    - family-names: Maurer
+      given-names: Reinhard J.
+  year: 2025
+  identifiers:
+    - type: arxiv
+      value: "2508.15108"

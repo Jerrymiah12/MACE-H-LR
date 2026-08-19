@@ -1,0 +1,9 @@
+artifact: "results/project_update/response_scan_20_elements_page_4.png"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.analyze_response_scan"
+inputs:
+  primary: "results/project_update/response_scan_investigation.json"
+environment: "environment.yml"
+sha256: "5c58afe99c284255fd735637a2da0ee023d33dc95c1b5a81686051118623fc81"
+

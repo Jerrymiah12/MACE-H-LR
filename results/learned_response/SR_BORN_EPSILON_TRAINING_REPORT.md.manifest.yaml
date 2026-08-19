@@ -1,0 +1,9 @@
+artifact: "results/learned_response/SR_BORN_EPSILON_TRAINING_REPORT.md"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.training.finalize_sr_tensor_locked_report"
+inputs:
+  primary: "provenance/metadata.yaml"
+environment: "environment.yml"
+sha256: "a38f81598567cd9124a8bbb41f361f7a016aa3d23b482b9ba129b456d23beb3a"
+

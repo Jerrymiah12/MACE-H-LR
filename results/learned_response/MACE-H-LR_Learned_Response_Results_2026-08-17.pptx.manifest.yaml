@@ -1,0 +1,9 @@
+artifact: "results/learned_response/MACE-H-LR_Learned_Response_Results_2026-08-17.pptx"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.analysis.build_results_presentation"
+inputs:
+  primary: "results/learned_response/metrics.json"
+environment: "environment.yml"
+sha256: "68ee7a7c9625c0d9e1fe9c620a7a289d449c40fc7dfaee2e6ac1ae447dd46ba7"
+

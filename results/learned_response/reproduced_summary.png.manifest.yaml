@@ -1,0 +1,9 @@
+artifact: "results/learned_response/reproduced_summary.png"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.analysis.reproduce_summary"
+inputs:
+  primary: "results/learned_response/metrics.json"
+environment: "environment.yml"
+sha256: "7aac9ec4b9f04c8753b085e249c3bfe9ff4bce5b0a1fcbb39fb265f8af22c2f9"
+

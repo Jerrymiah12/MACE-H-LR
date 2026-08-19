@@ -1,13 +1,13 @@
 # Frozen dataset provenance
 
-The `mgo_lr` run workspace is ~150 GB and lives outside this repository. What
+The dataset run workspace is ~150 GB and lives outside this repository. What
 is kept here is the small, archival part: enough to tie any checkpoint back to
 exactly the data it saw, long after the workspace is gone.
 
-Written and checked by `training/freeze_provenance.py`:
+Written and checked by `workflows/training/freeze_provenance.py`:
 
-    python training/freeze_provenance.py --workspace DIR   # rewrite this directory
-    python training/freeze_provenance.py --verify          # re-hash against SHA256SUMS
+    python -m workflows.training.freeze_provenance --workspace DIR   # rewrite this directory
+    python -m workflows.training.freeze_provenance --verify          # re-hash against SHA256SUMS
 
 `--verify` needs no workspace and no GPU. Run it on the training box before
 building graph caches, and again before reporting results.
@@ -55,10 +55,18 @@ related structures cannot straddle the boundary.
 The 37 are the held-out test set for the 3×3×3 comparison. The 44 are the
 cell-size extrapolation benchmark, and they are the *only* set the Tier-3
 far-field gate actually approves — see "Which set the far-field gate actually
-approves" in `mgo_lr/README.md`. Folding either into training destroys the
+approves" in `workflows/mgo_dataset/README.md`. Folding either into training destroys the
 claim the experiment exists to make.
 
 Neither set appears in the `data_trainval` view the training configs read, and
-`training/check_split_wiring.py` asserts the validation ids are disjoint from
+`workflows/training/check_split_wiring.py` asserts the validation ids are disjoint from
 both. Note also that MACE-H's *"test"* loader during training holds the
-validation snapshots, not these — see `training/README.md`.
+validation snapshots, not these — see `workflows/training/README.md`.
+
+## Change notes
+
+Events that alter what a recorded number or checksum means, newest first:
+
+- [figure-determinism-2026-08-18.md](figure-determinism-2026-08-18.md)
+  — figure output is now byte-reproducible; every checksum under `results/` is
+  superseded and must be regenerated in one run.

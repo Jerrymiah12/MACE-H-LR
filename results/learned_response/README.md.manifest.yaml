@@ -1,0 +1,9 @@
+artifact: "results/learned_response/README.md"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.analysis.generate_plots"
+inputs:
+  primary: "provenance/metadata.yaml"
+environment: "environment.yml"
+sha256: "7719e7858fc427ff9adf8a3a22214515c1e6b00b9c1fc8e572200168772e8950"
+

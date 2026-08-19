@@ -1,0 +1,9 @@
+artifact: "results/project_update/figure_3_mae_vs_atomic_distance.png"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.training.make_result_figures"
+inputs:
+  primary: "provenance/metadata.yaml"
+environment: "environment.yml"
+sha256: "64f03a4768bb3bf7d44d19c295fffa7d9a6f5f3f5e0cb9a51a7ee0e1bf9939c2"
+

@@ -1,0 +1,9 @@
+artifact: "results/project_update/epc_pipeline_decomposition.pdf"
+commit: "2bad8021ca7581207de0fdb817ed3f6266c16a55"
+working_tree: "refactor changes not yet committed"
+command: "python -m workflows.epc.analyze_epc_decomposition"
+inputs:
+  primary: "results/project_update/epc_pipeline_decomposition.json"
+environment: "environment.yml"
+sha256: "7ef8575a8374860eff1419e6fbb8c1ebc82fd4a92b3b5554b3f495a1d9cd333e"
+
